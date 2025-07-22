@@ -34,11 +34,6 @@ Hide/Show table of contents
 
 
 🚀 Advanced & Most Important JavaScript Topics
-🔹 ১. Scope & Closures ✅
-
-
-Closure (most asked in interviews)
-
 🔹 ২. Hoisting
 Variable hoisting (var vs let / const)
 

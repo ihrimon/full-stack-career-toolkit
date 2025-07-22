@@ -1,4 +1,5 @@
 /*
+! Lexical Scope
 Lexical Scope means the accessibility of variables is determined by the physical structure of the code — where functions and blocks are written.
 
 * Functions can access variables from the scope where they were defined, not where they were called.

@@ -30,3 +30,172 @@ Hide/Show table of contents
 |     | **React Router**                                                                                                                                                                                                                 |
 | 79  | [What is React Router?](#what-is-react-router)                                                                                                                                                                                   |
 | 80  | [How is React Router different from the history library?](#how-react-router-is-different-from-history-library)                                                                                                                   |
+
+
+
+🚀 Advanced & Most Important JavaScript Topics
+🔹 ১. Scope & Closures ✅
+
+
+Closure (most asked in interviews)
+
+🔹 ২. Hoisting
+Variable hoisting (var vs let / const)
+
+Function hoisting
+
+🔹 ৩. Execution Context & Call Stack
+Creation phase vs Execution phase
+
+Call Stack
+
+Variable Environment
+
+Scope Chain
+
+🔹 ৪. The this Keyword
+Global context
+
+Inside object method
+
+call(), apply(), bind()
+
+Arrow functions vs normal functions
+
+🔹 ৫. Event Loop & Concurrency Model
+Call Stack, Web APIs, Callback Queue
+
+Event Loop explained
+
+Microtasks vs Macrotasks (Promise vs setTimeout)
+
+Real browser execution flow
+
+🔹 ৬. Asynchronous JavaScript
+Callback Hell
+
+Promises
+
+then(), catch(), finally()
+
+async/await
+
+Error handling with try/catch
+
+Promise.all, Promise.race, etc.
+
+🔹 ৭. Memory Management
+Garbage Collection
+
+Memory Leaks
+
+Stack vs Heap
+
+🔹 ৮. Functional Programming Concepts
+First-Class Functions
+
+Higher Order Functions
+
+Pure Functions
+
+Immutability
+
+Currying
+
+Composition
+
+Memoization
+
+🔹 ৯. Object-Oriented JavaScript (OOP)
+Constructor Functions
+
+Prototype Inheritance
+
+ES6 Classes
+
+super & extends
+
+Encapsulation (private/public)
+
+Factory Functions
+
+🔹 ১০. Deep Dive into Arrays & Objects
+Shallow Copy vs Deep Copy
+
+Spread operator (...)
+
+Destructuring
+
+Array Methods: map, filter, reduce, find, etc.
+
+Object Methods: Object.keys, Object.entries, etc.
+
+🔹 ১১. Error Handling & Debugging
+try...catch...finally
+
+Custom Errors (class MyError extends Error)
+
+Throwing Errors
+
+Debugging with Chrome DevTools
+
+🔹 ১২. Modules in JavaScript
+ES6 Modules: import / export
+
+Named vs Default exports
+
+Dynamic imports (import())
+
+Tree shaking
+
+🔹 ১৩. Event Delegation & Bubbling
+Event Propagation
+
+Capturing Phase
+
+Bubbling Phase
+
+stopPropagation, preventDefault
+
+Delegation for dynamic DOM elements
+
+🔹 ১৪. The new, instanceof, and typeof operators
+How new works
+
+How instanceof checks prototype chain
+
+Type detection quirks of typeof
+
+🔹 ১৫. Currying & Debouncing/Throttling
+Currying functions
+
+Use of debounce & throttle (e.g., in search or scroll performance)
+
+🔹 ১৬. Deep Understanding of == vs ===
+Type coercion
+
+Implicit vs explicit conversion
+
+🔹 ১৭. Web APIs
+localStorage, sessionStorage
+
+fetch() API
+
+Geolocation, Clipboard, Notifications
+
+Working with Forms and FormData
+
+🔹 ১৮. Set, Map, WeakSet, WeakMap
+Use cases & performance advantages
+
+Difference with Arrays and Objects
+
+🔹 ১৯. Iterators & Generators
+Manual iteration with .next()
+
+Generator functions using function*
+
+🔹 ২০. Proxy & Reflect
+Creating dynamic behavior for objects
+
+Use cases in validation, logging, formatting

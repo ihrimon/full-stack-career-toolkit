@@ -34,9 +34,6 @@ Hide/Show table of contents
 
 
 🚀 Advanced & Most Important JavaScript Topics
-🔹 ২. Hoisting
-Variable hoisting (var vs let / const)
-
 Function hoisting
 
 🔹 ৩. Execution Context & Call Stack

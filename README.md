@@ -50,8 +50,6 @@ async/await
 
 Error handling with try/catch
 
-Promises, Promise.all, Promise.race, etc.
-
 🔹 ৭. Memory Management
 Garbage Collection
 

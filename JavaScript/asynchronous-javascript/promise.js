@@ -123,3 +123,24 @@ Promise.any([p1, p2, p3])
  * output:  
 First success: 🎉 Success 2
  */
+
+
+
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    const isSuccess = Math.random() > 0.5;
+
+    setTimeout(() => {
+      if (isSuccess) {
+        resolve('📦 Data fetched successfully');
+      } else {
+        reject('⚠️ Failed to fetch data');
+      }
+    }, 1000);
+  });
+}
+
+fetchData()
+  .then((data) => console.log('✅ Then:', data))
+  .catch((error) => console.error('❌ Catch:', error))
+  .finally(() => console.log('🧹 Finally: Task complete'));

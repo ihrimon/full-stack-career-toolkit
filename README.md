@@ -1,15 +1,5 @@
 # MERN-Stack-Interview-Preparation
 
-<div>
-<p align="center">
-  <a href="https://www.frontendlead.com/coding-questions?utm_source=github&utm_medium=referral&utm_campaign=sudheerj-react" rel="dofollow">
-    <img src="./images/javascript.png" alt="React interview" width="100%">
-  </a>
-</p>
-</div>
-
-> 🚀 Ace React interview questions with solutions from FAANG+ companies! [Try FrontendLead →](https://www.frontendlead.com/coding-questions?utm_source=github&utm_medium=referral&utm_campaign=sudheerj-react) 🚀
-
 ---
 
 ### Table of Contents
@@ -34,9 +24,6 @@ Hide/Show table of contents
 
 
 🚀 Advanced & Most Important JavaScript Topics
-🔹 ৩. Execution Context & Call Stack
-Scope Chain
-
 🔹 ৪. The this Keyword
 Global context
 

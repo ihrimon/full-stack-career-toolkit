@@ -43,9 +43,6 @@ Microtasks vs Macrotasks (Promise vs setTimeout)
 Real browser execution flow
 
 🔹 ৬. Asynchronous JavaScript
-Callback Hell
-
-Promises
 
 then(), catch(), finally()
 
@@ -53,7 +50,7 @@ async/await
 
 Error handling with try/catch
 
-Promise.all, Promise.race, etc.
+Promises, Promise.all, Promise.race, etc.
 
 🔹 ৭. Memory Management
 Garbage Collection

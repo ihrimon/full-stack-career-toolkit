@@ -35,10 +35,6 @@ Hide/Show table of contents
 
 🚀 Advanced & Most Important JavaScript Topics
 🔹 ৩. Execution Context & Call Stack
-Call Stack
-
-Variable Environment
-
 Scope Chain
 
 🔹 ৪. The this Keyword

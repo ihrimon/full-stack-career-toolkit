@@ -34,11 +34,7 @@ Hide/Show table of contents
 
 
 🚀 Advanced & Most Important JavaScript Topics
-Function hoisting
-
 🔹 ৩. Execution Context & Call Stack
-Creation phase vs Execution phase
-
 Call Stack
 
 Variable Environment

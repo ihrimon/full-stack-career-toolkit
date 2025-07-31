@@ -42,14 +42,6 @@ Microtasks vs Macrotasks (Promise vs setTimeout)
 
 Real browser execution flow
 
-🔹 ৬. Asynchronous JavaScript
-
-then(), catch(), finally()
-
-async/await
-
-Error handling with try/catch
-
 🔹 ৭. Memory Management
 Garbage Collection
 
@@ -137,10 +129,6 @@ Currying functions
 
 Use of debounce & throttle (e.g., in search or scroll performance)
 
-🔹 ১৬. Deep Understanding of == vs ===
-Type coercion
-
-Implicit vs explicit conversion
 
 🔹 ১৭. Web APIs
 localStorage, sessionStorage

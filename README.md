@@ -50,8 +50,6 @@ Memory Leaks
 Stack vs Heap
 
 🔹 ৮. Functional Programming Concepts
-First-Class Functions
-
 Higher Order Functions
 
 Pure Functions

@@ -50,8 +50,6 @@ Memory Leaks
 Stack vs Heap
 
 🔹 ৮. Functional Programming Concepts
-Composition
-
 Memoization
 
 🔹 ৯. Object-Oriented JavaScript (OOP)

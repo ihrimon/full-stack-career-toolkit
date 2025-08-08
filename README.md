@@ -50,10 +50,6 @@ Memory Leaks
 Stack vs Heap
 
 🔹 ৮. Functional Programming Concepts
-Immutability
-
-Currying
-
 Composition
 
 Memoization

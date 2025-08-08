@@ -50,8 +50,6 @@ Memory Leaks
 Stack vs Heap
 
 🔹 ৮. Functional Programming Concepts
-Pure Functions
-
 Immutability
 
 Currying

@@ -55,6 +55,22 @@
       Function – function greet() { return "Hello noob developer"; }
 
 - [ ] Operators (Arithmetic, Comparison, Logical, Bitwise)
+      Arithmetic: +, -, _, /, %, \*\* (exponential)
+      Comparison: ==, ===, !=, !==, >, <, >=, <=
+      Logical: &&, ||, ! (logical not)
+      Bitwise: &, |, ^, ~, <<, >>, >>>
+      Assignment: = += -= _= /= %=
+      Ternary: (? :)
+      String: +
+      Type: typeof, instanceof
+      Unary: ++, --, +, -
+      Relational: > < >= <=
+      Optional Chaining: (?.)
+      Comma Operator: (,)
+      Delete Operator: delete (keyword)
+      Spread Operator: (...)
+      Nullish Coalescing: (??)
+
 - [ ] Type Conversion & Coercion
 - [ ] Strings & Template Literals
 - [ ] Numbers & Math Functions

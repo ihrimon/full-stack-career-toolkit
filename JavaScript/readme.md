@@ -39,6 +39,21 @@
       👉 const: Used when the variable reference should not change. For primitive values, the value is fixed, while for arrays and objects, the reference is constant but their contents can still be modified.
 
 - [ ] Data Types (Primitive vs Non-Primitive)
+      👉 Primitive Data Types: Immutable values stored directly in memory.
+      String – "Hello"
+      Number – 10, 3.14
+      Boolean – true, false
+      Undefined – variable declared but not assigned
+      Null – intentional empty value
+      Symbol – unique identifier
+      BigInt – large integers
+
+      👉 Non-Primitive (Reference) Data Types: Mutable values stored by reference.
+
+      Object – { name: "Rimon", age: 23 }
+      Array – [1, 2, 3]
+      Function – function greet() { return "Hello noob developer"; }
+
 - [ ] Operators (Arithmetic, Comparison, Logical, Bitwise)
 - [ ] Type Conversion & Coercion
 - [ ] Strings & Template Literals

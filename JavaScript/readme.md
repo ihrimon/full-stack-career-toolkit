@@ -72,6 +72,8 @@
       Nullish Coalescing: (??)
 
 - [ ] Type Conversion & Coercion
+      Type Conversion (Explicit) – manually converting a value from one type to another.
+      Type Coercion (Implicit) – JavaScript automatically converts types when performing operations.
 - [ ] Strings & Template Literals
 - [ ] Numbers & Math Functions
 - [ ] Control Flow (if/else, switch, ternary)

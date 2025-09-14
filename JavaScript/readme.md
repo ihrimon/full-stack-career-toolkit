@@ -76,6 +76,7 @@
       Type Coercion (Implicit) – JavaScript automatically converts types when performing operations.
 - [ ] Strings & Template Literals
 - [ ] Numbers & Math Functions
+- [ ] Numbers & Math Functions
 - [ ] Control Flow (if/else, switch, ternary)
 - [ ] Loops (for, while, do-while, for...in, for...of)
 - [ ] Functions (declaration, expression, arrow functions)

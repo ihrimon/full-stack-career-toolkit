@@ -89,6 +89,13 @@
       for...of → Used to iterate over the values of an iterable (like arrays or strings).
 - [ ] Functions (declaration, expression, arrow functions)
 - [ ] Scope (Global, Local, Block, Lexical Scope)
+      Global Scope: Accessed anywhere in the code.
+
+      Local / Function Scope: Accessed only inside a function.
+
+      Block Scope: Accessed only inside {} block (let & const).
+
+      Lexical Scope: Inner function can access outer function variables.
 - [ ] Hoisting
 - [ ] Strict Mode
 

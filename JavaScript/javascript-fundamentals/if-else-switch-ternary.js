@@ -1,4 +1,4 @@
-// 📌 Strings & Template Literals in JavaScript
+// 📌 if else/ else if / switch / ternary in JavaScript
 
 let userRole = 'customer'; // admin / customer / guest
 let orderAmount = 120; // total order amount

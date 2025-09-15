@@ -78,6 +78,15 @@
 - [ ] Numbers & Math Functions
 - [ ] Control Flow (if/else, switch, ternary)
 - [ ] Loops (for, while, do-while, for...in, for...of)
+      for → When you need to run a loop a specific number of times.
+
+      while → When you want the loop to continue as long as a condition is true.
+
+      do...while → Ensures the loop runs at least once before checking the condition.
+
+      for...in → Used to iterate over the keys (properties) of an object.
+
+      for...of → Used to iterate over the values of an iterable (like arrays or strings).
 - [ ] Functions (declaration, expression, arrow functions)
 - [ ] Scope (Global, Local, Block, Lexical Scope)
 - [ ] Hoisting

@@ -97,6 +97,15 @@
 
       Lexical Scope: Inner function can access outer function variables.
 - [ ] Hoisting
+      JavaScript moves variable and function declarations to the top of their scope before execution.
+
+      Function declarations → can be called before definition.
+
+      Function expressions & arrow functions → not hoisted.
+
+      var variables → hoisted and initialized with undefined.
+
+      let & const variables → hoisted but in Temporal Dead Zone (TDZ) until declaration.
 - [ ] Strict Mode
 
 ## 2. Intermediate JavaScript

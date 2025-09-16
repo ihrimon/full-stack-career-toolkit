@@ -87,6 +87,7 @@
       for...in → Used to iterate over the keys (properties) of an object.
 
       for...of → Used to iterate over the values of an iterable (like arrays or strings).
+
 - [ ] Functions (declaration, expression, arrow functions)
 - [ ] Scope (Global, Local, Block, Lexical Scope)
       Global Scope: Accessed anywhere in the code.
@@ -96,6 +97,7 @@
       Block Scope: Accessed only inside {} block (let & const).
 
       Lexical Scope: Inner function can access outer function variables.
+
 - [ ] Hoisting
       JavaScript moves variable and function declarations to the top of their scope before execution.
 
@@ -106,7 +108,6 @@
       var variables → hoisted and initialized with undefined.
 
       let & const variables → hoisted but in Temporal Dead Zone (TDZ) until declaration.
-- [ ] Strict Mode
 
 ## 2. Intermediate JavaScript
 

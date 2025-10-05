@@ -120,8 +120,6 @@
 - [ ] ES6+ Features Overview
 - [ ] Modules (import/export)
 - [ ] JSON (parse, stringify)
-- [ ] Date & Time Handling
-- [ ] Error Handling (`try...catch`, `throw`, `finally`)
 
 ## 3. Functions & Advanced Concepts
 
@@ -150,6 +148,8 @@
 - [ ] Call Stack & Event Loop
 - [ ] Synchronous vs Asynchronous JS
 - [ ] Callbacks & Callback Hell
+- [ ] Date & Time Handling
+- [ ] Error Handling (`try...catch`, `throw`, `finally`)
 - [ ] Promises (`then`, `catch`, `finally`)
 - [ ] Async/Await
 - [ ] `Promise.all`, `Promise.race`, `Promise.allSettled`, `Promise.any`

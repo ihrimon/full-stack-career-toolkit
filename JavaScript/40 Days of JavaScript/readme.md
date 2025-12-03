@@ -30,11 +30,13 @@ Defer: The defer attribute is a boolean attribute. If the defer attribute is set
 Asycn: The async function declaration creates a binding of a new async function to a given name. The await keyword is permitted within the function body, enabling asynchronous, promise-based behavior to be written in a cleaner style and avoiding the need to explicitly configure promise chains.
 
 <!-- Learning Lessons day - 02 -->
+
 primitive = pass by value (value store in stack method)
 non-primitive = pass by reference (value store in heap method)
 
-* primitive, non-primitive
-* primitive data type:
+- primitive, non-primitive
+- primitive data type:
+
   - 'String' - Text values ('Hello')
   - 'Number' - Numeric values (24, 3.80)
   - 'Boolean' - True/False (true, false)
@@ -43,15 +45,16 @@ non-primitive = pass by reference (value store in heap method)
   - 'BigInt' - Large numbers (BigInt(241545454152))
   - 'Symbol' - Unique identifiers (Symbol('id'))
 
-* Non-primitives data types
+- Non-primitives data types
+
   - 'Object' - Collection of key-value pairs (Complex/mixed up data types)
   - 'Array' - Ordered list of values (same data types)
   - 'Function' - Code that can be excuted
 
+- naming convention of variables
 
-* naming convention of variables
   - the name must have digits or letters
-  - the name can have ($, and, _)
+  - the name can have ($, and, \_)
   - The first character must not be a digit
   - No reserved keywords
   - case sensivite
@@ -59,9 +62,102 @@ non-primitive = pass by reference (value store in heap method)
   - the name should be human readable
   - the name shold match the cause.
 
-* How JavaScript See code
+- How JavaScript See code
   - Tokenizing
   - Parsing (with abstract syntax tree)
   - Interpreting
 
 Source code --> TOKENIZING --> tokens --> PARSING --> ast (Abstract syntax tree) --> code generation --> machine code (INTERPRETING)
+
+<!-- Learning Lessons day - 03 -->
+
+- Expression:
+  1. assignment expression 'x = 10'
+  2. evaluating expression 'x + y' (return new value)
+
+let x = 4 + 5;
+
+- operators:
+
+  - Arithmetic (+, -, \*, /, %, \*\*, ++ (pre, post increment), -- (decrement))
+  - Assignment (=, +=,-=, \*=)
+  - comparison (return true/false) '=== strict equality operator'
+
+        ``` let obj1 = {name: 'Rimon};
+          let obj2 = {name: 'Rimon};
+
+        console.log(obj1 === obj2) // always return false casue     these object contains difference memory address
+
+    ```
+
+    ```
+
+  - relational
+  - logical
+
+    ```
+    logical AND:
+    false && false // false
+    true && false // false
+    true && true // true
+    false && tru // false
+
+    note: any of the operand is false is should return false
+
+    'cow' && 'horse' // 'horse'
+    note: first operand is true then return second operand
+
+    4 > 5 && 4 === 6 // false
+
+    note: logical AND operator is crucial for using conditions
+
+    logical OR:
+    false || false // false
+    true || false // true
+    true || true // true
+    false || true // true
+
+    note: first operand is true then returned it
+
+    'cow' || 'horse' // cow (true) string always positive value
+
+    Nullish Coelsing:
+
+    operand1 ?? operand2
+
+    let a1 = null ?? 1  // 1
+    let a2 = undefined ?? 2   // 2
+    const a3 = false ?? 'Rimon' // false
+    const a4 = 0 ?? 'Rimon'   // 0
+    note: first operand is undefined or null then second operand return otherwise first one is return
+
+    ```
+
+  - bitwise (&, |, ~ (NOT), <<, >>)
+  - conditional / ternary (return true: false)
+  - grouping (operator precedence BODMAS)
+
+    ```
+
+      let p = 1;
+      let q = 2;
+      let r = 3;
+
+      p + q * r // 1 + 2 * 3 = 1 + 6 = 7
+      p + (q * r) // 7
+      (p + q) * r // 9
+
+    ```
+
+  - typeOf (return is what type of varialbe)
+    ```
+      const numbers = [1, 2, 3, 4, 5]
+
+      typeof numbers;   // object (array is like a object)
+      typeof null;  // object
+
+
+    ```
+  - instanceOf
+
+NaN: stands for "Not a Number" and is a value in JavaScript used to represent an undefined or unrepresentable value. NaN is the result of an operation that was supposed to return a number, but couldn't because of an error or undefined/empty value.

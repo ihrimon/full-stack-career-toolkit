@@ -47,3 +47,12 @@ console.log('Day 02 of 40 days javascript')
 //     console.log(language.charAt(i));
 // }
 
+function foo (func) {
+    console.log('Foo');
+
+    func();
+}
+
+foo(function () {
+    console.log('bar')
+})

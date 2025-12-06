@@ -207,12 +207,81 @@ do-while loop: a do-while loop ensures that the code executed at least once befo
 - defiing a function
 - functioin as expression
 - default and rest parameters
+  - ```
+    function calculateThis(x, y, ...rest){
+    console.log(x, y, rest)
+}
+
+calculateThis(1,2,3,4,5,6,7,8,9)
+  ```
 - function nesting
+```
+// Nested Fucntion
+
+function outer() {
+    console.log("Outer");
+
+    return function inner() {
+        console.log("inner")
+    }
+    //inner();
+}
+
+let retFunc = outer();
+
+console.log(retFunc); // print function
+console.log(restFunc()) // print inner
+```
+
 - callback functions
+  ```
+    
+  ```
+
 - pure functions and higher order functions
 - arrow functions
 - IIFE
-- call stack
+  IIFE (Immediately Invoked Function Expression)
+  explicit call: 
+  ```
+  (function () {
+    console.log('IIFE')
+  })()
+  ```
+
+  implicit call:
+  ```
+  (function () {
+    console.log('IIFE')
+  })
+  ```
+- function currying
+- call stack (function execution stack /context)
+```
+  f1() {
+    ----------
+    --------
+    ---------
+  }
+
+  f2() {
+    ----------
+    --------
+    ---------
+    f1()
+  }
+
+  f3() {
+    f2()
+  }
+
+  f3() 
+
+  call stack:
+    f1()
+    f2()
+    f3() 
+```
 - recursion
 - hoisting
 - scope

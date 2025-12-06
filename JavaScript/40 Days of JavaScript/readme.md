@@ -150,6 +150,7 @@ let x = 4 + 5;
     ```
 
   - typeOf (return is what type of varialbe)
+
     ```
       const numbers = [1, 2, 3, 4, 5]
 
@@ -158,6 +159,62 @@ let x = 4 + 5;
 
 
     ```
+
   - instanceOf
 
 NaN: stands for "Not a Number" and is a value in JavaScript used to represent an undefined or unrepresentable value. NaN is the result of an operation that was supposed to return a number, but couldn't because of an error or undefined/empty value.
+
+<!-- Learning  Control Flow Lessons day - 04 -->
+
+switch case e condition diye kora jai nah. actual value lage
+
+```
+  const city = 'ctg'
+
+  switch (city) {
+    case 'dhaka':
+    case 'ctg':
+    case 'rajshahi':
+      console.log('All these are in bd');
+      break;
+    case 'khulna'
+    default:
+      console.log('It is in USA')
+  }
+
+  // output: All these are in bd
+```
+
+<!-- Learning  Loops and Iterations Lessons day - 05 -->
+
+nested loops uses for two dimentional data (array)
+
+while loop: A while loop runs as long as given condition is true. It's best when we don't know in advance how many iterations are needed.
+
+do-while loop: a do-while loop ensures that the code executed at least once before checking the condition.
+
+```
+  let num = 1;
+
+  do {
+    console.log(num);
+    num++
+  } while (num <= 5)
+```
+
+<!-- Learning function Lessons day - 06 -->
+- What is function
+- defiing a function
+- functioin as expression
+- default and rest parameters
+- function nesting
+- callback functions
+- pure functions and higher order functions
+- arrow functions
+- IIFE
+- call stack
+- recursion
+- hoisting
+- scope
+- closure
+

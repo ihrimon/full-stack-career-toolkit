@@ -60,3 +60,28 @@ Features:
     Option to choose comment level: beginner-friendly / expert notes
 
     🎯 Uniqueness: Targets both learning & production level code.
+
+
+🔐 2. Secure File Vault System (End-to-End Encryption)
+
+(Dropbox + ProtonDrive)
+
+⭐ Features
+
+🔑 End-to-end encrypted file upload
+
+🧩 Encryption keys per user
+
+📁 Encrypted folders
+
+👥 Secure file sharing with expiring links
+
+🕵️ Activity log
+
+🗂️ File versioning
+
+👨‍💻 Admin dashboard
+
+কেন ইউনিক?
+
+Most developers encryption system build করে না → তুমি আলাদা হয়ে যাবে।

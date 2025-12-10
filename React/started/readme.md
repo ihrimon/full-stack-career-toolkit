@@ -72,9 +72,63 @@ react 2ta dom niye kaj kore ejonno slow hoiye jawar kotha. kintu actual dom er p
 virtual dom er maddhome react sergically update kore. exact j jaigai change kora lge seta change kore. pura entire component k update kore nah. ata k sergically update bole.
 
 <!-- react is popular for single page application -->
-keno react use kora hoi other framework chara (like jQuery)
-* developer experience
-* maintability
-* code suggestiong, tooling,
-* component based (module)
 
+keno react use kora hoi other framework chara (like jQuery)
+
+- developer experience
+- maintability
+- code suggestiong, tooling,
+- component based (module)
+
+Event handler function component to component pass korle onClick jeno na hoi.
+
+naming convention: function name handle diye suru, handler guli on diye suru.
+
+html e button and div click handler support kore.
+
+Event Propagation: proparation mane move kora.
+child listener k parent e delegate kore dewa k event delegation bole. delegation mane orpon kora.
+
+event propagration er 1st part hocche event delegation.
+2nd part hocche event bubble.
+
+```
+<button>
+    <button>
+        <button></button>
+    </button>
+</button>
+```
+
+ekhetrea j event trigger hobe setai age call hobe. ata k event bubble er concept bole.
+
+event handler er moddhe capturing true dile upor theke nijer dike jabe. event buble er ulta, ata hocche event propagation.
+
+1. event deletation
+2. event capturing
+3. event bubbling
+
+
+bubble ⬆️
+propagation ⬇️
+
+onScroll event handler er khtre event propagation korbe nah. onno sob khetre korbe.
+
+
+onScroll parent er upor na howai valo.
+
+browser event trigger korle event object, react event trigger korle syntheticEvent object
+
+e.stopPropagation() diye propagation stop kora jai. 
+
+atai khub oi sensitive jinis, karon event handler gula jeno onno kono handler er upor effect felte na pare.
+
+
+side effect 2vhabe handle kora jai.
+* useEffect
+* event handler
+rendering er somoi kono side effect use kora jabe nah. handler er moddhe handle korte hobe.
+
+** state change korle rerender hoi component
+
+state is isolated and private.

@@ -203,87 +203,135 @@ do-while loop: a do-while loop ensures that the code executed at least once befo
 ```
 
 <!-- Learning function Lessons day - 06 -->
+
 - What is function
 - defiing a function
 - functioin as expression
 - default and rest parameters
   - ```
-    function calculateThis(x, y, ...rest){
-    console.log(x, y, rest)
-}
+        function calculateThis(x, y, ...rest){
+        console.log(x, y, rest)
+    }
+    ```
 
 calculateThis(1,2,3,4,5,6,7,8,9)
-  ```
+
+```
 - function nesting
 ```
+
 // Nested Fucntion
 
 function outer() {
-    console.log("Outer");
+console.log("Outer");
 
     return function inner() {
         console.log("inner")
     }
     //inner();
+
 }
 
 let retFunc = outer();
 
 console.log(retFunc); // print function
 console.log(restFunc()) // print inner
+
 ```
 
 - callback functions
-  ```
-    
-  ```
+```
+
+```
 
 - pure functions and higher order functions
 - arrow functions
 - IIFE
-  IIFE (Immediately Invoked Function Expression)
-  explicit call: 
-  ```
-  (function () {
-    console.log('IIFE')
-  })()
-  ```
+IIFE (Immediately Invoked Function Expression)
+explicit call:
+```
 
-  implicit call:
-  ```
-  (function () {
-    console.log('IIFE')
-  })
-  ```
+(function () {
+console.log('IIFE')
+})()
+
+```
+
+implicit call:
+```
+
+(function () {
+console.log('IIFE')
+})
+
+```
 - function currying
 - call stack (function execution stack /context)
+
 ```
-  f1() {
-    ----------
-    --------
-    ---------
-  }
 
-  f2() {
-    ----------
-    --------
-    ---------
-    f1()
-  }
+f1() {
+----------
+--------
+---------
+}
 
-  f3() {
-    f2()
-  }
+f2() {
+----------
+--------
+---------
+f1()
+}
 
-  f3() 
+f3() {
+f2()
+}
 
-  call stack:
-    f1()
-    f2()
-    f3() 
+f3()
+
+call stack:
+f1()
+f2()
+f3()
+
 ```
 - recursion
 - hoisting
 - scope
 - closure
 
+
+<!-- Rock, Paper, Scissors project - 07 -->
+
+<!-- Execution Context day - 08 -->
+Lexical Environment: Lexical means related to something. Lexical Environment means how and where physically placed.
+
+Execution context: means the code is currently running and everything to that is helping to run it.
+
+what does context means? context means a set of circumanstances of the fact that helps running certain events or taking care certain situation.
+
+Executation context is going to give you the more information about the current code that js code is running and everything sorround that helps running this.
+
+
+jokhon js code first e run kore js enviratonment e ata global execution context bole. global means anything and everything outside of a function. let us call is global.
+
+## Execuration context
+Global Execuration Context (GEC)
+- creation phase
+  - window object
+  - this keyword
+  - window === this
+
+```
+
+    var name = 'tom'
+
+    function sayName () {
+      console.log(this.name);
+    }
+
+```
+- allocate memory for variable name and funcation sayName()
+- name will be initialized by undefined
+the function body will be placed directly into memory.
+```

@@ -269,7 +269,7 @@ console.log('IIFE')
 - call stack (function execution stack /context)
 
 ```
-
+```
 f1() {
 ----------
 --------
@@ -330,8 +330,41 @@ Global Execuration Context (GEC)
       console.log(this.name);
     }
 
+    // not calling the function
+
 ```
 - allocate memory for variable name and funcation sayName()
 - name will be initialized by undefined
 the function body will be placed directly into memory.
 ```
+
+- execution phase (line by line execute the code)
+  - It will assign the value "tom" to the variable name;
+  - ```
+
+    var name = 'tom'
+
+    function sayName () {
+      console.log(this.name);
+    }
+
+    tom() // invoke the function 
+
+```
+
+
+Function Execuration Context (GEC)
+  - Creation phase
+  - Execution phase: log() from
+      - creation phase
+      - execution phase
+
+
+file e ekta one line code thakleo first e global execution context create hoi. Global level (outside of function)
+
+function is non-primitive data. ejnno ata stack e joma na hoiye heap er moddhe joma ho. Stack e sudhu matro memory address joma hoi function er.
+
+
+Execution context e function and variable chara ar kisu execute hoi nai (like console.log)
+
+kono variable or function define kora hoi kintu call or use kora hoi nah. seta execution phase garbage collection hisebe joma hoiye thake. garbage collector diye memory cleanup kora hoi.

@@ -432,3 +432,89 @@ GEC
 ````
 
 
+<!-- Learning Scope & Scope Chain in JavaScript day - 10 -->
+
+types of scope:
+
+1. global scope
+   1. var name = 'rimon' window object e save hobe. var global variable hisebe use kora hoi besi. karon eti jekono jaigai use kora jete pare. kintu let, consts agula use kora jai nah.
+   2. let name = 'rimon' window object e save hoi nah.
+2. function scope: variable declared inside a function are only accessible within that function.
+
+   1. ```
+      function todo() {
+       var task = 'Learning js'
+       console.log(task);
+      }
+      ```
+
+   todo();
+
+   console.log(task) // not acessesible (TDZ)
+
+   ```
+
+   ```
+
+3. block scope: variable declared using let and const inside {} cannot be accessed outside the block.
+
+   1. ```
+      {
+        let count = 10;
+        console.log(count)
+      }
+
+      console.log(count)  // not access
+
+      {
+        var count = 10;
+        console.log(count)
+      }
+
+      console.log(count)  // accessible
+      ```
+
+   ```
+
+   var is function scope cannot access varile outside.
+   let and consts is block scope cannot access outside of block
+   ```
+
+4. module scope
+
+Scope Chain:
+
+```
+  var count = 10;
+
+  function outer() {
+    var count = 20;
+
+    function inner() {
+      var count = 30;
+      console.log(count);
+    }
+
+
+    inner();
+    console.log(count)
+  }
+
+  outer();
+  console.log(count)
+```
+
+Variable Shadowing
+
+let message = 'I am doing great'
+
+function situtation() {
+let message = 'Im am not doing great'
+console.log(message); // Im doing great
+}
+
+situation();
+console.log(message) // I am doing great
+
+
+var dont use in loops.

@@ -269,6 +269,7 @@ console.log('IIFE')
 - call stack (function execution stack /context)
 
 ```
+
 ```
 f1() {
 ----------
@@ -295,15 +296,16 @@ f2()
 f3()
 
 ```
+
 - recursion
 - hoisting
 - scope
 - closure
 
-
 <!-- Rock, Paper, Scissors project - 07 -->
 
 <!-- Execution Context day - 08 -->
+
 Lexical Environment: Lexical means related to something. Lexical Environment means how and where physically placed.
 
 Execution context: means the code is currently running and everything to that is helping to run it.
@@ -312,11 +314,12 @@ what does context means? context means a set of circumanstances of the fact that
 
 Executation context is going to give you the more information about the current code that js code is running and everything sorround that helps running this.
 
-
 jokhon js code first e run kore js enviratonment e ata global execution context bole. global means anything and everything outside of a function. let us call is global.
 
 ## Execuration context
+
 Global Execuration Context (GEC)
+
 - creation phase
   - window object
   - this keyword
@@ -333,10 +336,12 @@ Global Execuration Context (GEC)
     // not calling the function
 
 ```
+
 - allocate memory for variable name and funcation sayName()
 - name will be initialized by undefined
-the function body will be placed directly into memory.
-```
+  the function body will be placed directly into memory.
+
+````
 
 - execution phase (line by line execute the code)
   - It will assign the value "tom" to the variable name;
@@ -348,23 +353,82 @@ the function body will be placed directly into memory.
       console.log(this.name);
     }
 
-    tom() // invoke the function 
+    tom() // invoke the function
 
-```
-
+````
 
 Function Execuration Context (GEC)
-  - Creation phase
-  - Execution phase: log() from
-      - creation phase
-      - execution phase
 
+- Creation phase
+- Execution phase: log() from
+  - creation phase
+  - execution phase
 
 file e ekta one line code thakleo first e global execution context create hoi. Global level (outside of function)
 
 function is non-primitive data. ejnno ata stack e joma na hoiye heap er moddhe joma ho. Stack e sudhu matro memory address joma hoi function er.
 
-
 Execution context e function and variable chara ar kisu execute hoi nai (like console.log)
 
 kono variable or function define kora hoi kintu call or use kora hoi nah. seta execution phase garbage collection hisebe joma hoiye thake. garbage collector diye memory cleanup kora hoi.
+
+<!-- Learning Hoisting and Temporal Dead Zone day - 09 -->
+
+variable hoisting;
+``
+console.log('name is ', name);
+var name;
+
+name = 'tom'
+console.log('name is ', name)
+``
+
+ei code dekhle error asbe mone holeo hoisting er jnno var name ata hoisted hoi ase.
+
+hoisting means (pulled up): creating the memory for your function or variable
+
+var vs let:
+GEC:
+
+- creation phase
+  - var: variable will be created and initialized undefined
+  - let: the varialbe name will be created but wont be initialize undefined/anything
+
+Temporal Dead Zone (TDZ): an area where you can not access a variable until it is initialized
+
+ReferenceError:
+{
+..........
+
+.........
+console.log(name)
+..........
+..........
+let name = 'rimon'
+}
+
+function hoisting:
+
+````chase();
+
+function chase() {
+console.log('Tom chase jerry!);
+caught();
+}
+
+function caught() {
+console.log('Tom caught jerry:')
+}```
+
+GEC
+  cp: chase(): initialize and memory creation
+      caught(): initialize and memory creation
+  ep: Function Execution context for chase()
+      cp:
+      EP: console.log('Top chases jerry');
+          FEC for caught()
+            CP:
+            EP: console.log('Tom Caught Jerry');
+````
+
+

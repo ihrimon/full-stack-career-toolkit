@@ -431,7 +431,6 @@ GEC
             EP: console.log('Tom Caught Jerry');
 ````
 
-
 <!-- Learning Scope & Scope Chain in JavaScript day - 10 -->
 
 types of scope:
@@ -516,5 +515,38 @@ console.log(message); // Im doing great
 situation();
 console.log(message) // I am doing great
 
-
 var dont use in loops.
+
+<!-- Learning Closures With Real-World Examples in JavaScript day - 11 -->
+
+Closure: is a function that can remember variable from its outer function. Even after outer function has executed. function execute howar por o varialbe mone rakhte pare.
+
+Real World Example:
+
+- Data encapsulation
+- bank account
+
+  ```
+    function bankAccount(initialBalance) {
+      let balance = initialBalance;
+
+      return function deposit(amount) {
+        balance += amount;
+        console.log('Deposited', amount, 'current balance', balance);
+      }
+    }
+
+    const myAccount = bankAccount(100);
+
+    console.log(myAccount(300))
+    console.log(myAccount(500))
+  ```
+
+closure  garbage collect kore  rakhe. ejonno sob jaigai closure use kora jabe  nah. back account, atm machine e perfect example closure use korar jonno.
+
+Usefulness of closure
+1. you can keep the variable private without exposing them.
+2. you can stop variable pollution.
+3. you can create a function factory. (Like back account)
+4. you can keep a variable alive between multiple calls.
+

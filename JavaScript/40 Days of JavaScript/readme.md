@@ -550,3 +550,12 @@ Usefulness of closure
 3. you can create a function factory. (Like back account)
 4. you can keep a variable alive between multiple calls.
 
+<!-- Learning JavaScript Objects day-12 -->
+1. Introduction to Objects
+2. Object Properties
+3. Nested Objects
+4. Object creational patterns
+5. object references
+6. object static methods
+7. object destructuring
+8. optional chaining

@@ -256,15 +256,6 @@ const students = [
   },
 ];
 
-for(let {name, grade} of students) {
-  console.log(name, grade)
+for (let { name, grade } of students) {
+  console.log(name, grade);
 }
-
-// Optional Chaining
-const employee2 = {
-  salary: {
-    bonus: 300
-  }
-}
-
-console.log(employee2.salary);

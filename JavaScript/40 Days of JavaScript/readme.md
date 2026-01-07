@@ -542,15 +542,17 @@ Real World Example:
     console.log(myAccount(500))
   ```
 
-closure  garbage collect kore  rakhe. ejonno sob jaigai closure use kora jabe  nah. back account, atm machine e perfect example closure use korar jonno.
+closure garbage collect kore rakhe. ejonno sob jaigai closure use kora jabe nah. back account, atm machine e perfect example closure use korar jonno.
 
 Usefulness of closure
+
 1. you can keep the variable private without exposing them.
 2. you can stop variable pollution.
 3. you can create a function factory. (Like back account)
 4. you can keep a variable alive between multiple calls.
 
 <!-- Learning JavaScript Objects day-12 -->
+
 1. Introduction to Objects
 2. Object Properties
 3. Nested Objects
@@ -559,3 +561,16 @@ Usefulness of closure
 6. object static methods
 7. object destructuring
 8. optional chaining
+9. <!-- Learning JavaScript This keyword day-13 -->
+   this keyword not work in arrow function
+   \*\*\* implicit and explicit binding
+   recap:
+
+- this keyword on the global scope
+- this keyword in stand alone function
+- this keyword in stand alone function using the strict mood
+- this keyword with the implicit binding in object method
+- this keyword in the arrow function
+- this keyword in the arrow function that is within another function scope or object
+- this keyword in the explicit binding with call, apply and bind
+- this keyword with object that created using the new keyword

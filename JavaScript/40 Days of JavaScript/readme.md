@@ -561,7 +561,9 @@ Usefulness of closure
 6. object static methods
 7. object destructuring
 8. optional chaining
-9. <!-- Learning JavaScript This keyword day-13 -->
+
+
+<!-- Learning JavaScript This keyword day-13 -->
    this keyword not work in arrow function
    \*\*\* implicit and explicit binding
    recap:
@@ -574,3 +576,13 @@ Usefulness of closure
 - this keyword in the arrow function that is within another function scope or object
 - this keyword in the explicit binding with call, apply and bind
 - this keyword with object that created using the new keyword
+
+<!-- Error handling in JavaScript day-14 -->
+- Different types of Error
+- try...catch syntax and flow
+- real-world use cases with try ...catch
+- throwing error
+- rethrowing error
+- try try...catch..finally
+- creating custom error
+- self assignment operator

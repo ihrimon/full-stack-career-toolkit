@@ -562,11 +562,11 @@ Usefulness of closure
 7. object destructuring
 8. optional chaining
 
-
 <!-- Learning JavaScript This keyword day-13 -->
-   this keyword not work in arrow function
-   \*\*\* implicit and explicit binding
-   recap:
+
+this keyword not work in arrow function
+\*\*\* implicit and explicit binding
+recap:
 
 - this keyword on the global scope
 - this keyword in stand alone function
@@ -578,6 +578,7 @@ Usefulness of closure
 - this keyword with object that created using the new keyword
 
 <!-- Error handling in JavaScript day-14 -->
+
 - Different types of Error
 - try...catch syntax and flow
 - real-world use cases with try ...catch
@@ -586,3 +587,63 @@ Usefulness of closure
 - try try...catch..finally
 - creating custom error
 - self assignment operator
+
+<!-- Array in JavaScript day-15 -->
+
+- [] Introduction
+- [] What is an Array in JavaScript?
+- [] How to create an array in Js?
+- [] How to get elements from an array in js?
+- [] How to remove elements from an array in js?
+- [] How to copy and clone an array in js?
+- [] How to determine if a value is an array in js?
+- [] Array destructuring
+- [] How to assign a default value to a variable?
+- [] How to skip a value in an array?
+- [] Nested array destructuring in js?
+- [] How to use the rest parameter in js?
+- [] How to use the spread operator in js?
+- [] Destructuring use cases in js?
+  - [] How to swap values with destructuring?
+  - [] How to merge arrays?
+- [] The length property
+- [] JS array methods
+  - [] How to create, remove, update and access arrays in js?
+    - [] The concat() array method
+    - [] The join() array method
+    - [] The fill() array method
+    - [] The includes() array method
+    - [] The indexOf() array method
+    - [] The reverse() array method
+    - [] The sort() array method
+    - [] The slice() array method
+    - [] The at{} method
+    - [] The copyWithin() method
+    - [] The flat() method
+    - [] Grouping elements in array
+  - [] Static array methods in js
+    - [] The array-like
+    - [] The array.from() array method
+    - [] The array.fromAsync() array method
+    - [] The array.of() array method
+  - [] Array Iterator Methods iin JavaScript
+    - [] The filter() array method
+    - [] The map() array method
+    - [] The flatMap() array method
+    - [] The reduce() array method
+    - [] The reduceRight() array method
+    - [] The some() array method
+    - [] The find() array method
+    - [] The findIndex() array method
+    - [] The findLast() array method
+    - [] The findLastIndex() array method
+    - [] The forEach() array method
+    - [] The every() array method
+    - [] The entries() method
+    - [] The values() method
+  - [] Immutability
+    - [] The toReversed() method
+    - [] The toSorted() method
+    - [] The toSpliced() method
+    - [] The with() method
+  

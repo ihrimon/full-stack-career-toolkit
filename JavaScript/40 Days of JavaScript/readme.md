@@ -36,7 +36,6 @@ non-primitive = pass by reference (value store in heap method)
 
 - primitive, non-primitive
 - primitive data type:
-
   - 'String' - Text values ('Hello')
   - 'Number' - Numeric values (24, 3.80)
   - 'Boolean' - True/False (true, false)
@@ -46,13 +45,11 @@ non-primitive = pass by reference (value store in heap method)
   - 'Symbol' - Unique identifiers (Symbol('id'))
 
 - Non-primitives data types
-
   - 'Object' - Collection of key-value pairs (Complex/mixed up data types)
   - 'Array' - Ordered list of values (same data types)
   - 'Function' - Code that can be excuted
 
 - naming convention of variables
-
   - the name must have digits or letters
   - the name can have ($, and, \_)
   - The first character must not be a digit
@@ -78,7 +75,6 @@ Source code --> TOKENIZING --> tokens --> PARSING --> ast (Abstract syntax tree)
 let x = 4 + 5;
 
 - operators:
-
   - Arithmetic (+, -, \*, /, %, \*\*, ++ (pre, post increment), -- (decrement))
   - Assignment (=, +=,-=, \*=)
   - comparison (return true/false) '=== strict equality operator'
@@ -439,7 +435,6 @@ types of scope:
    1. var name = 'rimon' window object e save hobe. var global variable hisebe use kora hoi besi. karon eti jekono jaigai use kora jete pare. kintu let, consts agula use kora jai nah.
    2. let name = 'rimon' window object e save hoi nah.
 2. function scope: variable declared inside a function are only accessible within that function.
-
    1. ```
       function todo() {
        var task = 'Learning js'
@@ -456,7 +451,6 @@ types of scope:
    ```
 
 3. block scope: variable declared using let and const inside {} cannot be accessed outside the block.
-
    1. ```
       {
         let count = 10;
@@ -646,4 +640,25 @@ recap:
     - [] The toSorted() method
     - [] The toSpliced() method
     - [] The with() method
-  
+
+<!-- JavaScript Debugging day-16 -->
+
+✅ What is Debugging?
+✅ Application to Debug
+✅ The famous console.log
+✅ DevTools Overview
+✅ The Source Panel
+✅ Setting Debug Points
+✅ Debugging Code
+✅ Conditional Breakpoint
+✅ Debug Handlers
+✅ Debug DOM Changes
+✅ The "debugger" Handle
+✅ Debugging Scope
+✅ Observing Call Stack
+✅ Watching Variable Expressions
+✅ Edit and Save on Run Time
+✅ Workspace
+local code sync in devtools via workspace.
+✅ Debugguing with VS Code
+✅ A Few Debugging Tips

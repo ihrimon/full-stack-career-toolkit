@@ -1,3 +1,4 @@
 // import './array';
-import './func';
+// import './func';
 // import './object';
+import './union';

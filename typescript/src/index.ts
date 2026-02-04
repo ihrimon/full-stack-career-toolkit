@@ -4,4 +4,5 @@
 // import './union';
 // import './generic'
 // import './transform'
-import './type-vs-interface'
+// import './type-vs-interface'
+import './any-unknown'

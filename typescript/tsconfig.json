@@ -3,8 +3,10 @@
     "target": "ESNext",
     "module": "commonjs",
     "strict": true, // Enable strict type checking
+    "sourceMap": true, // Generate source map for debugging,
     "esModuleInterop": true, // Ensure compatiblity with CommonJS and ES modules
     "skipLibCheck": true, // Skip library checks for faster build times
+    "moduleDetection": "force", // Force module detection for better type checking
     "forceConsistentCasingInFileNames": true, // Ensure consistent casing in imports
     "outDir": "./dist", // Output directory for compiled JavaScript
     "rootDir": "./src/",

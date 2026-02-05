@@ -5,4 +5,5 @@
 // import './generic'
 // import './transform'
 // import './type-vs-interface'
-import './any-unknown'
+// import './any-unknown'
+import './utility'

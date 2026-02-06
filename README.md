@@ -1,140 +1,116 @@
-# MERN-Stack-Interview-Preparation
+# Full Stack Interview Preparation Guide
+
+> This guide is created as a complete interview preparation roadmap for **Full Stack Developers**. It is designed to help candidates revise core concepts, strengthen **fundamentals**, and confidently face **technical interviews** across the entire full stack ecosystem.
 
 ---
 
-### Table of Contents
+## 🔎 TypeScript
 
-<details open>
-<summary>
-Hide/Show table of contents
-</summary>
+| Topics                                                                                 | Updated Overview                                                                |
+| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| [01. Introduction & Project Setup](#01.-introduction--project-setup)                   | TypeScript basics, tooling setup, tsconfig, and project initialization workflow |
+| [02. Core Types & Type System Foundations](#02.-core-types--type-system-foundations)   | Primitive types, arrays, objects, unions, literals, and type fundamentals       |
+| [03. Functions & Function Typing](#03.-functions--function-typing)                     | Typed functions, parameters, return types, optional & default values            |
+| [04. Type Narrowing & Type System Analysis](#04.-type-narrowing--type-system-analysis) | Conditional checks, control flow analysis, and safe type refinement techniques  |
+| [05. Generics & Reusable Type Patterns](#generics--reusable-types)                     | Writing flexible, reusable, and type-safe components using generics             |
+| [06. Classes & OOP in TypeScript](#classes--oop-in-typescript)                         | Classes, interfaces, access modifiers, inheritance, and OOP principles          |
+| [07. Built-in Utility Types](#built-in-utility-types)                                  | Leveraging Partial, Pick, Omit, Record, and other utility types effectively     |
 
-| No. | Questions                                                                                                                                                                                                                        |
-| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|     | **Core React**                                                                                                                                                                                                                   |
-| 1   | [What is React?](#what-is-react)                                                                                                                                                                                                 |
-| 2   | [What is the history behind React’s evolution?](#what-is-the-history-behind-react-evolution)                                                                                                                                      |
-| 3   | [What are the major features of React?](#what-are-the-major-features-of-react)                                                                                                                                                   |
-| 4   | [What is JSX?](#what-is-jsx)                                                                                                                                                                                                     |
-| 5   | [What is the difference between an Element and a Component?](#what-is-the-difference-between-an-element-and-a-component)                                             
-|     | **React Router**                                                                                                                                                                                                                 |
-| 79  | [What is React Router?](#what-is-react-router)                                                                                                                                                                                   |
-| 80  | [How is React Router different from the history library?](#how-react-router-is-different-from-history-library)                                                                                                                   |
+### 01. Introduction & Project Setup
 
+- What is TypeScript?
+- Why Use TypeScript?
+- TypeScript vs JavaScript
+- How TypeScript Works (Compilation Process)
+- Installation & Environment Setup
+- Basic Overview of tsconfig.json
 
+### 02. Core Types & Type System Foundations
 
-🚀 Advanced & Most Important JavaScript Topics
-🔹 ৪. The this Keyword
-Global context
+- Primitive Types (string, number, boolean)
+- any vs unknown
+- void, null, undefined, never
+- Literal Types & Template Literal Types
+- Type Inference
+- Type Aliases
+- Union Types
+- Intersection Types
+- Type Narrowing (Basics)
+- Array & Tuple Types
+- Enum Types
+- Object Type Annotations
+- Interfaces vs Type Aliases (Deep Comparison)
+- Introduction to Declaration Files (.d.ts)
 
-Inside object method
+### 03. Functions & Function Typing
 
-call(), apply(), bind()
+- Function Type Annotations
+- Parameter & Return Type Definitions
+- Optional, Default & Rest Parameters
+- Arrow Functions in TypeScript
+- Function Type Expressions (Callback Typing)
 
-Arrow functions vs normal functions
+### 04. Type Narrowing & Type System Analysis
 
-🔹 ৫. Event Loop & Concurrency Model
-Call Stack, Web APIs, Callback Queue
+- Type Guards
+  - Type Guards (Overview)
+  - Built-in Type Guards (typeof, instanceof, in)
+  - Custom Type Guards
+- Assertions & Overrides
+  - Type Assertions
+  - Non-null Assertion Operator (!)
+  - When NOT to use assertions
+- Narrowing Techniques
+  - Type Narrowing (Basics → Advanced)
+  - Control Flow Based Type Analysis
+  - Discriminated Unions
+  - Exhaustiveness Checking with never
 
-Event Loop explained
+### 05. Generics & Reusable Type Patterns
 
-Microtasks vs Macrotasks (Promise vs setTimeout)
+- Generic Fundamentals
+  - What are Generics?
+  - Why Generics are Needed
+  - Basic Generic Syntax (<T>)
+- Generic Functions
+  - Generic Function Definitions
+  - Generic Arrow Functions
+  - Inference vs Explicit Generic Types
+- Generic Interfaces & Type Aliases
+  - Generic Interfaces
+  - Generic Type Aliases
+  - Extending Generic Interfaces
+- Generic Constraints (<T extends ...>)
+  - Constraining Generics (<T extends ...>)
+  - Using keyof with Generics
+  - Multiple Constraints
+- Default Generic Types
+- Advanced Generic Patterns
+  - Multiple Generic Parameters
+  - Conditional Generics (intro-level)
+  - Generic Utility Patterns
 
-Real browser execution flow
+### 06. Classes & OOP in TypeScript
 
-🔹 ৭. Memory Management
-Garbage Collection
+- Class Syntax in TypeScript
+- Constructors
+- Access Modifiers (public, private, protected, readonly)
+- Inheritance
+- Method Overriding
+- Polymorphism
+- Abstract Classes
+- Static Properties & Methods
+- Implementing Interfaces in Classes
 
-Memory Leaks
+### 07. Built-in Utility Types
 
-Stack vs Heap
+- Partial, Required, Readonly
+- Pick, Omit
+- Record
+- Exclude, Extract
+- NonNullable
+- ReturnType, Parameters
 
-🔹 ৯. Object-Oriented JavaScript (OOP)
-Constructor Functions
+> ⚠️ **Note:** This is not a syntax cheat list. It is a concept-first, **interview-oriented** TypeScript documentation.
 
-Prototype Inheritance
-
-ES6 Classes
-
-super & extends
-
-Encapsulation (private/public)
-
-Factory Functions
-
-🔹 ১০. Deep Dive into Arrays & Objects
-Shallow Copy vs Deep Copy
-
-Spread operator (...)
-
-Destructuring
-
-Array Methods: map, filter, reduce, find, etc.
-
-Object Methods: Object.keys, Object.entries, etc.
-
-🔹 ১১. Error Handling & Debugging
-try...catch...finally
-
-Custom Errors (class MyError extends Error)
-
-Throwing Errors
-
-Debugging with Chrome DevTools
-
-🔹 ১২. Modules in JavaScript
-ES6 Modules: import / export
-
-Named vs Default exports
-
-Dynamic imports (import())
-
-Tree shaking
-
-🔹 ১৩. Event Delegation & Bubbling
-Event Propagation
-
-Capturing Phase
-
-Bubbling Phase
-
-stopPropagation, preventDefault
-
-Delegation for dynamic DOM elements
-
-🔹 ১৪. The new, instanceof, and typeof operators
-How new works
-
-How instanceof checks prototype chain
-
-Type detection quirks of typeof
-
-🔹 ১৫. Currying & Debouncing/Throttling
-Currying functions
-
-Use of debounce & throttle (e.g., in search or scroll performance)
-
-
-🔹 ১৭. Web APIs
-localStorage, sessionStorage
-
-fetch() API
-
-Geolocation, Clipboard, Notifications
-
-Working with Forms and FormData
-
-🔹 ১৮. Set, Map, WeakSet, WeakMap
-Use cases & performance advantages
-
-Difference with Arrays and Objects
-
-🔹 ১৯. Iterators & Generators
-Manual iteration with .next()
-
-Generator functions using function*
-
-🔹 ২০. Proxy & Reflect
-Creating dynamic behavior for objects
-
-Use cases in validation, logging, formatting
+**[⬆ Back to Top](#typescript)**

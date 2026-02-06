@@ -4,17 +4,17 @@
 
 ---
 
-## 🔎 TypeScript
+## 📑 TypeScript
 
-| Topics                                                                                 | Updated Overview                                                                |
-| -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [01. Introduction & Project Setup](#01.-introduction--project-setup)                   | TypeScript basics, tooling setup, tsconfig, and project initialization workflow |
-| [02. Core Types & Type System Foundations](#02.-core-types--type-system-foundations)   | Primitive types, arrays, objects, unions, literals, and type fundamentals       |
-| [03. Functions & Function Typing](#03.-functions--function-typing)                     | Typed functions, parameters, return types, optional & default values            |
-| [04. Type Narrowing & Type System Analysis](#04.-type-narrowing--type-system-analysis) | Conditional checks, control flow analysis, and safe type refinement techniques  |
-| [05. Generics & Reusable Type Patterns](#generics--reusable-types)                     | Writing flexible, reusable, and type-safe components using generics             |
-| [06. Classes & OOP in TypeScript](#classes--oop-in-typescript)                         | Classes, interfaces, access modifiers, inheritance, and OOP principles          |
-| [07. Built-in Utility Types](#built-in-utility-types)                                  | Leveraging Partial, Pick, Omit, Record, and other utility types effectively     |
+| Topics                                                                                 | Overview                                                               |
+| -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [01. Introduction & Project Setup](#01.-introduction--project-setup)                   | TypeScript basics, setup, and project initialization workflow          |
+| [02. Core Types & Type System Foundations](#02.-core-types--type-system-foundations)   | Primitive types, arrays, objects, unions, literals, and fundamentals   |
+| [03. Functions & Function Typing](#03.-functions--function-typing)                     | Typed functions, parameters, return types, optional & default values   |
+| [04. Type Narrowing & Type System Analysis](#04.-type-narrowing--type-system-analysis) | Conditional checks, control flow, and safe type refinement             |
+| [05. Generics & Reusable Type Patterns](#generics--reusable-types)                     | Writing flexible, reusable, and type-safe components using generics    |
+| [06. Classes & OOP in TypeScript](#classes--oop-in-typescript)                         | Classes, interfaces, access modifiers, inheritance, and OOP principles |
+| [07. Built-in Utility Types](#built-in-utility-types)                                  | Leveraging Partial, Pick, Omit, and other utility types effectively    |
 
 ### 01. Introduction & Project Setup
 

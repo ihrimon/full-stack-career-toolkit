@@ -18,11 +18,11 @@
 
 ### 01. Introduction & Project Setup
 
-- What is TypeScript?
+- **What is TypeScript?**
 
   TypeScript is an open-source programming language developed by Microsoft that's a superset of JavaScript, adding optional static typing and advanced features like interfaces and generics. It compiles down to plain JavaScript, making it fully compatible with all existing JS code and environments. This allows developers to catch errors at compile time rather than runtime, improving code reliability for large-scale applications.
 
-- Why Use TypeScript?
+- **Why Use TypeScript?**
 
   There are several reasons why developers prefer TypeScript over plain JavaScript:
   - Superior Tooling:
@@ -64,7 +64,7 @@
   | Scalability            | Good for small/medium projects | Built for large enterprise apps       |
   | Learning Curve         | Easy for beginners             | Slightly harder than JavaScript       |
 
-- How TypeScript Works (Compilation Process)
+- **How TypeScript Works? (Compilation Process)**
 
   TypeScript operates through a compilation pipeline that transforms your .ts code into executable JavaScript.
 
@@ -93,7 +93,7 @@
   Browser / Node.js
   ```
 
-- Installation & Environment Setup
+- **Installation & Environment Setup**
 
   To work with TypeScript, you need the following tools installed on your system:
   - Node.js (JavaScript runtime)
@@ -133,7 +133,7 @@
   npx ts-node src/index.ts
   ```
 
-- Basic Overview of tsconfig.json
+- **Basic Overview of tsconfig.json**
 
   The tsconfig.json file is the configuration file for TypeScript projects.
   It tells the TypeScript compiler (tsc) how to compile the project, which files to include, and which rules to enforce.
@@ -264,20 +264,30 @@
 
 ## 📑 JavaScript
 
-- [1. JavaScript Fundamentals (Basics)](#1-javascript-fundamentals-basics)
-- [2. Intermediate JavaScript](#2-intermediate-javascript)
-- [3. Functions \& Advanced Concepts](#3-functions--advanced-concepts)
-- [4. Object-Oriented Programming (OOP) in JS](#4-object-oriented-programming-oop-in-js)
-- [5. Asynchronous JavaScript](#5-asynchronous-javascript)
-- [6. Advanced JavaScript](#6-advanced-javascript)
-- [7. JavaScript Internals](#7-javascript-internals)
-- [8. DOM (Document Object Model)](#8-dom-document-object-model)
-- [9. Browser APIs](#9-browser-apis)
-- [10. Advanced Patterns \& Architecture](#10-advanced-patterns--architecture)
-- [11. Testing \& Debugging](#11-testing--debugging)
-- [12. Performance Optimization](#12-performance-optimization)
-- [13. Security in JavaScript](#13-security-in-javascript)
-- [14. Modern JavaScript (ES6+ to ES2025)](#14-modern-javascript-es6-to-es2025)
+- [Full Stack Interview Preparation Guide](#full-stack-interview-preparation-guide)
+  - [📑 TypeScript](#-typescript)
+    - [01. Introduction \& Project Setup](#01-introduction--project-setup)
+    - [02. Core Types \& Type System Foundations](#02-core-types--type-system-foundations)
+    - [03. Functions \& Function Typing](#03-functions--function-typing)
+    - [04. Type Narrowing \& Type System Analysis](#04-type-narrowing--type-system-analysis)
+    - [05. Generics \& Reusable Type Patterns](#05-generics--reusable-type-patterns)
+    - [06. Classes \& OOP in TypeScript](#06-classes--oop-in-typescript)
+    - [07. Built-in Utility Types](#07-built-in-utility-types)
+  - [📑 JavaScript](#-javascript)
+  - [1. JavaScript Fundamentals (Basics)](#1-javascript-fundamentals-basics)
+    - [2. Intermediate JavaScript](#2-intermediate-javascript)
+    - [3. Functions \& Advanced Concepts](#3-functions--advanced-concepts)
+    - [4. Object-Oriented Programming (OOP) in JS](#4-object-oriented-programming-oop-in-js)
+    - [5. Asynchronous JavaScript](#5-asynchronous-javascript)
+    - [6. Advanced JavaScript](#6-advanced-javascript)
+    - [7. JavaScript Internals](#7-javascript-internals)
+    - [8. DOM (Document Object Model)](#8-dom-document-object-model)
+    - [9. Browser APIs](#9-browser-apis)
+    - [10. Advanced Patterns \& Architecture](#10-advanced-patterns--architecture)
+    - [11. Testing \& Debugging](#11-testing--debugging)
+    - [12. Performance Optimization](#12-performance-optimization)
+    - [13. Security in JavaScript](#13-security-in-javascript)
+    - [14. Modern JavaScript (ES6+ to ES2025)](#14-modern-javascript-es6-to-es2025)
 
 ## 1. JavaScript Fundamentals (Basics)
 

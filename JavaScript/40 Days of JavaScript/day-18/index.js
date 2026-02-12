@@ -72,11 +72,54 @@
   //  console.log('Parent node', spanElement.parentNode.parentNode);
 
   const divElement = document.getElementById('parent-div');
-  console.log('Child element', divElement.children);
-  console.log('Child node', divElement.childNodes);
+  // console.log('Child element', divElement.children);
+  // console.log('Child node', divElement.childNodes);
 
   //  console.log('Next sibling', spanElement.nextElementSibling);
   //  console.log('Previous sibling', spanElement.previousElementSibling);
   //  console.log('Next sibling', spanElement.nextSibling);
   //  console.log('Previous sibling', spanElement.previousSibling);
 }
+
+{
+  // manipulating styles
+  const pElement = document.getElementById('p-id');
+  console.log(pElement.style);
+  pElement.style.backgroundColor = 'pink';
+}
+
+{
+  // manipulating classes
+  const mainDivElement = document.getElementById('main-id');
+  console.log(mainDivElement.classList);
+
+  mainDivElement.classList.add('test');
+
+  console.log(mainDivElement.classList);
+
+  mainDivElement.classList.remove('layout');
+
+  mainDivElement.classList.replace('main-class', 'secondary-class');
+
+  console.log('Does it have test?', mainDivElement.classList.contains('test'));
+  console.log(
+    'Does it have main-class?',
+    mainDivElement.classList.contains('main-class'),
+  );
+
+  mainDivElement.classList.toggle('test');
+  console.log(mainDivElement.classList);
+  mainDivElement.classList.toggle('test');
+  console.log(mainDivElement.classList);
+}
+
+{
+  // controlling visibilities
+  const mainDivElement = document.getElementById('main-id');
+  // mainDivElement.style.display = 'block';
+  // mainDivElement.style.display = 'hidden';
+
+  mainDivElement.style.opacity = '0.1';
+}
+
+

@@ -222,89 +222,104 @@
 
 ### 01. Introduction & Project Setup
 
-- **What is TypeScript?**
+<details>
+<summary><b >What is TypeScript ?</b></summary>
 
-  TypeScript is an open-source programming language developed by Microsoft that's a superset of JavaScript, adding optional static typing and advanced features like interfaces and generics. It compiles down to plain JavaScript, making it fully compatible with all existing JS code and environments. This allows developers to catch errors at compile time rather than runtime, improving code reliability for large-scale applications.
+TypeScript is an open-source programming language developed by Microsoft that's a superset of JavaScript, adding optional static typing and advanced features like interfaces and generics. It compiles down to plain JavaScript, making it fully compatible with all existing JS code and environments. This allows developers to catch errors at compile time rather than runtime, improving code reliability for large-scale applications.
 
-- **Why Use TypeScript?**
+</details>
 
-  There are several reasons why developers prefer TypeScript over plain JavaScript:
-  - Superior Tooling:
-    - Provides IntelliSense, autocompletion,
-    - Refactoring, and navigation in IDEs.
-  - Early Error Detection at Compile Time
-  - Enhanced Code Quality
-    - Static typing ensures predictability—no unexpected type changes.
-    - Safe refactoring across large files
-  - Better Maintainability
-    - Clearer Codebase
-    - Easier Debugging
-  - Improved Team Collaboration
-    - Explicit type contracts define function inputs/outputs.
-    - Consistent codebase standards across developers.
-  - Scalability
-    - Handles large codebases with modules and namespaces.
-    - Supports modular architecture for growing apps.
-  - Smart Type Inference
-    - Minimal Type Annotations
-    - Auto-Completion
-  - Better Integration with Modern Frameworks
-    - Seamless Integration
-    - Strict Mode in JavaScript
-  - Community and Ecosystem Support
-    - Growing Ecosystem
-    - Active Development and Maintenance
-    - Future-Proofing
+<details>
+<summary><b >Why Use TypeScript ? </b></summary>
 
-- TypeScript vs JavaScript
+There are several reasons why developers prefer TypeScript over plain JavaScript:
 
-  | Feature/Aspect         | JavaScript                     | TypeScript                            |
-  | ---------------------- | ------------------------------ | ------------------------------------- |
-  | Typing System          | Dynamic (runtime)              | Static (compile-time, optional)       |
-  | Error Detection        | Runtime                        | Compile-time                          |
-  | File Extension         | `.js`                          | `.ts`                                 |
-  | Compilation            | Not required                   | Required (Transpiled using TSC)       |
-  | Tooling & IntelliSense | Basic IDE support              | IntelliSense, refactoring, navigation |
-  | Scalability            | Good for small/medium projects | Built for large enterprise apps       |
-  | Learning Curve         | Easy for beginners             | Slightly harder than JavaScript       |
+- Superior Tooling:
+  - Provides IntelliSense, autocompletion,
+  - Refactoring, and navigation in IDEs.
+- Early Error Detection at Compile Time
+- Enhanced Code Quality
+  - Static typing ensures predictability—no unexpected type changes.
+  - Safe refactoring across large files
+- Better Maintainability
+  - Clearer Codebase
+  - Easier Debugging
+- Improved Team Collaboration
+  - Explicit type contracts define function inputs/outputs.
+  - Consistent codebase standards across developers.
+- Scalability
+  - Handles large codebases with modules and namespaces.
+  - Supports modular architecture for growing apps.
+- Smart Type Inference
+  - Minimal Type Annotations
+  - Auto-Completion
+- Better Integration with Modern Frameworks
+  - Seamless Integration
+  - Strict Mode in JavaScript
+- Community and Ecosystem Support
+  - Growing Ecosystem
+  - Active Development and Maintenance
+  - Future-Proofing
+  </details>
 
-- **How TypeScript Works? (Compilation Process)**
+<details>
+<summary><b >TypeScript vs JavaScript</b></summary>
 
-  TypeScript operates through a compilation pipeline that transforms your .ts code into executable JavaScript.
+| Feature/Aspect         | JavaScript                     | TypeScript                            |
+| ---------------------- | ------------------------------ | ------------------------------------- |
+| Typing System          | Dynamic (runtime)              | Static (compile-time, optional)       |
+| Error Detection        | Runtime                        | Compile-time                          |
+| File Extension         | `.js`                          | `.ts`                                 |
+| Compilation            | Not required                   | Required (Transpiled using TSC)       |
+| Tooling & IntelliSense | Basic IDE support              | IntelliSense, refactoring, navigation |
+| Scalability            | Good for small/medium projects | Built for large enterprise apps       |
+| Learning Curve         | Easy for beginners             | Slightly harder than JavaScript       |
 
-  Core Compilation Flow:
-  - **Parsing** → TypeScript compiler (tsc) reads .ts / .tsx files and converts the source code into an Abstract Syntax Tree (AST) that represents the program structure.
-  - **Binding** → Identifiers such as variables, functions, classes, and imports are linked across scopes and files.
-  - **Type Checking** → Analyzes types of all variables, parameters, returns—catches errors before runtime
-  - **Emission (Transpilation)** → All TypeScript-specific syntax and type annotations are removed, and clean JavaScript (.js) files are generated according to tsconfig.json.
-  - **Execution** → The generated JavaScript runs normally in browsers or Node.js, with no TypeScript overhead at runtime.
+</details>
 
-  ```javascript
-  // Compilation stages
+<details>
+<summary><b >How TypeScript Works ? </b></summary>
 
-  TypeScript Source (.ts / .tsx)
-      ↓
-  Parsing
-      ↓
-  Binding
-      ↓
-  Type Checking
-      ↓
-  Emission / Transpilation
-      ↓
-  JavaScript Output (.js)
-      ↓
-  Browser / Node.js
-  ```
+TypeScript operates through a compilation pipeline that transforms your .ts code into executable JavaScript.
 
-- **Installation & Environment Setup**
+Core Compilation Flow:
 
-  To work with TypeScript, you need the following tools installed on your system:
-  - Node.js (JavaScript runtime)
-  - npm (Node Package Manager)
-  - TypeScript Compiler (tsc)
+- **Parsing** → TypeScript compiler (tsc) reads .ts / .tsx files and converts the source code into an Abstract Syntax Tree (AST) that represents the program structure.
+- **Binding** → Identifiers such as variables, functions, classes, and imports are linked across scopes and files.
+- **Type Checking** → Analyzes types of all variables, parameters, returns—catches errors before runtime
+- **Emission (Transpilation)** → All TypeScript-specific syntax and type annotations are removed, and clean JavaScript (.js) files are generated according to tsconfig.json.
+- **Execution** → The generated JavaScript runs normally in browsers or Node.js, with no TypeScript overhead at runtime.
 
-  ```bash
+```javascript
+// Compilation stages
+
+TypeScript Source (.ts / .tsx)
+    ↓
+Parsing
+    ↓
+Binding
+    ↓
+Type Checking
+    ↓
+Emission / Transpilation
+    ↓
+JavaScript Output (.js)
+    ↓
+Browser / Node.js
+```
+
+</details>
+
+<details>
+<summary><b >Installation & Environment Setup</b></summary>
+
+To work with TypeScript, you need the following tools installed on your system:
+
+- Node.js (JavaScript runtime)
+- npm (Node Package Manager)
+- TypeScript Compiler (tsc)
+
+```bash
   # TypeScript Installation process
 
   Install Node.js
@@ -321,9 +336,9 @@
       ↓
   Run the Generated JavaScript (.js)
 
-  ```
+```
 
-  ```bash
+```bash
   # one-liner setup
 
   npm install -g typescript ts-node && mkdir ts-app && cd ts-app && npm init -y && tsc --init
@@ -335,53 +350,59 @@
   # Run directly (no compile step)
 
   npx ts-node src/index.ts
-  ```
+```
 
-- **Basic Overview of tsconfig.json**
+</details>
 
-  The tsconfig.json file is the configuration file for TypeScript projects.
-  It tells the TypeScript compiler (tsc) how to compile the project, which files to include, and which rules to enforce.
+<details>
+<summary><b>Basic Overview of tsconfig.json</b></summary>
 
-  **Purpose of tsconfig.json:**
-  - Project Compilation Control
-    - Define which files and folders should be compiled
-    - Specify output directories for JavaScript files
-  - Type Checking & Strictness
-    - Enable strict type checking
-    - Control null checks, implicit any, and other rules
-  - JavaScript Target & Module System
-    - Set which version of JavaScript to output (ES5, ES6, ESNext)
-    - Choose module system (CommonJS, ESNext, AMD, etc.)
+The tsconfig.json file is the configuration file for TypeScript projects.
+It tells the TypeScript compiler (tsc) how to compile the project, which files to include, and which rules to enforce.
 
-  - Additional Compiler Options
-    - Enable source maps for debugging
-    - Include/exclude files or directories
-    - Enable decorators, JSX, or other advanced features
+**Purpose of tsconfig.json:**
 
-  ```javascript
+- Project Compilation Control
+  - Define which files and folders should be compiled
+  - Specify output directories for JavaScript files
+- Type Checking & Strictness
+  - Enable strict type checking
+  - Control null checks, implicit any, and other rules
+- JavaScript Target & Module System
+  - Set which version of JavaScript to output (ES5, ES6, ESNext)
+  - Choose module system (CommonJS, ESNext, AMD, etc.)
 
-    // Overview of tsconfig.json
-    {
-      "compilerOptions": {
-        "target": "ES2018",        // JavaScript version output
-        "module": "CommonJS",      // Module system
-        "strict": true,            // Enable all strict type checks
-        "outDir": "./dist",        // Output directory for JS files
-        "rootDir": "./src",        // Root folder for TS source files
-        "esModuleInterop": true,   // Compatibility with CommonJS modules
-        "forceConsistentCasingInFileNames": true, // File naming consistency
-        "skipLibCheck": true       // Skip type checking of declaration files
-      },
-      "include": ["src/**/*"],      // Files to include
-      "exclude": ["node_modules"]   // Files to exclude
-  }
+- Additional Compiler Options
+  - Enable source maps for debugging
+  - Include/exclude files or directories
+  - Enable decorators, JSX, or other advanced features
 
-  ```
+```javascript
+
+  // Overview of tsconfig.json
+  {
+    "compilerOptions": {
+      "target": "ES2018",        // JavaScript version output
+      "module": "CommonJS",      // Module system
+      "strict": true,            // Enable all strict type checks
+      "outDir": "./dist",        // Output directory for JS files
+      "rootDir": "./src",        // Root folder for TS source files
+      "esModuleInterop": true,   // Compatibility with CommonJS modules
+      "forceConsistentCasingInFileNames": true, // File naming consistency
+      "skipLibCheck": true       // Skip type checking of declaration files
+    },
+    "include": ["src/**/*"],      // Files to include
+    "exclude": ["node_modules"]   // Files to exclude
+}
+
+```
+
+</details>
 
 ### 02. Core Types & Type System Foundations
 
- <details>
-<summary><b >**Primitive Types**</b></summary>
+<details>
+<summary><b >Primitive Types</b></summary>
 
 TypeScript primitive types are the basic, immutable data units that form the foundation of type-safe coding. They include `string`, `number`, `boolean`, `null`, `undefined`, `symbol`, `bigint`, — enforcing strict typing from compile-time.
 
@@ -434,7 +455,7 @@ console.log(alice.isActive ? 'Online' : 'Offline'); // "Online" - boolean logic
 </details>
 
 <details>
-<summary><b >**any vs unknown**</b></summary>
+<summary><b >any vs unknown</b></summary>
 
 any and unknown both accept any value, but unknown is safer as it requires type checking first. any completely disables type safety.
 
@@ -483,7 +504,7 @@ const badUser = parseUserAPI(badAPI); // null (safe!)
 </details>
 
 <details>
-<summary><b >**void, null, undefined, never**</b></summary>
+<summary><b >void, null, undefined, never</b></summary>
 
 `void`, `null`, `undefined`, and `never` represent different "absence of value" concepts in TypeScript, each with specific use cases.
 
@@ -584,7 +605,52 @@ console.log(result.error); // undefined
 
 </details>
 
-- Literal Types & Template Literal Types
+<details>
+<summary><b >Literal Types & Template Literal Types</b></summary>
+
+Literal types pin variables to exact values (not just type classes), while template literal types create dynamic string patterns. Both enable precise type control.
+
+| Type             | What               | Example                                       |
+| ---------------- | ------------------ | --------------------------------------------- |
+| Literal          | Single exact value | "success", 42, true                           |
+| Union Literal    | Fixed set          | "GET" \| "POST" \| "DELETE"                   |
+| Template Literal | Pattern generation | \\user/${string}`, `on${"Click" \| "Hover"}`` |
+
+```typescript
+/*** HTTP API Handler (Literal Types) ***/
+type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
+type Status = 200 | 201 | 400 | 404 | 500;
+
+interface ApiResponse {
+  method: HttpMethod; // Only exact methods allowed
+  status: Status; // Only exact status codes
+  data?: any;
+}
+
+function handleApi(method: HttpMethod, endpoint: string): ApiResponse {
+  // ✅ TypeScript prevents: handleApi("PATCH", "/users")
+  return { method, status: 200, data: { users: [] } };
+}
+```
+
+```typescript
+/*** CSS Class Generator (Template Literal Types) ***/
+type Color = 'red' | 'blue' | 'green';
+type Size = 'sm' | 'md' | 'lg';
+
+// Generates: "bg-red-sm", "bg-blue-lg", etc.
+type CSSClass = `bg-${Color}-${Size}`;
+
+const buttonClass: CSSClass = 'bg-red-sm'; // ✅ OK
+// const invalid: CSSClass = "bg-purple-lg"; // ❌ Error!
+
+function createButton(className: CSSClass) {
+  return `<button class="${className}">Click</button>`;
+}
+```
+
+</details>
+
 - Type Inference
 - Type Aliases
 - Union Types

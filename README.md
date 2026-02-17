@@ -380,9 +380,210 @@
 
 ### 02. Core Types & Type System Foundations
 
-- Primitive Types (string, number, boolean)
-- any vs unknown
-- void, null, undefined, never
+ <details>
+<summary><b >**Primitive Types**</b></summary>
+
+TypeScript primitive types are the basic, immutable data units that form the foundation of type-safe coding. They include `string`, `number`, `boolean`, `null`, `undefined`, `symbol`, `bigint`, — enforcing strict typing from compile-time.
+
+```typescript
+/*** All TypeScript primitive types in action (real example) ***/
+type UserProfile = {
+  name: string; // Text data
+  age: number; // Numeric values (int/float)
+  isActive: boolean; // True/false states
+  role: 'admin' | 'user' | 'guest'; // Literal type (string literal)
+  sessionId: symbol; // Unique identifier
+  avatarUrl: string | null; // Optional string (nullable)
+  lastLogin?: Date | undefined; // Optional date (may be undefined)
+};
+
+function createUserProfile(
+  name: string,
+  age: number,
+  isActive: boolean,
+): UserProfile {
+  const uniqueId = Symbol('session'); // Each user gets unique symbol
+
+  return {
+    name,
+    age,
+    isActive,
+    role: 'user' as const, // Literal type assignment
+    sessionId: uniqueId,
+    avatarUrl: null, // Explicitly no avatar yet
+    lastLogin: undefined, // Not logged in yet
+  };
+}
+
+// Real-world usage
+const alice = createUserProfile('Alice', 28, true);
+const bob = createUserProfile('Bob', 35, false);
+
+console.log(alice.name.toUpperCase()); // "ALICE" - string method
+console.log(alice.age.toFixed(0)); // "28" - number method
+console.log(alice.isActive ? 'Online' : 'Offline'); // "Online" - boolean logic
+
+/*
+    Type safety in action - these would error:
+    alice.age = "28"; // ❌ number expected
+    alice.isActive = "yes"; // ❌ boolean expected
+    alice.role = "moderator"; // ❌ literal type mismatch
+  */
+```
+
+</details>
+
+<details>
+<summary><b >**any vs unknown**</b></summary>
+
+any and unknown both accept any value, but unknown is safer as it requires type checking first. any completely disables type safety.
+
+```typescript
+// DANGER: any = runtime crashes
+function parseUserAPI(data: any) {
+  return {
+    name: data.user.name, // ❌ Crashes if structure wrong
+    email: data.user.email,
+    age: data.user.age,
+  };
+}
+
+// PERFECT: unknown = bulletproof
+function parseUserAPI(data: unknown) {
+  // Type guard pattern
+  if (
+    typeof data === 'object' &&
+    data !== null &&
+    'user' in data &&
+    typeof (data as any).user === 'object' &&
+    (data as any).user !== null &&
+    'name' in (data as any).user
+  ) {
+    const user = (data as any).user;
+
+    return {
+      name: String(user.name),
+      email: typeof user.email === 'string' ? user.email : '',
+      age: Number(user.age),
+    };
+  }
+
+  return null; // Safe fallback
+}
+
+// Real API usage
+const apiResponse = { user: { name: 'Alice', email: 'a@test.com', age: 25 } };
+const user = parseUserAPI(apiResponse); // { name: "Alice", email: "a@test.com", age: 26 }
+
+// Malformed API = NO CRASH
+const badAPI = { user: 'not an object' };
+const badUser = parseUserAPI(badAPI); // null (safe!)
+```
+
+</details>
+
+<details>
+<summary><b >**void, null, undefined, never**</b></summary>
+
+`void`, `null`, `undefined`, and `never` represent different "absence of value" concepts in TypeScript, each with specific use cases.
+
+| Type      | Meaning                         | Common Use                            |
+| --------- | ------------------------------- | ------------------------------------- |
+| void      | Function returns nothing useful | Event handlers, side-effect functions |
+| null      | Intentional "no value"          | Optional fields, API responses        |
+| undefined | Uninitialized/missing property  | Default values, optional params       |
+| never     | Code never reaches here         | Error handlers, exhaustive checks     |
+
+```typescript
+/*** Complete auth system example ***/
+type User = {
+  id: string;
+  name: string;
+  email: string | null;
+};
+
+type AuthResponse = {
+  user: User | null; // null = no user found
+  token?: string; // undefined = not provided
+  error?: string; // undefined = no error occured
+};
+
+/* 1. void - Side effect functions (logging, UI updates) */
+function logLoginAttempt(email: string): void {
+  console.log(`Login attempt: ${email}`);
+  // Intentionally returns nothing meaningful
+}
+
+/* 2. null - Intentional absence (return null user) */
+function findUser(email: string): User | null {
+  const users: User[] = [
+    { id: '1', name: 'Alice', email: 'alice@test.com' },
+    { id: '2', name: 'Bob', email: null },
+  ];
+  return users.find((u) => u.email === email) || null;
+}
+
+/* 3. undefined - Missing properties */
+function getAuthResponse(user: User | null): AuthResponse {
+  if (!user) return { user: null, error: 'User not found' };
+
+  return {
+    user,
+    token: Math.random().toString(36).substring(2, 15), // Explicitly defined
+    // error is undefined (no error)
+  };
+}
+
+/* 4. never - Functions that terminate execution */
+function loginError(message: string): never {
+  throw new Error(`Login failed: ${message}`);
+}
+
+/* EXHAUSTIVE CHECK: Guarantees all cases handled */
+type LoginStatus = 'pending' | 'success' | 'failed';
+
+function handleLoginStatus(status: LoginStatus): void {
+  switch (status) {
+    case 'pending':
+      console.log('Login in progress...');
+      break;
+    case 'success':
+      console.log('Login successful!');
+      break;
+    case 'failed':
+      console.log('Login failed');
+      break;
+    default:
+      // TypeScript knows this is 'never' here!
+      exhaustiveCheck(status);
+      break;
+  }
+}
+
+/* Real usage in login handler */
+function handleLogin(email: string, password: string): AuthResponse {
+  logLoginAttempt(email); // void - side effect
+
+  const user = findUser(email); // null - not found
+  if (!user) loginError('Invalid credentials'); // never - throws error
+
+  const response = getAuthResponse(user); // undefined fields OK
+  if (response.error) loginError(response.error);
+
+  handleLoginStatus('success'); // Exhaustive handling
+
+  return response;
+}
+
+// Usage
+const result = handleLogin('alice@test.com', 'pass123');
+console.log(result.user?.name); // "Alice"
+console.log(result.token); // Some token string
+console.log(result.error); // undefined
+```
+
+</details>
+
 - Literal Types & Template Literal Types
 - Type Inference
 - Type Aliases
@@ -469,47 +670,47 @@
 ## 📑 JavaScript
 
 - [Full Stack Interview Preparation Guide](#full-stack-interview-preparation-guide)
-  - [📑 TypeScript](#-typescript)
-    - [01. Introduction \& Project Setup](#01-introduction--project-setup)
-    - [02. Core Types \& Type System Foundations](#02-core-types--type-system-foundations)
-    - [03. Functions \& Function Typing](#03-functions--function-typing)
-    - [04. Type Narrowing \& Type System Analysis](#04-type-narrowing--type-system-analysis)
-    - [05. Generics \& Reusable Type Patterns](#05-generics--reusable-type-patterns)
-    - [06. Classes \& OOP in TypeScript](#06-classes--oop-in-typescript)
-    - [07. Built-in Utility Types](#07-built-in-utility-types)
-  - [📑 JavaScript](#-javascript)
-  - [1. JavaScript Fundamentals (Basics)](#1-javascript-fundamentals-basics)
-    - [2. Intermediate JavaScript](#2-intermediate-javascript)
-    - [3. Functions \& Advanced Concepts](#3-functions--advanced-concepts)
-    - [4. Object-Oriented Programming (OOP) in JS](#4-object-oriented-programming-oop-in-js)
-    - [5. Asynchronous JavaScript](#5-asynchronous-javascript)
-    - [6. Advanced JavaScript](#6-advanced-javascript)
-    - [7. JavaScript Internals](#7-javascript-internals)
-    - [8. DOM (Document Object Model)](#8-dom-document-object-model)
-    - [9. Browser APIs](#9-browser-apis)
-    - [10. Advanced Patterns \& Architecture](#10-advanced-patterns--architecture)
-    - [11. Testing \& Debugging](#11-testing--debugging)
-    - [12. Performance Optimization](#12-performance-optimization)
-    - [13. Security in JavaScript](#13-security-in-javascript)
-    - [14. Modern JavaScript (ES6+ to ES2025)](#14-modern-javascript-es6-to-es2025)
+- [📑 TypeScript](#-typescript)
+  - [01. Introduction \& Project Setup](#01-introduction--project-setup)
+  - [02. Core Types \& Type System Foundations](#02-core-types--type-system-foundations)
+  - [03. Functions \& Function Typing](#03-functions--function-typing)
+  - [04. Type Narrowing \& Type System Analysis](#04-type-narrowing--type-system-analysis)
+  - [05. Generics \& Reusable Type Patterns](#05-generics--reusable-type-patterns)
+  - [06. Classes \& OOP in TypeScript](#06-classes--oop-in-typescript)
+  - [07. Built-in Utility Types](#07-built-in-utility-types)
+- [📑 JavaScript](#-javascript)
+- [1. JavaScript Fundamentals (Basics)](#1-javascript-fundamentals-basics)
+  - [2. Intermediate JavaScript](#2-intermediate-javascript)
+  - [3. Functions \& Advanced Concepts](#3-functions--advanced-concepts)
+  - [4. Object-Oriented Programming (OOP) in JS](#4-object-oriented-programming-oop-in-js)
+  - [5. Asynchronous JavaScript](#5-asynchronous-javascript)
+  - [6. Advanced JavaScript](#6-advanced-javascript)
+  - [7. JavaScript Internals](#7-javascript-internals)
+  - [8. DOM (Document Object Model)](#8-dom-document-object-model)
+  - [9. Browser APIs](#9-browser-apis)
+  - [10. Advanced Patterns \& Architecture](#10-advanced-patterns--architecture)
+  - [11. Testing \& Debugging](#11-testing--debugging)
+  - [12. Performance Optimization](#12-performance-optimization)
+  - [13. Security in JavaScript](#13-security-in-javascript)
+  - [14. Modern JavaScript (ES6+ to ES2025)](#14-modern-javascript-es6-to-es2025)
 
 ## 1. JavaScript Fundamentals (Basics)
 
 - [ ] Introduction to JavaScript
       👉 “JavaScript is a high-level, interpreted, single-threaded, and dynamically typed programming language that is mainly used in web development. It was created in 1995 by Brendan Eich at Netscape. Initially it was called Mocha, then LiveScript, and finally JavaScript. Today, it is standardized by ECMAScript.
 
-  The language is lightweight, event-driven, and works seamlessly with HTML and CSS. One of its important characteristics is that it is dynamically typed—meaning variable types are decided at runtime. It’s also single-threaded, but it manages asynchronous tasks efficiently with the event loop.
+The language is lightweight, event-driven, and works seamlessly with HTML and CSS. One of its important characteristics is that it is dynamically typed—meaning variable types are decided at runtime. It’s also single-threaded, but it manages asynchronous tasks efficiently with the event loop.
 
-  In terms of usage, JavaScript can make websites interactive by handling events like clicks, inputs, and hover effects. It allows DOM manipulation, animations, data fetching via APIs, and more. On the server side, JavaScript powers backend development using Node.js. Beyond that, frameworks and libraries like React, Angular, and Vue have made it central to frontend development, while React Native and Electron allow us to build mobile and desktop apps.
+In terms of usage, JavaScript can make websites interactive by handling events like clicks, inputs, and hover effects. It allows DOM manipulation, animations, data fetching via APIs, and more. On the server side, JavaScript powers backend development using Node.js. Beyond that, frameworks and libraries like React, Angular, and Vue have made it central to frontend development, while React Native and Electron allow us to build mobile and desktop apps.
 
-  Overall, JavaScript has grown into a versatile, cross-platform language that powers both the frontend and backend, making it the heart of modern web applications.”
+Overall, JavaScript has grown into a versatile, cross-platform language that powers both the frontend and backend, making it the heart of modern web applications.”
 
 - [ ] Variables (`var`, `let`, `const`)
       👉 var: The oldest way to declare variables in JavaScript. It is function-scoped, supports re-declaration and updating, and is hoisted (initialized as undefined). However, it is less preferred in modern JavaScript due to scope-related issues.
 
-  👉 let: Introduced in ES6 (2015), let is block-scoped, meaning it works only within { }. It allows updating but does not allow re-declaration in the same scope.
+👉 let: Introduced in ES6 (2015), let is block-scoped, meaning it works only within { }. It allows updating but does not allow re-declaration in the same scope.
 
-  👉 const: Used when the variable reference should not change. For primitive values, the value is fixed, while for arrays and objects, the reference is constant but their contents can still be modified.
+👉 const: Used when the variable reference should not change. For primitive values, the value is fixed, while for arrays and objects, the reference is constant but their contents can still be modified.
 
 - [ ] Data Types (Primitive vs Non-Primitive)
       👉 Primitive Data Types: Immutable values stored directly in memory.
@@ -521,11 +722,11 @@
       Symbol – unique identifier
       BigInt – large integers
 
-  👉 Non-Primitive (Reference) Data Types: Mutable values stored by reference.
+👉 Non-Primitive (Reference) Data Types: Mutable values stored by reference.
 
-  Object – { name: "Rimon", age: 23 }
-  Array – [1, 2, 3]
-  Function – function greet() { return "Hello noob developer"; }
+Object – { name: "Rimon", age: 23 }
+Array – [1, 2, 3]
+Function – function greet() { return "Hello noob developer"; }
 
 - [ ] Operators (Arithmetic, Comparison, Logical, Bitwise)
       Arithmetic: +, -, _, /, %, \*\* (exponential)
@@ -553,34 +754,34 @@
 - [ ] Loops (for, while, do-while, for...in, for...of)
       for → When you need to run a loop a specific number of times.
 
-  while → When you want the loop to continue as long as a condition is true.
+while → When you want the loop to continue as long as a condition is true.
 
-  do...while → Ensures the loop runs at least once before checking the condition.
+do...while → Ensures the loop runs at least once before checking the condition.
 
-  for...in → Used to iterate over the keys (properties) of an object.
+for...in → Used to iterate over the keys (properties) of an object.
 
-  for...of → Used to iterate over the values of an iterable (like arrays or strings).
+for...of → Used to iterate over the values of an iterable (like arrays or strings).
 
 - [ ] Functions (declaration, expression, arrow functions)
 - [ ] Scope (Global, Local, Block, Lexical Scope)
       Global Scope: Accessed anywhere in the code.
 
-  Local / Function Scope: Accessed only inside a function.
+Local / Function Scope: Accessed only inside a function.
 
-  Block Scope: Accessed only inside {} block (let & const).
+Block Scope: Accessed only inside {} block (let & const).
 
-  Lexical Scope: Inner function can access outer function variables.
+Lexical Scope: Inner function can access outer function variables.
 
 - [ ] Hoisting
       JavaScript moves variable and function declarations to the top of their scope before execution.
 
-  Function declarations → can be called before definition.
+Function declarations → can be called before definition.
 
-  Function expressions & arrow functions → not hoisted.
+Function expressions & arrow functions → not hoisted.
 
-  var variables → hoisted and initialized with undefined.
+var variables → hoisted and initialized with undefined.
 
-  let & const variables → hoisted but in Temporal Dead Zone (TDZ) until declaration.
+let & const variables → hoisted but in Temporal Dead Zone (TDZ) until declaration.
 
 ### 2. Intermediate JavaScript
 
@@ -734,6 +935,10 @@
 - [ ] WeakMap & WeakSet
 
 **[⬆ Back to Top](#typescript)**
+
+```
+
+```
 
 ```
 

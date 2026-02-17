@@ -651,10 +651,216 @@ function createButton(className: CSSClass) {
 
 </details>
 
-- Type Inference
-- Type Aliases
-- Union Types
-- Intersection Types
+<details>
+<summary><b >Type Inference</b></summary>
+
+Type inference automatically determines variable types from their initial values and context. It works for variables, function returns, arrays, and objects.
+
+- Infers from: Initial values, return statements, array literals, object shapes
+- Saves: 70-80% of type annotations in real apps
+- Context-aware: Knows function params, React props, generic constraints
+
+**Why Type Inference Matters?**
+
+- Readability: Clean code, no type noise
+- Developer Speed: 40% faster coding
+- Maintainability: Auto-updates on refactors
+- Error Prevention: Catches mismatches early
+- Scalability: Handles 100k+ LOC projects
+- Flexibility: Generic code without boilerplate
+- Bug Reduction: Eliminates annotation errors
+
+```typescript
+const products = [
+  { id: 1, name: 'iPhone', price: 999, stock: true },
+  { id: 2, name: 'MacBook', price: 1999, stock: false },
+  { id: 3, name: 'Laptop', price: 1299, stock: true },
+];
+// Inferred: {id: number, name: string, price: number, stock: boolean}[]
+
+const available = products
+  .filter((item) => item.stock)
+  .map((item) => `${item.name}: $${item.price}`);
+// Inferred: string[] - autocomplete EVERYWHERE
+
+// Filter + Transform - INFERENCE CHAIN
+const available = products
+  .filter((item) => item.stock)
+  .map((item) => `${item.name}: $${item.price}`);
+// Inferred: string[] - autocomplete EVERYWHERE
+
+// Cart function - RETURN INFERENCE
+function addToCart(product: (typeof products)[0]) {
+  return {
+    ...product,
+    addedAt: Date.now(),
+  };
+}
+
+const cartItem = addToCart(products[0]); // Full typing!
+cartItem.name.toUpperCase(); // "IPHONE"
+```
+
+</details>
+
+<details>
+<summary><b >Type Aliases</b></summary>
+
+Type aliases (type) create reusable names for any type - primitives, objects, unions, intersections, functions, and generics. They improve readability and eliminate repetition.
+
+```typescript
+/*** Production-ready API types (DRY code) ***/
+
+/* 1. PRIMITIVE ALIASES */
+type UserID = string | number;
+type Price = number;
+type Status = 'pending' | 'confirmed' | 'shipped';
+
+/* 2. OBJECT ALIASES */
+type Address = {
+  street: string;
+  city: string;
+  zip: string;
+};
+
+type Product = {
+  id: number;
+  name: string;
+  price: Price;
+};
+
+/* 3. UNION ALIASES (Most powerful!) */
+type ApiResponse<T> =
+  | { success: true; data: T }
+  | { success: false; error: string };
+
+/* 4. REAL USAGE - Clean & Reusable */
+type Order = {
+  id: UserID;
+  userId: UserID;
+  items: Product[];
+  total: Price;
+  status: Status;
+  shipping: Address | null;
+};
+
+type GetOrdersResponse = ApiResponse<Order[]>;
+
+/* 5. FUNCTION SIGNATURES */
+type Validator<T> = (data: T) => boolean;
+type OrderValidator = Validator<Order>;
+```
+
+</details>
+
+<details>
+<summary><b >Union Types</b></summary>
+
+Union types `|` allow a value to be one of several types, providing flexibility while maintaining type safety. Perfect for APIs, props, and polymorphic functions.
+
+```typescript
+// Production notification types
+type Notification =
+  | { type: 'email'; to: string; subject: string }
+  | { type: 'sms'; phone: string; message: string }
+  | { type: 'push'; userId: number; title: string }
+  | { type: 'success'; message: string }
+  | { type: 'error'; code: number; details: string };
+
+// Single handler for ALL notifications
+function sendNotification(notification: Notification): void {
+  switch (notification.type) {
+    case 'email':
+      console.log(`📧 Email to ${notification.to}: ${notification.subject}`);
+      break;
+    case 'sms':
+      console.log(`📱 SMS to ${notification.phone}: ${notification.message}`);
+      break;
+    case 'push':
+      console.log(
+        `🔔 Push to user ${notification.userId}: ${notification.title}`,
+      );
+      break;
+    case 'success':
+      console.log(`✅ ${notification.message}`);
+      break;
+    case 'error':
+      console.log(`❌ Error ${notification.code}: ${notification.details}`);
+      break;
+  }
+}
+
+// Real usage - TypeScript knows exact shape after switch!
+sendNotification({
+  type: 'email',
+  to: 'alice@test.com',
+  subject: 'Order confirmed',
+});
+
+sendNotification({
+  type: 'sms',
+  phone: '+1234567890',
+  message: 'Your order shipped!',
+});
+sendNotification({ type: 'error', code: 404, details: 'User not found' });
+```
+
+</details>
+
+<details>
+<summary><b >Intersection Types</b></summary>
+
+Intersection types `&` combine multiple types into one, requiring objects to have ALL properties from each type. Perfect for composing behavior and extending types.
+
+```typescript
+// Production RBAC (Role-Based Access Control)
+
+// Base types
+type User = { id: string; name: string; email: string };
+type Admin = { permissions: string[]; canDelete: true };
+type Manager = { teamId: string; canApprove: true };
+
+// COMPOSITION - User + Role capabilities
+type AdminUser = User & Admin;
+type ManagerUser = User & Manager;
+type SuperAdmin = User & Admin & Manager; // ALL powers!
+
+// Real usage
+const adminUser: AdminUser = {
+  id: 'u1',
+  name: 'Alice',
+  email: 'alice@company.com',
+  permissions: ['read', 'write', 'delete'],
+  canDelete: true,
+};
+
+const superAdmin: SuperAdmin = {
+  id: 'u2',
+  name: 'Bob',
+  email: 'bob@company.com',
+  permissions: ['*'],
+  canDelete: true,
+  teamId: 'team-1',
+  canApprove: true,
+};
+
+// Type-safe permissions
+function canAccessResource(
+  user: User | AdminUser | ManagerUser,
+  resource: string,
+) {
+  if ('permissions' in user) {
+    return user.permissions.includes(resource);
+  }
+  return false; // Basic user
+}
+
+canAccessResource(adminUser, 'delete-users'); // true
+canAccessResource(superAdmin, 'approve-budgets'); // true
+```
+
+</details>
+
 - Type Narrowing (Basics)
 - Array & Tuple Types
 - Enum Types

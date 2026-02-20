@@ -726,14 +726,158 @@ canAccessResource(superAdmin, 'approve-budgets'); // true
 
 ### 07. Built-in Utility Types
 
-- Partial, Required, Readonly
-- Pick, Omit
-- Record
-- Exclude, Extract
-- NonNullable
-- ReturnType, Parameters
+<details>
+<summary><b >Partial, Required, Readonly</b></summary>
 
-> ⚠️ **Note:** This is not a syntax cheat list. It is a concept-first, **interview-oriented** TypeScript documentation.
+Utility types transform existing types: `Partial<T>` (all optional), `Required<T>` (all mandatory), `Readonly<T>` (immutable).
+
+```typescript
+type User = {
+  name: string;
+  email?: string;
+  role?: string;
+};
+
+// 1. Partial - Update any field
+function updateUser(id: string, updates: Partial<User>) {
+  // updates.name? OR updates.email? OR updates.role?
+}
+
+updateUser('u1', { name: 'Alice' }); // ✅ OK
+updateUser('u2', { email: 'bob@test.com' }); // ✅ OK
+
+// 2. Required - Create complete user
+function createUser(data: Required<User>) {
+  // ALL fields required
+}
+
+createUser({ name: 'Alice', email: 'a@test.com', role: 'admin' }); // ✅ OK
+
+// 3. Readonly - Cannot change
+function getUser(): Readonly<User> {
+  return { name: 'Alice', email: 'a@test.com' };
+}
+
+const user = getUser();
+user.name = 'Bob'; // ❌ Error! readonly
+```
+
+</details>
+
+<details>
+<summary><b >Pick, Omit</b></summary>
+
+`Pick<T, K>` extracts specific properties from type T. `Omit<T, K>` excludes specified properties from type T.
+
+```typescript
+type User = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+};
+
+// API Responses - Perfect use case!
+
+// 1. Pick - Public profile (ONLY needed fields)
+type PublicUser = Pick<User, 'id' | 'name' | 'email'>;
+// Result: { id: string; name: string; email: string }
+
+// 2. Omit - Hide sensitive data
+type LoginResponse = Omit<User, 'password'>;
+// Result: { id: string; name: string; email: string; role: string }
+
+// Real API usage
+function getPublicProfile(user: User): PublicUser {
+  return { id: user.id, name: user.name, email: user.email };
+}
+
+function loginResponse(user: User): LoginResponse {
+  return { id: user.id, name: user.name, email: user.email, role: user.role };
+}
+
+// ✅ Type safe - no password leaks!
+const profile: PublicUser = getPublicProfile(fullUser);
+```
+
+</details>
+
+<details>
+<summary><b >Record</b></summary>
+
+`Record<K, T>` creates an object type where keys are type `K` and all values are type `T`. Perfect for lookup tables, configs, and API response maps.
+
+```typescript
+Record<Keys, ValueType>
+
+Keys: string | number | symbol (union or literal)
+Values: Any type (string, object, function, etc.)
+```
+
+```typescript
+/*** 🎯 Role-based permissions lookup ***/
+type Role = 'admin' | 'user' | 'guest';
+type Permission = string[];
+
+// Perfect lookup table!
+const permissions: Record<Role, Permission> = {
+  admin: ['read', 'write', 'delete', 'ban'],
+  user: ['read', 'write'],
+  guest: ['read'],
+};
+
+// ✅ Type safe access
+function checkPermission(role: Role, action: string): boolean {
+  return permissions[role].includes(action);
+}
+
+checkPermission('admin', 'delete'); // true
+checkPermission('guest', 'delete'); // false
+// checkPermission('moderator', 'read'); // ❌ Type error!
+```
+
+</details>
+
+<details>
+<summary><b >Exclude, Extract</b></summary>
+
+`Exclude<T, U>` removes types from T that are assignable to U. `Extract<T, U>` extracts types from T that are assignable to U.
+
+```typescript
+// Example: Extract only string literals from a union
+const strings: Extract<'a' | 'b' | 1 | 2> = 'a';
+const numbers: Exclude<'a' | 'b' | 1 | 2> = 1;
+```
+
+</details>
+
+<details>
+<summary><b >NonNullable</b></summary>
+
+`NonNullable<T>` removes null and undefined from type T.
+
+```typescript
+// Example: Remove null and undefined from a type
+const nonNullable: NonNullable<string | null | undefined> = 'hello';
+```
+
+</details>
+
+<details>
+<summary><b >ReturnType, Parameters</b></summary>
+
+`ReturnType<T>` extracts the return type of a function type T. `Parameters<T>` extracts the parameter types of a function type T.
+
+```typescript
+// Example: Extract return type of a function
+const result: ReturnType<() => string> = 'hello';
+
+// Example: Extract parameter types of a function
+const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
+```
+
+</details>
 
 ## 📑 JavaScript
 

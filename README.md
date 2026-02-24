@@ -666,8 +666,152 @@ canAccessResource(superAdmin, 'approve-budgets'); // true
 
 ### 03. Functions & Function Typing
 
-- Function Type Annotations
-- Parameter & Return Type Definitions
+<details>
+<summary><b >Function Type Annotations</b></summary>
+
+Function type annotations explicitly define parameter types and return types for functions, enabling type-safe callbacks, APIs, and higher-order functions.
+
+```typescript
+/*** Production shopping cart with typed callbacks ***/
+
+// 1. PARAMETER ANNOTATIONS
+function addToCart(productId: number, quantity: number): string {
+  return `Added ${quantity} of product ${productId}`;
+}
+
+// 2. RETURN TYPE ANNOTATION
+function calculateTotal(items: { price: number }[]): number {
+  return items.reduce((sum, item) => sum + item.price, 0);
+}
+
+// 3. CALLBACK TYPING (Most important!)
+type OnSuccess = (orderId: string) => void;
+type OnError = (error: string) => void;
+
+function processOrder(
+  cart: { price: number }[],
+  onSuccess: OnSuccess, // Explicit callback type
+  onError: OnError,
+): void {
+  try {
+    const total = calculateTotal(cart);
+    const orderId = `ORD-${Date.now()}`;
+    onSuccess(orderId);
+  } catch (error) {
+    onError('Payment failed');
+  }
+}
+
+// Real usage - Type safe callbacks!
+processOrder(
+  [{ price: 999 }],
+  (orderId) => console.log(`Order ${orderId} confirmed!`),
+  (error) => console.error(`${error}`),
+);
+```
+
+</details>
+<details>
+<summary><b >Parameter & Return Type Definitions</b></summary>
+
+Parameter types define input expectations (param: Type), return types specify output (): ReturnType). Essential for APIs, callbacks, and type-safe contracts.
+
+```typescript
+/*** Complete e-commerce search with FULL type safety ***/
+// 1. TYPES (Real production shapes)
+type Product = {
+  id: number;
+  name: string;
+  price: number;
+  category: string;
+  inStock: boolean;
+};
+
+type SearchResponse = {
+  products: Product[];
+  total: number;
+  filters: { category: string; priceRange: [number, number] };
+};
+
+// 2. MAIN FUNCTION - Parameter & Return types
+function searchProducts(params: {
+  query?: string; // Optional search term
+  category?: string; // Optional filter
+  maxPrice?: number; // Optional price limit
+  limit?: number; // Pagination
+  page?: number; // Pagination
+}): SearchResponse {
+  // Simulate database query
+  const allProducts: Product[] = [
+    {
+      id: 1,
+      name: 'iPhone 15',
+      price: 999,
+      category: 'electronics',
+      inStock: true,
+    },
+    {
+      id: 2,
+      name: 'MacBook Pro',
+      price: 1999,
+      category: 'electronics',
+      inStock: false,
+    },
+    {
+      id: 3,
+      name: 'Levis Jeans',
+      price: 89,
+      category: 'clothing',
+      inStock: true,
+    },
+  ];
+
+  // TypeScript KNOWS params.query exists (or undefined)
+  let filtered = allProducts;
+
+  if (params.query) {
+    filtered = filtered.filter((p) =>
+      p.name.toLowerCase().includes(params.query!.toLowerCase()),
+    );
+  }
+
+  if (params.category) {
+    filtered = filtered.filter((p) => p.category === params.category);
+  }
+
+  if (params.maxPrice) {
+    filtered = filtered.filter((p) => p.price <= params.maxPrice);
+  }
+
+  const limit = params.limit ?? 10;
+  const page = params.page ?? 1;
+  const start = (page - 1) * limit;
+  const paginated = filtered.slice(start, start + limit);
+
+  return {
+    products: paginated,
+    total: filtered.length,
+    filters: {
+      category: params.category || 'all',
+      priceRange: [0, params.maxPrice || 5000],
+    },
+  };
+}
+
+// 3. USAGE - PERFECT AUTOCOMPLETE
+const electronics = searchProducts({
+  category: 'electronics',
+  maxPrice: 1500,
+});
+
+console.log(electronics.products[0].name); // "iPhone 15" - autocomplete works!
+console.log(electronics.products[0].price.toFixed(2)); // Works!
+console.log(electronics.total); // number
+console.log(electronics.filters.category); // string
+```
+
+</details>
+- 
 - Optional, Default & Rest Parameters
 - Arrow Functions in TypeScript
 - Function Type Expressions (Callback Typing)

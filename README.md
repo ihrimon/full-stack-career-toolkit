@@ -969,16 +969,128 @@ processDocument(uploadedFile2); // "Image: photo.jpg (1920x1080)"
 ```
 
 </details>
-- 
-- Assertions & Overrides
-- Type Assertions
-- Non-null Assertion Operator (!)
-- When NOT to use assertions
-- Narrowing Techniques
-- Type Narrowing (Basics → Advanced)
+
+<details>
+<summary><b >Type Assertions and Non-null Assertion Operator (!)</b></summary>
+
+Type Assertions and Non-null Assertion Operator (!) are used to tell TypeScript to treat a value as a specific type, even if TypeScript can't infer it automatically.
+
+**Type Assertions `(as Type)`:** : "Treat this value as this specific type". Bypasses type checking.
+
+**Non-null Assertion `(!)`:** : "This value is definitely not null/undefined". Removes nullability.
+
+```typescript
+/*** Production file upload handler ***/
+// 1. DOM (Most common)
+const button = document.getElementById('submit') as HTMLButtonElement;
+// Now: button.click(), button.value, button.disabled work perfectly
+
+// 2. Non-null (After validation)
+const user = getUser(id);
+if (!user) return;
+user!.name.toUpperCase(); // Safe non-null
+
+// 3. JSON Parsing
+const data = JSON.parse(json) as User[]; // Full autocomplete
+
+// 4. React Refs
+inputRef.current!.focus(); // Safe after mount
+
+// 5. Event Casting
+(event.target as HTMLInputElement).value;
+```
+
+</details>
+
+<details>
+<summary><b >Type Narrowing</b></summary>
+
+Type Narrowing refines broad types (unions, unknown) to specific types using TypeScript's control flow analysis. TypeScript "remembers" checks to enable safe property access.
+
+**Core Narrowing Techniques:**
+- typeof - Primitive narrowing (string, number, boolean)
+- Equality (===) - Literal narrowing
+- `in` operator - Property existence
+- instanceof - Class/constructor narrowing
+- Truthiness - null/undefined removal
+- Custom Type Guards - `param is Type`
+- Discriminated Unions - `type: 'literal'`
+
+```typescript
+/*** Production file upload system - ALL techniques! ***/
+
+// 1. DISCRIMINATED UNION (type: 'literal')
+type MediaFile = 
+  | { type: 'image'; width: number; height: number; filename: string }
+  | { type: 'video'; duration: number; filename: string }
+  | { type: 'audio'; bitrate: number; filename: string }
+  | { type: 'error'; message: string };
+
+// 2. CLASS FOR INSTANCEOF
+class ImageProcessor {
+  constructor(public width: number, public height: number) {}
+  getSize() { return this.width * this.height; }
+}
+
+// 3. PROCESSOR WITH ALL TECHNIQUES
+function processMedia(file: unknown): string {
+  const media = file as MediaFile;  // Safe after API validation
+  
+  // TECHNIQUE 1: TRUTHINESS (null check)
+  if (!media) {
+    return "No file provided";
+  }
+
+  // TECHNIQUE 2: EQUALITY (Discriminated Union)
+  if (media.type === 'image') {
+    return `Image: ${media.filename} (${media.width}x${media.height})`;
+  }
+
+  // TECHNIQUE 3: TYPEOF (Primitive narrowing)
+  if (typeof media.duration === 'number') {
+    return `🎥 Video: ${media.filename} (${media.duration}s)`;
+  }
+
+  // TECHNIQUE 4: CUSTOM TYPE GUARD
+  if (isAudioFile(media)) {
+    return `🎵 Audio: ${media.filename} (${media.bitrate}kbps)`;
+  }
+
+  // TECHNIQUE 5: `in` OPERATOR
+  if ('bitrate' in media) {
+    return `🔊 Audio detected: ${media.bitrate}`;
+  }
+
+  // TECHNIQUE 6: INSTANCEOF
+  if (media instanceof ImageProcessor) {
+    return `Processed: ${media.getSize()} pixels`;
+  }
+
+  // TECHNIQUE 7: FALLBACK (narrowed to error)
+  return `Error: ${media.message}`;
+}
+
+// TECHNIQUE 4: Custom Type Guard
+function isAudioFile(file: MediaFile): file is { type: 'audio'; bitrate: number; filename: string } {
+  return file.type === 'audio';
+}
+
+// REAL USAGE
+const files: (MediaFile | ImageProcessor | null)[] = [
+  { type: 'image', width: 1920, height: 1080, filename: 'photo.jpg' },
+  { type: 'video', duration: 125, filename: 'movie.mp4' },
+  { type: 'audio', bitrate: 128, filename: 'song.mp3' },
+  new ImageProcessor(800, 600),
+  { type: 'error', message: 'File too large' }
+];
+
+files.forEach(file => console.log(processMedia(file)));
+
+```
+
+</details>
+
 - Control Flow Based Type Analysis
-- Discriminated Unions
-- Exhaustiveness Checking with never
 
 ### 05. Generics & Reusable Type Patterns
 

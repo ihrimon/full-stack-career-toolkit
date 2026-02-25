@@ -1008,6 +1008,7 @@ inputRef.current!.focus(); // Safe after mount
 Type Narrowing refines broad types (unions, unknown) to specific types using TypeScript's control flow analysis. TypeScript "remembers" checks to enable safe property access.
 
 **Core Narrowing Techniques:**
+
 - typeof - Primitive narrowing (string, number, boolean)
 - Equality (===) - Literal narrowing
 - `in` operator - Property existence
@@ -1020,7 +1021,7 @@ Type Narrowing refines broad types (unions, unknown) to specific types using Typ
 /*** Production file upload system - ALL techniques! ***/
 
 // 1. DISCRIMINATED UNION (type: 'literal')
-type MediaFile = 
+type MediaFile =
   | { type: 'image'; width: number; height: number; filename: string }
   | { type: 'video'; duration: number; filename: string }
   | { type: 'audio'; bitrate: number; filename: string }
@@ -1028,17 +1029,22 @@ type MediaFile =
 
 // 2. CLASS FOR INSTANCEOF
 class ImageProcessor {
-  constructor(public width: number, public height: number) {}
-  getSize() { return this.width * this.height; }
+  constructor(
+    public width: number,
+    public height: number,
+  ) {}
+  getSize() {
+    return this.width * this.height;
+  }
 }
 
 // 3. PROCESSOR WITH ALL TECHNIQUES
 function processMedia(file: unknown): string {
-  const media = file as MediaFile;  // Safe after API validation
-  
+  const media = file as MediaFile; // Safe after API validation
+
   // TECHNIQUE 1: TRUTHINESS (null check)
   if (!media) {
-    return "No file provided";
+    return 'No file provided';
   }
 
   // TECHNIQUE 2: EQUALITY (Discriminated Union)
@@ -1071,7 +1077,9 @@ function processMedia(file: unknown): string {
 }
 
 // TECHNIQUE 4: Custom Type Guard
-function isAudioFile(file: MediaFile): file is { type: 'audio'; bitrate: number; filename: string } {
+function isAudioFile(
+  file: MediaFile,
+): file is { type: 'audio'; bitrate: number; filename: string } {
   return file.type === 'audio';
 }
 
@@ -1081,16 +1089,70 @@ const files: (MediaFile | ImageProcessor | null)[] = [
   { type: 'video', duration: 125, filename: 'movie.mp4' },
   { type: 'audio', bitrate: 128, filename: 'song.mp3' },
   new ImageProcessor(800, 600),
-  { type: 'error', message: 'File too large' }
+  { type: 'error', message: 'File too large' },
 ];
 
-files.forEach(file => console.log(processMedia(file)));
-
+files.forEach((file) => console.log(processMedia(file)));
 ```
 
 </details>
 
-- Control Flow Based Type Analysis
+<details>
+<summary><b >Control Flow Based Type Analysis</b></summary>
+
+Control Flow Based Type Analysis is TypeScript's ability to track variable types through code execution paths (if/else, switch, loops). The compiler analyzes all possible flows to determine the most specific type at each location.
+
+**How It Works:**
+
+- TypeScript simulates: "What type can this be here?"
+- Tracks assignments through if/else branches
+- Remembers narrowing in conditional blocks
+- Never forgets previous checks
+- Provides precise autocomplete (knows what type it is)
+
+```typescript
+/*** Easy e-commerce checkout - Control flow in action! ***/
+type CartItem = { name: string; price: number };
+
+type CheckoutState =
+  | { step: 'cart'; items: CartItem[] }
+  | { step: 'payment'; amount: number }
+  | { step: 'complete'; orderId: string }
+  | { step: 'error'; message: string };
+
+let checkout: CheckoutState = { step: 'cart', items: [] };
+
+// Simulate user actions
+function nextStep(current: CheckoutState): CheckoutState {
+  // CONTROL FLOW ANALYSIS TRACKS TYPE THROUGH PATHS
+  if (current.step === 'cart') {
+    const total = current.items.reduce((sum, item) => sum + item.price, 0);
+    return { step: 'payment', amount: total };
+  }
+
+  if (current.step === 'payment') {
+    return { step: 'complete', orderId: `ORD-${Date.now()}` };
+  }
+
+  if (current.step === 'complete') {
+    return { step: 'error', message: 'Cannot restart complete order' };
+  }
+
+  return current;
+}
+
+// USAGE - Perfect autocomplete everywhere!
+checkout = nextStep(checkout); // → { step: 'payment', amount: number }
+console.log(`Pay $${checkout.amount}`); // amount autocomplete!
+
+checkout = nextStep(checkout); // → { step: 'complete', orderId: string }
+console.log(`Order ${checkout.orderId}`); // orderId autocomplete!
+
+checkout = nextStep(checkout); // → { step: 'error', message: string }
+console.log(`Error: ${checkout.message}`); // message autocomplete!
+```
+
+</details>
 
 ### 05. Generics & Reusable Type Patterns
 

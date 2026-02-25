@@ -818,10 +818,158 @@ console.log(electronics.filters.category); // string
 
 ### 04. Type Narrowing & Type System Analysis
 
-- Type Guards
-- Type Guards (Overview)
-- Built-in Type Guards (typeof, instanceof, in)
-- Custom Type Guards
+<details>
+<summary><b >Type Guards</b></summary>
+
+Type Guards are functions or expressions that narrow union types to specific types within a conditional block. TypeScript uses control flow analysis to "remember" these checks.
+
+**Types of Type Guards:**
+
+- Built-in: `typeof`, `instanceof`, `in`
+- Custom: Functions returning `param is Type`
+- Discriminated: Unions with `type: 'literal'`
+
+```typescript
+/*** Production payment system ***/
+
+// Bank payment as class (for instanceof)
+class BankPayment {
+  type: 'bank' = 'bank';
+  constructor(
+    public account: string,
+    public routing: string,
+  ) {}
+}
+
+type Payment =
+  | { type: 'credit-card'; cardNumber: string; expiry: string; cvv: string }
+  | { type: 'paypal'; email: string; payerId: string }
+  | BankPayment
+  | { type: 'error'; message: string };
+
+function processPayment(payment: Payment): string {
+  // 1. DISCRIMINATED UNION
+  if (payment.type === 'credit-card') {
+    return `Charged via CC ending ${payment.cardNumber.slice(-4)}`;
+  }
+
+  // 2. CUSTOM TYPE GUARD
+  if (isPaypalPayment(payment)) {
+    return `PayPal payment from ${payment.email}`;
+  }
+
+  // 3. INSTANCEOF (works with class only)
+  if (payment instanceof BankPayment) {
+    // TypeScript KNOWS: account & routing exist
+    return `Bank transfer to ${payment.account}`;
+  }
+
+  // 4. Fallback (error type)
+  return `Error: ${payment.message}`;
+}
+
+// Custom type guard
+function isPaypalPayment(
+  p: Payment,
+): p is { type: 'paypal'; email: string; payerId: string } {
+  return p.type === 'paypal';
+}
+
+// Usage
+
+processPayment({
+  type: 'credit-card',
+  cardNumber: '****1234',
+  expiry: '12/25',
+  cvv: '123',
+});
+
+processPayment({
+  type: 'paypal',
+  email: 'alice@paypal.com',
+  payerId: 'PP123',
+});
+
+processPayment(new BankPayment('123456789', '987654321'));
+```
+
+</details>
+
+<details>
+<summary><b >Custom Type Guards</b></summary>
+
+Custom Type Guards are functions returning param is Type that narrow union types to specific types. TypeScript uses the return type to automatically refine types within the true branch.
+
+**Key Features:**
+
+- Syntax: function isType(value: unknown): value is SpecificType
+- Purpose: Narrow unions safely
+- Return: Boolean + type predicate
+- Better than: Manual casting/assertions
+
+```typescript
+/*** Production file upload handler***/
+type Document =
+  | { type: 'pdf'; pages: number; filename: string }
+  | { type: 'docx'; words: number; filename: string }
+  | { type: 'image'; width: number; height: number; filename: string }
+  | { type: 'unknown'; error: string };
+
+// function declaration for parseFile from any other source
+declare function parseFile(file: unknown): Document;
+
+// CUSTOM TYPE GUARDS
+function isPdfDocument(
+  doc: Document,
+): doc is { type: 'pdf'; pages: number; filename: string } {
+  return doc.type === 'pdf';
+}
+
+function isImageDocument(
+  doc: Document,
+): doc is { type: 'image'; width: number; height: number; filename: string } {
+  return doc.type === 'image';
+}
+
+function isValidDocument(
+  doc: Document,
+): doc is Exclude<Document, { type: 'unknown' }> {
+  return doc.type !== 'unknown';
+}
+
+// MAIN PROCESSOR - 100% TYPE SAFE
+function processDocument(file: unknown): string {
+  const doc = parseFile(file);
+
+  // CUSTOM GUARD #1
+  if (isPdfDocument(doc)) {
+    // TypeScript KNOWS: pages, filename exist!
+    return `📄 PDF: ${doc.filename} (${doc.pages} pages)`;
+  }
+
+  // CUSTOM GUARD #2
+  if (isImageDocument(doc)) {
+    // TypeScript KNOWS: width, height, filename exist!
+    return `🖼️  Image: ${doc.filename} (${doc.width}x${doc.height})`;
+  }
+
+  // COMPOUND GUARD
+  if (isValidDocument(doc)) {
+    // TypeScript KNOWS: NOT unknown type!
+    return `✅ Valid: ${doc.filename}`;
+  }
+
+  // 4. NARROWED TO ERROR
+  return `❌ ${doc.error}`;
+}
+
+// USAGE
+processDocument(uploadedFile1); // "PDF: report.pdf (12 pages)"
+processDocument(uploadedFile2); // "Image: photo.jpg (1920x1080)"
+```
+
+</details>
+- 
 - Assertions & Overrides
 - Type Assertions
 - Non-null Assertion Operator (!)
@@ -1291,11 +1439,3 @@ let & const variables → hoisted but in Temporal Dead Zone (TDZ) until declarat
 - [ ] WeakMap & WeakSet
 
 **[⬆ Back to Top](#typescript)**
-
-```
-
-```
-
-```
-
-```

@@ -657,10 +657,60 @@ canAccessResource(superAdmin, 'approve-budgets'); // true
 
 </details>
 
-- Type Narrowing (Basics)
+<details>
+<summary><b >Object Type Annotations</b></summary>
+
+Object type annotations define the exact shape (properties, types, optionality) of JavaScript objects using inline syntax or type aliases/interfaces.
+
+```text
+Inline: { name: string; age: number; active?: boolean }
+Type Alias: type User = { name: string; age: number }
+Interface: interface User { name: string; age: number }
+```
+
+```typescript
+/*** Compact Production Example: API Response Validator ***/
+type ApiResponse<T> = {
+  data: T;
+  status: 'success' | 'error';
+  timestamp: string;
+};
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+};
+
+// validator
+function validateApiResponse<T>(
+  response: ApiResponse<T> | null,
+): response is ApiResponse<T> {
+  return response !== null && response.status === 'success';
+}
+
+function processUserResponse(response: ApiResponse<User> | null): User | null {
+  if (validateApiResponse(response)) {
+    // TypeScript KNOWS: response.data is User!
+    return response.data;
+  }
+  return null;
+}
+
+// Usage - Perfect autocomplete!
+const userResponse: ApiResponse<User> = {
+  data: { id: 'u1', name: 'Alice', email: 'alice@test.com' },
+  status: 'success',
+  timestamp: '2026-02-26',
+};
+
+const user = processUserResponse(userResponse);
+console.log(user!.name.toUpperCase()); // "ALICE"
+```
+</details>
+
 - Array & Tuple Types
 - Enum Types
-- Object Type Annotations
 - Interfaces vs Type Aliases (Deep Comparison)
 - Introduction to Declaration Files (.d.ts)
 

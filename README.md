@@ -4,6 +4,463 @@
 
 ---
 
+## 📑 Node.js 
+
+> Node.js is a JavaScript runtime built on Chrome’s V8 engine designed for scalable network applications and backend development.
+
+| Topics                                                                       | Overview                                                                   |
+| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [01. Introduction & Environment Setup](#01-introduction--environment-setup)  | What is Node.js, installation, runtime basics, REPL, versioning            |
+| [02. Node.js Architecture & Event Loop](#02-nodejs-architecture--event-loop) | Single-threaded model, non-blocking I/O, event loop phases, libuv          |
+| [03. Core Modules Deep Dive](#03-core-modules-deep-dive)                     | fs, path, os, http, events, buffer, stream, crypto                         |
+| [04. Modules & Package Management](#04-modules--package-management)          | CommonJS vs ESM, package.json, npm, semver, dependency management          |
+| [05. Asynchronous Programming](#05-asynchronous-programming)                 | Callbacks, Promises, async/await, error handling, microtasks vs macrotasks |
+| [06. Streams & Buffer Management](#06-streams--buffer-management)            | Readable, writable, duplex, transform streams, backpressure handling       |
+| [07. Building HTTP Servers & APIs](#07-building-http-servers--apis)          | Creating servers, routing, middleware concept, REST API basics             |
+| [08. Working with Databases](#08-working-with-databases)                     | MongoDB driver, connection pooling, transactions, SQL integration          |
+| [09. Authentication & Security](#09-authentication--security)                | JWT, bcrypt, sessions, cookies, CSRF, XSS protection                       |
+| [10. Error Handling & Debugging](#10-error-handling--debugging)              | Custom errors, global error handling, logging, debugging tools             |
+| [11. Testing & Quality Assurance](#11-testing--quality-assurance)            | Unit testing, integration testing, Jest, mocking                           |
+| [12. Performance Optimization](#12-performance-optimization)                 | Profiling, memory leaks, clustering, worker threads, caching               |
+| [13. Deployment & Production](#13-deployment--production)                    | PM2, Docker, environment configs, CI/CD, graceful shutdown                 |
+| [14. CLI Development](#14-cli-development)                                   | Building CLI tools, argument parsing, publishing npm packages              |
+| [15. Advanced Node Internals](#15-advanced-node-internals)                   | Child processes, worker threads, Node-API, stream internals                |
+
+01. Introduction & Environment Setup
+Core Basics
+
+What is Node.js?
+
+Node.js vs Browser JavaScript
+
+Runtime vs Framework
+
+Node.js Use Cases
+
+V8 Engine overview
+
+Node.js Architecture overview
+
+Installation & Setup
+
+Installing Node (nvm recommended)
+
+LTS vs Current versions
+
+Checking version
+
+Node REPL usage
+
+Running .js files
+
+Project initialization (npm init)
+
+package.json basics
+
+Project folder structure best practices
+
+Global Environment
+
+global object
+
+process object
+
+process.argv
+
+Environment variables
+
+__dirname, __filename
+
+process exit events
+
+Execution Model
+
+Blocking vs Non-blocking
+
+Synchronous vs Asynchronous
+
+02. Node.js Architecture & Event Loop
+
+Single-threaded model
+
+Event-driven architecture
+
+Non-blocking I/O
+
+libuv overview
+
+Thread pool concept
+
+Event Loop Deep Dive
+
+Event loop phases:
+
+Timers
+
+Pending callbacks
+
+Idle / prepare
+
+Poll
+
+Check
+
+Close callbacks
+
+Microtasks queue
+
+Macrotasks queue
+
+process.nextTick vs setImmediate
+
+setTimeout vs setImmediate
+
+Event loop internals
+
+03. Core Modules (Built-in Modules)
+File System (fs)
+
+readFile / readFileSync
+
+writeFile / writeFileSync
+
+appendFile
+
+fs.promises
+
+Directory operations
+
+File watching
+
+File streams
+
+Path
+
+path.join
+
+path.resolve
+
+path.basename
+
+path.extname
+
+HTTP
+
+Create HTTP server
+
+Handle request & response
+
+Status codes
+
+Headers
+
+JSON response
+
+Manual routing
+
+URL
+
+URL parsing
+
+URLSearchParams
+
+Events
+
+EventEmitter
+
+Custom events
+
+Removing listeners
+
+Buffer
+
+Creating buffers
+
+Encoding (utf8, base64)
+
+Binary data handling
+
+Streams (Intro)
+
+Readable
+
+Writable
+
+Pipe
+
+Backpressure basics
+
+OS
+
+CPU info
+
+Memory info
+
+Crypto
+
+Hashing (sha256)
+
+Random bytes
+
+Basic encryption
+
+Timers
+
+setTimeout
+
+setInterval
+
+setImmediate
+
+process.nextTick
+
+04. Modules & Package Management
+
+CommonJS (require, module.exports)
+
+ES Modules (import/export)
+
+CJS vs ESM differences
+
+Module resolution algorithm
+
+node_modules structure
+
+package.json Deep Dive
+
+scripts
+
+dependencies vs devDependencies
+
+versioning
+
+main / type fields
+
+npm Ecosystem
+
+npm install variations
+
+npx usage
+
+Global vs Local packages
+
+Semantic Versioning (SemVer)
+
+yarn / pnpm overview
+
+Creating custom npm package
+
+Publishing to npm
+
+05. Asynchronous Programming
+
+Callback pattern
+
+Callback hell
+
+Promises
+
+Promise chaining
+
+async/await
+
+try/catch with async
+
+Error propagation
+
+Unhandled rejections
+
+Promise.all
+
+Promise.race
+
+util.promisify
+
+AbortController
+
+06. Streams & Buffer Management (Advanced)
+
+What is a Stream?
+
+Types of Streams:
+
+Readable
+
+Writable
+
+Duplex
+
+Transform
+
+Stream events
+
+Pipe chaining
+
+Transform streams
+
+Backpressure deep explanation
+
+Handling large files efficiently
+
+Buffer vs Stream comparison
+
+07. Building HTTP Servers & REST APIs
+
+Creating HTTP server
+
+REST API fundamentals
+
+Basic routing logic
+
+Handling query parameters
+
+Parsing request body
+
+Handling JSON
+
+Middleware pattern
+
+CORS handling
+
+Serving static files
+
+API versioning
+
+Status code best practices
+
+Error response standardization
+
+Environment configuration
+
+### 08. Working with Databases
+
+- MongoDB
+- Connecting with native driver
+- Connection pooling
+- CRUD operations
+- Transactions
+- Handling DB errors
+- Data validation
+- Mongoose overview
+- SQL
+- PostgreSQL/MySQL integration
+- Basic queries
+- ORM overview
+- Migration concept
+
+### 09. Authentication & Security
+
+- Password hashing (bcrypt)
+- JWT creation & verification
+- Access vs Refresh token
+- Sessions vs Tokens
+- Cookie handling
+- CSRF protection
+- XSS prevention
+- Rate limiting
+- Helmet usage
+- Secure headers
+- Environment variable security
+- Input validation
+- Avoiding SQL/NoSQL injection
+- HTTPS & TLS basics
+
+### 10. Error Handling & Debugging
+
+- Error-first callback pattern
+- Creating custom error classes
+- Centralized error handling
+- try/catch best practices
+- Logging strategies
+- Unhandled rejections
+- Stack trace analysis
+- Debug flag
+- Using Node Inspector
+- Using debug module
+
+### 11. Testing & Quality Assurance
+
+- Unit testing basics
+- Integration testing
+- Testing async code
+- Jest setup
+- Mocha overview
+- Supertest for API testing
+- Mocking
+- Test coverage
+- TDD basics
+
+### 12. Performance & Optimization
+
+- Performance hooks
+- Profiling
+- Memory usage monitoring
+- Detecting memory leaks
+- Garbage collection basics
+- Cluster module
+- Worker threads
+- Horizontal scaling
+- Load balancing
+- Caching strategy (Redis overview)
+- Gzip compression
+- HTTP keep-alive
+
+Memory usage monitoring
+
+Detecting memory leaks
+
+Garbage collection basics
+
+Cluster module
+
+Worker threads
+
+Horizontal scaling
+
+Load balancing
+
+Caching strategy (Redis overview)
+
+Gzip compression
+
+HTTP keep-alive
+
+### 13. Deployment & Production
+
+- Production environment setup
+- dotenv usage
+- PM2 process manager
+- Dockerizing Node app
+- CI/CD basics
+- Logging in production
+- Monitoring tools
+- Health checks
+- Graceful shutdown
+- Handling SIGINT & SIGTERM
+- Zero downtime deployment
+
+### 14. CLI Tools Development
+
+- Creating CLI tool
+- Parsing arguments
+- Commander usage
+- Yargs usage
+- Shebang (#!/usr/bin/env node)
+- Making CLI executable
+- Publishing CLI to npm
+
+### 15. Advanced Node Internals
+
+- Child process (exec, spawn, fork)
+- Worker threads
+- Cluster vs Worker comparison
+- Event loop internals deep dive
+- Libuv deep dive
+- Native addons overview (C++)
+- Node-API introduction
+- Stream internals
+- ESM loader hooks
+
 ## 📑 TypeScript
 
 | Topics                                                                                | Overview                                                               |

@@ -4,7 +4,7 @@
 
 ---
 
-## 📑 Node.js 
+## 📑 Node.js
 
 > Node.js is a JavaScript runtime built on Chrome’s V8 engine designed for scalable network applications and backend development.
 
@@ -23,318 +23,417 @@
 | [11. Testing & Quality Assurance](#11-testing--quality-assurance)            | Unit testing, integration testing, Jest, mocking                           |
 | [12. Performance Optimization](#12-performance-optimization)                 | Profiling, memory leaks, clustering, worker threads, caching               |
 | [13. Deployment & Production](#13-deployment--production)                    | PM2, Docker, environment configs, CI/CD, graceful shutdown                 |
-| [14. CLI Development](#14-cli-development)                                   | Building CLI tools, argument parsing, publishing npm packages              |
+| [14. CLI Tools Development](#14-cli-tools-development)                       | Building CLI tools, argument parsing, publishing npm packages              |
 | [15. Advanced Node Internals](#15-advanced-node-internals)                   | Child processes, worker threads, Node-API, stream internals                |
 
-01. Introduction & Environment Setup
-Core Basics
+### 01. Introduction & Environment Setup
 
-What is Node.js?
+#### `Core Basics`
 
-Node.js vs Browser JavaScript
+<details>
+<summary><b >What is Node.js ?</b></summary>
 
-Runtime vs Framework
+Node.js is powered by the Chrome V8 JavaScript engine and operates on an event-driven, non-blocking I/O model, ensuring high throughput and scalability. It enables JavaScript execution outside the browser, supporting file system access, HTTP servers, database operations, and more.
 
-Node.js Use Cases
+**Key Characteristics:**
 
-V8 Engine overview
+1️⃣ Single-threaded Event Loop:
 
-Node.js Architecture overview
+- Runs on a single main thread
+- Uses an event loop to handle thousands of connections without creating new threads per request.
+- Reduces memory overhead compared to traditional multi-threaded servers.
 
-Installation & Setup
+2️⃣ Non-Blocking I/O
 
-Installing Node (nvm recommended)
+- File system, network, and database operations run asynchronously
+- The main thread does not wait for operations to complete
+- Operations trigger events instead of blocking execution.
+- High performance for I/O-heavy applications
 
-LTS vs Current versions
+3️⃣ Event-Driven Architecture
 
-Checking version
+- Built around events and callbacks
+- Uses EventEmitter internally
+- Perfect for real-time systems (chat, streaming, APIs)
 
-Node REPL usage
+4️⃣ Asynchronous Programming Model
 
-Running .js files
+- Supports callbacks, Promises, and async/await.
+- Efficient handling of background operations.
+- Prevents thread blocking during long-running tasks.
 
-Project initialization (npm init)
+5️⃣ Built on V8 JavaScript Engine
 
-package.json basics
+- Powered by Chrome’s V8 engine
+- JIT (Just-In-Time) compilation
+- Converts JavaScript into optimized machine code
 
-Project folder structure best practices
+6️⃣ libuv Library and Cross-Platform
 
-Global Environment
+- Handles asynchronous I/O operations
+- Uses internal thread pool for blocking tasks (DNS, FS)
+- Cross-platform abstraction layer (Windows, macOS, Linux)
+- Supports ARM (IoT, Raspberry Pi, containers)
 
-global object
+7️⃣ NPM Ecosystem
 
-process object
+- Includes npm (Node Package Manager).
+- Access to millions of open-source packages.
+- Rapid development through reusable libraries.
+- Strong community support.
 
-process.argv
+8️⃣ Highly Scalable & Worker Threads
 
-Environment variables
+- Handles many concurrent connections efficiently.
+- Suitable for APIs, microservices and distributed systems.
+- Works well with horizontal scaling strategies.
+- True multi-threading for CPU-intensive tasks
+- Offloads heavy computation from event loop
 
-__dirname, __filename
+9️⃣ Stream-Based Processing
 
-process exit events
+- Uses streams for handling large data.
+- Supports readable, writable, duplex, and transform streams.
+- Enables efficient memory usage for large files.
 
-Execution Model
+🔟 Fast Data Processing
 
-Blocking vs Non-blocking
+- JSON is native to JavaScript.
+- Fast JSON parsing and response handling
+- Perfect for REST APIs and real-time data exchange.
 
-Synchronous vs Asynchronous
+1️⃣1️⃣ Production-Ready Features
 
-02. Node.js Architecture & Event Loop
+- Works with PM2, systemd, Docker
+- Graceful shutdown & cluster reloads
+- Observability with Logging, metrics, tracing support
 
-Single-threaded model
+</details>
 
-Event-driven architecture
+<details>
+<summary><b >Node.js vs Browser JavaScript</b></summary>
 
-Non-blocking I/O
+TypeScript is an open-source programming language developed
 
-libuv overview
+</details>
 
-Thread pool concept
+<details>
+<summary><b >Runtime vs Framework</b></summary>
 
-Event Loop Deep Dive
+TypeScript is an open-source programming language developed
 
-Event loop phases:
+</details>
 
-Timers
+<details>
+<summary><b >Node.js Use Cases</b></summary>
 
-Pending callbacks
+TypeScript is an open-source programming language developed
 
-Idle / prepare
+</details>
 
-Poll
+<details>
+<summary><b >V8 Engine overview</b></summary>
 
-Check
+TypeScript is an open-source programming language developed
 
-Close callbacks
+</details>
 
-Microtasks queue
+<details>
+<summary><b >Node.js Architecture overview</b></summary>
 
-Macrotasks queue
+TypeScript is an open-source programming language developed
 
-process.nextTick vs setImmediate
+</details>
 
-setTimeout vs setImmediate
+#### Installation & Setup
 
-Event loop internals
+<details>
+<summary><b >Installing Node (nvm recommended)</b></summary>
 
-03. Core Modules (Built-in Modules)
-File System (fs)
+TypeScript is an open-source programming language developed
 
-readFile / readFileSync
+</details>
 
-writeFile / writeFileSync
+<details>
+<summary><b >LTS vs Current versions</b></summary>
 
-appendFile
+TypeScript is an open-source programming language developed
 
-fs.promises
+</details>
 
-Directory operations
+<details>
+<summary><b >Checking version</b></summary>
 
-File watching
+TypeScript is an open-source programming language developed
 
-File streams
+</details>
 
-Path
+<details>
+<summary><b >Node REPL usage</b></summary>
 
-path.join
+TypeScript is an open-source programming language developed
 
-path.resolve
+</details>
 
-path.basename
+<details>
+<summary><b >Running .js files</b></summary>
 
-path.extname
+TypeScript is an open-source programming language developed
 
-HTTP
+</details>
 
-Create HTTP server
+<details>
+<summary><b >Project initialization (npm init)</b></summary>
 
-Handle request & response
+TypeScript is an open-source programming language developed
 
-Status codes
+</details>
 
-Headers
+<details>
+<summary><b >package.json basics</b></summary>
 
-JSON response
+TypeScript is an open-source programming language developed
 
-Manual routing
+</details>
 
-URL
+<details>
+<summary><b >Project folder structure best practices</b></summary>
 
-URL parsing
+TypeScript is an open-source programming language developed
 
-URLSearchParams
+</details>
 
-Events
+#### Global Environment
 
-EventEmitter
+<details>
+<summary><b >global object</b></summary>
 
-Custom events
+TypeScript is an open-source programming language developed
 
-Removing listeners
+</details>
 
-Buffer
+<details>
+<summary><b >process object</b></summary>
 
-Creating buffers
+TypeScript is an open-source programming language developed
 
-Encoding (utf8, base64)
+</details>
 
-Binary data handling
+<details>
+<summary><b >process.argv</b></summary>
 
-Streams (Intro)
+TypeScript is an open-source programming language developed
 
-Readable
+</details>
 
-Writable
+<details>
+<summary><b >Environment variables</b></summary>
 
-Pipe
+TypeScript is an open-source programming language developed
 
-Backpressure basics
+</details>
 
-OS
+<details>
+<summary><b >__dirname, __filename</b></summary>
 
-CPU info
+TypeScript is an open-source programming language developed
 
-Memory info
+</details>
 
-Crypto
+<details>
+<summary><b >process exit events</b></summary>
 
-Hashing (sha256)
+TypeScript is an open-source programming language developed
 
-Random bytes
+</details>
 
-Basic encryption
+#### Execution Model
 
-Timers
+<details>
+<summary><b >Blocking vs Non-blocking</b></summary>
 
-setTimeout
+TypeScript is an open-source programming language developed
 
-setInterval
+</details>
 
-setImmediate
+<details>
+<summary><b >Synchronous vs Asynchronous</b></summary>
 
-process.nextTick
+TypeScript is an open-source programming language developed
 
-04. Modules & Package Management
+</details>
 
-CommonJS (require, module.exports)
+### 02. Node.js Architecture & Event Loop
 
-ES Modules (import/export)
+- Single-threaded model
+- Event-driven architecture
+- Non-blocking I/O
+- libuv overview
+- Thread pool concept
 
-CJS vs ESM differences
+#### Event Loop Deep Dive
 
-Module resolution algorithm
+- Event loop phases:
+  - Timers
+  - Pending callbacks
+  - Idle / prepare
+  - Poll
+  - Check
+  - Close callbacks
+- Microtasks queue
+- Macrotasks queue
+- process.nextTick vs setImmediate
+- setTimeout vs setImmediate
+- Event loop internals
 
-node_modules structure
+### 03. Core Modules (Built-in Modules)
 
-package.json Deep Dive
+#### File System (fs)
 
-scripts
+- readFile / readFileSync
+- writeFile / writeFileSync
+- appendFile
+- fs.promises
+- Directory operations
+- File watching
+- File streams
 
-dependencies vs devDependencies
+#### Path
 
-versioning
+- path.join
+- path.resolve
+- path.basename
+- path.extname
 
-main / type fields
+#### HTTP
 
-npm Ecosystem
+- Create HTTP server
+- Handle request & response
+- Status codes
+- Headers
+- JSON response
+- Manual routing
 
-npm install variations
+#### URL
 
-npx usage
+- URL parsing
+- URLSearchParams
 
-Global vs Local packages
+#### Events
 
-Semantic Versioning (SemVer)
+- EventEmitter
+- Custom events
+- Removing listeners
 
-yarn / pnpm overview
+#### Buffer
 
-Creating custom npm package
+- Creating buffers
+- Encoding (utf8, base64)
+- Binary data handling
 
-Publishing to npm
+#### Streams (Intro)
 
-05. Asynchronous Programming
+- Readable
+- Writable
+- Pipe
+- Backpressure basics
 
-Callback pattern
+#### OS
 
-Callback hell
+- CPU info
+- Memory info
 
-Promises
+#### Crypto
 
-Promise chaining
+- Hashing (sha256)
+- Random bytes
+- Basic encryption
 
-async/await
+#### Timers
 
-try/catch with async
+- setTimeout
+- setInterval
+- setImmediate
+- clearTimeout
+- clearInterval
+- clearImmediate
+- process.nextTick
 
-Error propagation
+### 04. Modules & Package Management
 
-Unhandled rejections
+- CommonJS (require, module.exports)
+- ES Modules (import/export)
+- CJS vs ESM differences
+- Module resolution algorithm
+- node_modules structure
 
-Promise.all
+#### package.json Deep Dive
 
-Promise.race
+- scripts
+- dependencies vs devDependencies
+- versioning
+- main / type fields
 
-util.promisify
+#### npm Ecosystem
 
-AbortController
+- npm install variations
+- npx usage
+- Global vs Local packages
+- Semantic Versioning (SemVer)
+- yarn / pnpm overview
+- Creating custom npm package
+- Publishing to npm
 
-06. Streams & Buffer Management (Advanced)
+### 05. Asynchronous Programming
 
-What is a Stream?
+- Callback pattern
+- Callback hell
+- Promises
+- Promise chaining
+- async/await
+- try/catch with async
+- Error propagation
+- Unhandled rejections
+- Promise.all
+- Promise.race
+- util.promisify
+- AbortController
 
-Types of Streams:
+### 06. Streams & Buffer Management
 
-Readable
+- What is a Stream?
+- Types of Streams:
+  - Readable
+  - Writable
+  - Duplex
+  - Transform
+- Stream events
+- Pipe chaining
+- Transform streams
+- Backpressure deep explanation
+- Handling large files efficiently
+- Buffer vs Stream comparison
 
-Writable
+### 07. Building HTTP Servers & REST APIs
 
-Duplex
-
-Transform
-
-Stream events
-
-Pipe chaining
-
-Transform streams
-
-Backpressure deep explanation
-
-Handling large files efficiently
-
-Buffer vs Stream comparison
-
-07. Building HTTP Servers & REST APIs
-
-Creating HTTP server
-
-REST API fundamentals
-
-Basic routing logic
-
-Handling query parameters
-
-Parsing request body
-
-Handling JSON
-
-Middleware pattern
-
-CORS handling
-
-Serving static files
-
-API versioning
-
-Status code best practices
-
-Error response standardization
-
-Environment configuration
+- Creating HTTP server
+- REST API fundamentals
+- Basic routing logic
+- Handling query parameters
+- Parsing request body
+- Handling JSON
+- Middleware pattern
+- CORS handling
+- Serving static files
+- API versioning
+- Status code best practices
+- Error response standardization
+- Environment configuration
 
 ### 08. Working with Databases
 
-- MongoDB
+#### MongoDB
+
 - Connecting with native driver
 - Connection pooling
 - CRUD operations
@@ -342,7 +441,9 @@ Environment configuration
 - Handling DB errors
 - Data validation
 - Mongoose overview
-- SQL
+
+#### SQL
+
 - PostgreSQL/MySQL integration
 - Basic queries
 - ORM overview
@@ -404,26 +505,6 @@ Environment configuration
 - Caching strategy (Redis overview)
 - Gzip compression
 - HTTP keep-alive
-
-Memory usage monitoring
-
-Detecting memory leaks
-
-Garbage collection basics
-
-Cluster module
-
-Worker threads
-
-Horizontal scaling
-
-Load balancing
-
-Caching strategy (Redis overview)
-
-Gzip compression
-
-HTTP keep-alive
 
 ### 13. Deployment & Production
 
@@ -1164,6 +1245,7 @@ const userResponse: ApiResponse<User> = {
 const user = processUserResponse(userResponse);
 console.log(user!.name.toUpperCase()); // "ALICE"
 ```
+
 </details>
 
 - Array & Tuple Types

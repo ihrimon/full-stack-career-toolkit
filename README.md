@@ -4,6 +4,571 @@
 
 ---
 
+## 📑 Next.js
+
+> Next.js is a full-stack React framework built by Vercel for building scalable, production-ready web applications with hybrid rendering capabilities.
+
+| Topics                        | Overview                                               |
+| ----------------------------- | ------------------------------------------------------ |
+| 01. Next.js Fundamentals      | Core concepts, App Router, RSC, folder structure       |
+| 02. Advanced Routing          | Dynamic routes, layouts, intercepting, parallel routes |
+| 03. Rendering Strategies      | SSR, SSG, ISR, Streaming, Partial Prerendering         |
+| 04. Data Fetching & Mutations | Server Components, fetch, Server Actions, React Query  |
+| 05. Styling & Theming         | Tailwind, CSS Modules, Design Systems, Themes          |
+| 06. State Management          | Client State, Server State, Hydration strategies       |
+| 07. API Routes & Middleware   | Route Handlers, Edge Runtime, Middleware patterns      |
+| 08. Authentication & Auth     | NextAuth, Clerk, Custom Auth, Session Management       |
+| 09. Database & ORM            | Prisma, Drizzle, PlanetScale, tRPC integration         |
+| 10. Performance Optimization  | Bundle analysis, caching, PPR, Turbopack               |
+| 11. Testing Strategy          | Unit, Integration, E2E, Visual Regression              |
+| 12. Deployment & DevOps       | Vercel, Docker, CI/CD, Monitoring, Edge Functions      |
+| 13. Advanced Patterns         | Code splitting, Micro-frontends, i18n, PWA             |
+| 14. TypeScript Mastery        | Generics, Utility Types, Zod Schemas, type-safe APIs   |
+| 15. Production Checklist      | SEO, Security, Monitoring, Error Boundaries, Analytics |
+
+
+### 01. Next.js Fundamentals
+
+- [ ] Next.js 15+ Architecture (App Router only)
+- [ ] React Server Components (RSC) vs Client Components ('use client')
+- [ ] File-based Routing (app/ directory conventions)
+- [ ] Metadata API (title, description, OpenGraph, robots.txt)
+- [ ] Loading UI & Suspense Boundaries
+- [ ] Error Boundaries (error.js, not-found.js)
+- [ ] App Router vs Pages Router migration
+- [ ] Turbopack vs Webpack (next dev --turbo)
+- [ ] Environment Variables (NEXT_PUBLIC_ prefix)
+- [ ] TypeScript configuration (tsconfig.json, next.config.js)
+
+
+### 02. Advanced Routing
+
+- [ ] Dynamic Routes ([slug], [id], catch-all [...slug])
+- [ ] Nested Layouts & Templates (layout.js)
+- [ ] Route Groups ((marketing), (auth)) for organization
+- [ ] Parallel Routes (@analytics, @modal)
+- [ ] Intercepting Routes (modal navigation)
+- [ ] Route Segments & Colocation (components next to route files)
+- [ ] generateStaticParams for dynamic SSG
+- [ ] Redirects & Rewrites (next.config.js)
+
+
+### 03. Rendering Strategies
+
+- [ ] Static Rendering (default in App Router)
+- [ ] Server-Side Rendering (force-dynamic, cookies(), headers())
+- [ ] Static Site Generation (generateStaticParams)
+- [ ] Incremental Static Regeneration (revalidate, revalidatePath)
+- [ ] Streaming with Suspense
+- [ ] Partial Prerendering (PPR) - Next 15+
+- [ ] Dynamic vs Static rendering detection
+- [ ] Caching strategies (fetch cache: 'force-cache')
+
+
+### 04. Data Fetching & Mutations
+
+- [ ] Server Components data fetching (async components)
+- [ ] fetch() with Next.js extensions (cache, next: { revalidate })
+- [ ] Server Actions (use optimistic updates)
+- [ ] React Query / SWR in Client Components
+- [ ] Streaming data with use() directive
+- [ ] Mutations with revalidatePath, revalidateTag
+- [ ] Error handling (React Error Boundaries)
+- [ ] Loading states (loading.js, Suspense)
+
+
+### 05. Styling & Theming
+
+- [ ] Tailwind CSS + clsx + cn() utility
+- [ ] CSS Modules with Sass/SCSS
+- [ ] CSS-in-JS (styled-components, Emotion)
+- [ ] Shadcn/ui component library
+- [ ] Theme Provider (dark/light mode)
+- [ ] CSS Variables & Design Tokens
+- [ ] Global CSS optimization
+- [ ] Font Optimization (next/font)
+
+
+### 06. State Management
+
+- [ ] Client State (useState, useReducer)
+- [ ] Context API with useContext
+- [ ] Zustand for global state
+- [ ] Server State (React Query, SWR)
+- [ ] URL State (useSearchParams)
+- [ ] Hydration mismatch prevention
+- [ ] Optimistic Updates with Server Actions
+
+
+### 07. API Routes & Middleware
+
+- [ ] Route Handlers (app/api/route.ts)
+- [ ] Edge Runtime vs Node.js Runtime
+- [ ] Middleware (middleware.ts) - auth, redirects
+- [ ] Request/Response helpers (NextRequest, NextResponse)
+- [ ] Rate limiting & CORS
+- [ ] Streaming responses (ReadableStream)
+
+
+### 08. Authentication & Auth
+
+- [ ] NextAuth.js v5 (Auth.js)
+- [ ] Clerk integration
+- [ ] Custom JWT + Cookies implementation
+- [ ] Server-side session validation
+- [ ] Role-Based Access Control (RBAC)
+- [ ] Protected routes with middleware
+- [ ] OAuth providers (Google, GitHub)
+
+
+### 09. Database & ORM
+
+- [ ] Prisma ORM + PlanetScale/Supabase
+- [ ] Drizzle ORM + Zod schemas
+- [ ] tRPC for type-safe APIs
+- [ ] Database connection pooling
+- [ ] Transactions & batch operations
+- [ ] Server Actions + DB mutations
+
+
+### 10. Performance Optimization
+
+- [ ] Bundle Analyzer (next-bundle-analyzer)
+- [ ] Dynamic Imports & Code Splitting
+- [ ] next/image optimization
+- [ ] Font Optimization (next/font)
+- [ ] Script Optimization (next/script)
+- [ ] Turbopack SWC compilation
+- [ ] Partial Prerendering (PPR)
+
+
+### 11. Testing Strategy
+
+- [ ] Unit Tests (Jest + React Testing Library)
+- [ ] Integration Tests (msw for API mocking)
+- [ ] E2E Tests (Playwright/Cypress)
+- [ ] Visual Regression Testing
+- [ ] Testing Library User Event best practices
+
+
+### 12. Deployment & DevOps
+
+- [ ] Vercel deployment (preview branches)
+- [ ] Static Export (next export)
+- [ ] Docker multi-stage builds
+- [ ] CI/CD (GitHub Actions, Vercel)
+- [ ] Environment validation
+- [ ] Preview deployments
+
+
+### 13. Advanced Patterns
+
+- [ ] Internationalization (next-intl)
+- [ ] Progressive Web App (PWA)
+- [ ] Micro-frontends with Module Federation
+- [ ] WebSockets + Server-Sent Events
+- [ ] Real-time with Server Actions
+
+
+### 14. TypeScript Mastery
+
+- [ ] Generics & Utility Types
+- [ ] Zod schema validation
+- [ ] Type-safe Server Actions
+- [ ] React Hook Form + Zod resolver
+- [ ] tRPC end-to-end types
+
+
+### 15. Production Checklist
+
+- [ ] SEO (Metadata API, sitemap.xml)
+- [ ] Security Headers (next-secure-headers)
+- [ ] Error Monitoring (Sentry)
+- [ ] Performance Monitoring (Web Vitals)
+- [ ] Lighthouse 100/100 scores
+- [ ] Accessibility (a11y) compliance
+
+📑 01. Core Architecture & Mental Model
+🔹 Framework Understanding
+
+ Why Next.js over React (real production perspective)
+
+ Hybrid Rendering Architecture
+
+ File-based Routing Philosophy
+
+ How Next.js compiles & bundles (Turbopack vs Webpack)
+
+ Build vs Runtime Concept
+
+🔹 App Router Deep Understanding (Next 13+)
+
+ App Router Architecture
+
+ Layout Hierarchy Model
+
+ Server-first mindset
+
+ Streaming & Partial Rendering
+
+ Route Segments & Rendering Tree
+
+📂 02. Routing System (Advanced Level)
+🔹 File-Based Routing
+
+ Static Routes
+
+ Dynamic Routes [id]
+
+ Catch-All [...slug]
+
+ Optional Catch-All [[...slug]]
+
+ Route Groups (group)
+
+ Parallel Routes @slot
+
+ Intercepting Routes (.)
+
+🔹 Layout System
+
+ Root Layout
+
+ Nested Layouts
+
+ Template vs Layout difference
+
+ Loading.js behavior
+
+ Error.js & Not-found.js
+
+🔹 Navigation
+
+ useRouter vs next/navigation
+
+ Link Prefetching Behavior
+
+ Soft Navigation vs Hard Reload
+
+ Redirect vs Rewrite
+
+🎨 03. Rendering & Performance Strategy
+🔹 Rendering Modes
+
+ CSR Deep Understanding
+
+ SSR Lifecycle
+
+ SSG Lifecycle
+
+ ISR Revalidation Strategy
+
+ Edge Rendering
+
+🔹 Rendering Decision Matrix
+
+ When to choose SSR
+
+ When to choose SSG
+
+ When to use ISR
+
+ When to use Edge Runtime
+
+🔹 Streaming & Suspense
+
+ React Suspense in Server Components
+
+ Streaming UI
+
+ Progressive Hydration
+
+🔄 04. Data Fetching (Production Level)
+🔹 App Router Data Fetching
+
+ Native fetch caching
+
+ cache: 'force-cache'
+
+ cache: 'no-store'
+
+ revalidate options
+
+ Route Segment Config
+
+🔹 Advanced Fetching
+
+ Server Actions (Next 14+)
+
+ Mutation Handling
+
+ Form Actions
+
+ Optimistic UI
+
+🔹 Client Data Fetching
+
+ SWR
+
+ React Query
+
+ Error Boundaries with Data Fetch
+
+🔐 05. Authentication & Security
+🔹 Authentication Systems
+
+ OAuth with NextAuth.js
+
+ Credentials-based login
+
+ JWT Strategy
+
+ Session Strategy
+
+🔹 Security Best Practices
+
+ HttpOnly Cookies
+
+ CSRF Protection
+
+ XSS Prevention
+
+ Secure Headers
+
+ Rate Limiting API Routes
+
+🔹 Route Protection
+
+ Middleware Auth Guard
+
+ Role-based Access Control
+
+ Server Component Session Check
+
+🧠 06. Server vs Client Component Mastery
+🔹 Server Components
+
+ Default behavior
+
+ Data fetching without API layer
+
+ Performance advantage
+
+ Security benefits
+
+🔹 Client Components
+
+ "use client" directive
+
+ Hydration Cost
+
+ Bundle Impact Analysis
+
+🔹 Optimization Strategy
+
+ Minimizing Client Components
+
+ Splitting heavy libraries
+
+ Dynamic Imports
+
+🌍 07. API Layer & Backend Integration
+🔹 API Routes
+
+ App Router API (app/api)
+
+ RESTful API Design
+
+ Error Handling Strategy
+
+ Request Validation (Zod / Yup)
+
+🔹 Database Integration
+
+ MongoDB Native Driver
+
+ Prisma ORM
+
+ Connection Pooling
+
+ Transactions
+
+ Edge-compatible DB
+
+📦 08. Performance Optimization (Real Production)
+🔹 Bundle Optimization
+
+ Code Splitting
+
+ Tree Shaking
+
+ next-bundle-analyzer
+
+ Removing unused dependencies
+
+🔹 Image & Asset Optimization
+
+ next/image optimization
+
+ Remote patterns config
+
+ Lazy Loading Strategy
+
+ Font Optimization
+
+🔹 Caching Strategy
+
+ HTTP Cache Headers
+
+ CDN Caching
+
+ Edge Caching
+
+ Stale-While-Revalidate Pattern
+
+🧪 09. Testing Strategy
+🔹 Unit Testing
+
+ Jest Setup
+
+ Testing Server Components
+
+ Mocking fetch
+
+🔹 Component Testing
+
+ React Testing Library
+
+ Testing Suspense
+
+ Testing Loading & Error states
+
+🔹 E2E Testing
+
+ Playwright
+
+ Cypress
+
+ Testing Auth Flow
+
+🚀 10. Deployment & DevOps
+🔹 Deployment Targets
+
+ Deploy to Vercel
+
+ Deploy to AWS
+
+ Dockerizing Next.js
+
+ Static Export vs Server App
+
+🔹 Production Readiness
+
+ Environment Config
+
+ Logging Strategy
+
+ Monitoring (Sentry)
+
+ Graceful Shutdown
+
+🌐 11. Advanced Engineering Topics
+🔹 Middleware & Edge
+
+ Edge Runtime Concept
+
+ Request Interception
+
+ Geo-based Rendering
+
+ A/B Testing via Middleware
+
+🔹 Internationalization
+
+ Built-in i18n Routing
+
+ Dynamic Locale Handling
+
+ SEO with Multi-language
+
+🔹 Real-time Systems
+
+ WebSockets
+
+ Socket.io integration
+
+ Serverless limitations
+
+🏆 12. Architecture & System Design
+🔹 Folder Structure Patterns
+
+ Feature-based structure
+
+ Modular architecture
+
+ Domain-driven folder organization
+
+🔹 Scalable Patterns
+
+ Monorepo setup
+
+ Micro-frontends
+
+ Turborepo integration
+
+🎯 13. SEO & Accessibility Mastery
+🔹 SEO
+
+ Metadata API
+
+ Dynamic Metadata
+
+ OpenGraph Tags
+
+ Sitemap Generation
+
+ Robots.txt
+
+🔹 Accessibility
+
+ Semantic HTML
+
+ Keyboard Navigation
+
+ ARIA roles
+
+ Lighthouse optimization
+
+🧩 14. Debugging & Profiling
+
+ React DevTools
+
+ Next.js Debug Logs
+
+ Memory leak detection
+
+ Hydration error debugging
+
+ Performance profiling
+
+🧠 15. Interview & Senior-Level Topics
+
+ Explain Next.js rendering strategies clearly
+
+ Explain Server vs Client tradeoffs
+
+ Design a scalable Next.js architecture
+
+ Discuss performance bottlenecks
+
+ Explain caching deeply
+
+ Compare Next.js vs pure React apps
+
+ Compare App Router vs Pages Router
+
+
+
 ## 📑 Node.js
 
 > Node.js is a JavaScript runtime built on Chrome’s V8 engine designed for scalable network applications and backend development.

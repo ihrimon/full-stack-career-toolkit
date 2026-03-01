@@ -1,6 +1,7 @@
 # React Mastery Roadmap ⚛️🚀
 
 ## 📑 Table of Contents
+
 - [React Mastery Roadmap ⚛️🚀](#react-mastery-roadmap-️)
   - [📑 Table of Contents](#-table-of-contents)
   - [1. React Fundamentals](#1-react-fundamentals)
@@ -19,103 +20,117 @@
   - [14. React Ecosystem](#14-react-ecosystem)
   - [15. Best Practices](#15-best-practices)
 
-
 ## 1. React Fundamentals
-- [ ] What is React & Why React?  
-- [ ] Virtual DOM vs Real DOM  
-- [ ] Create React App / Vite / Next.js Setup  
-- [ ] Project Structure Best Practices  
+
+- [ ] What is React & Why React?
+- [ ] Virtual DOM vs Real DOM
+- [ ] Create React App / Vite / Next.js Setup
+- [ ] Project Structure Best Practices
 
 ## 2. JSX & Rendering
-- [ ] JSX Basics  
-- [ ] Embedding Expressions  
-- [ ] Rendering Elements  
-- [ ] Conditional Rendering (`if`, ternary, logical &&)  
-- [ ] Lists & Keys  
+
+- [ ] JSX Basics
+- [ ] Embedding Expressions
+- [ ] Rendering Elements
+- [ ] Conditional Rendering (`if`, ternary, logical &&)
+- [ ] Lists & Keys
 
 ## 3. Components
-- [ ] Function Components  
-- [ ] Class Components  
-- [ ] Component Composition  
-- [ ] Props Drilling Problem  
+
+- [ ] Function Components
+- [ ] Class Components
+- [ ] Component Composition
+- [ ] Props Drilling Problem
 
 ## 4. Props & State
-- [ ] Passing Props  
-- [ ] Default Props & PropTypes  
-- [ ] State Management with `useState`  
-- [ ] Derived State  
-- [ ] State Lifting  
+
+- [ ] Passing Props
+- [ ] Default Props & PropTypes
+- [ ] State Management with `useState`
+- [ ] Derived State
+- [ ] State Lifting
 
 ## 5. Event Handling
-- [ ] Handling Events in React  
-- [ ] Synthetic Events  
-- [ ] Passing Arguments to Event Handlers  
+
+- [ ] Handling Events in React
+- [ ] Synthetic Events
+- [ ] Passing Arguments to Event Handlers
 
 ## 6. Hooks (Core)
-- [ ] `useState`  
-- [ ] `useEffect`  
-- [ ] `useRef`  
+
+- [ ] `useState`
+- [ ] `useEffect`
+- [ ] `useRef`
 
 ## 7. Advanced Hooks
-- [ ] `useMemo`  
-- [ ] `useCallback`  
-- [ ] `useReducer`  
-- [ ] Custom Hooks  
+
+- [ ] `useMemo`
+- [ ] `useCallback`
+- [ ] `useReducer`
+- [ ] Custom Hooks
 
 ## 8. Advanced Patterns
-- [ ] Context API  
-- [ ] Higher Order Components (HOC)  
-- [ ] Render Props  
-- [ ] Compound Components  
-- [ ] Controlled vs Uncontrolled Components  
-- [ ] Portals  
-- [ ] Error Boundaries  
+
+- [ ] Context API
+- [ ] Higher Order Components (HOC)
+- [ ] Render Props
+- [ ] Compound Components
+- [ ] Controlled vs Uncontrolled Components
+- [ ] Portals
+- [ ] Error Boundaries
 
 ## 9. State Management
-- [ ] Context API (Global State)  
-- [ ] Redux Basics  
-- [ ] Redux Toolkit  
-- [ ] Zustand / Jotai / Recoil  
-- [ ] React Query / Tanstack Query  
+
+- [ ] Context API (Global State)
+- [ ] Redux Basics
+- [ ] Redux Toolkit
+- [ ] Zustand / Jotai / Recoil
+- [ ] React Query / Tanstack Query
 
 ## 10. Performance Optimization
-- [ ] React.memo  
-- [ ] useMemo & useCallback for Optimization  
-- [ ] Code Splitting  
-- [ ] Lazy Loading & Suspense  
-- [ ] Windowing (react-window, react-virtualized)  
-- [ ] React Profiler  
+
+- [ ] React.memo
+- [ ] useMemo & useCallback for Optimization
+- [ ] Code Splitting
+- [ ] Lazy Loading & Suspense
+- [ ] Windowing (react-window, react-virtualized)
+- [ ] React Profiler
 
 ## 11. Routing
-- [ ] React Router Basics  
-- [ ] Dynamic Routing  
-- [ ] Nested Routes  
-- [ ] Protected Routes (Private Routes)  
+
+- [ ] React Router Basics
+- [ ] Dynamic Routing
+- [ ] Nested Routes
+- [ ] Protected Routes (Private Routes)
 
 ## 12. Forms & Validation
-- [ ] Controlled Components  
-- [ ] Uncontrolled Components  
-- [ ] React Hook Form  
-- [ ] Formik + Yup  
-- [ ] Zod Validation  
+
+- [ ] Controlled Components
+- [ ] Uncontrolled Components
+- [ ] React Hook Form
+- [ ] Formik + Yup
+- [ ] Zod Validation
 
 ## 13. Testing
-- [ ] Debugging with React DevTools  
-- [ ] Unit Testing with Jest  
-- [ ] React Testing Library  
-- [ ] Cypress (E2E Testing)  
+
+- [ ] Debugging with React DevTools
+- [ ] Unit Testing with Jest
+- [ ] React Testing Library
+- [ ] Cypress (E2E Testing)
 
 ## 14. React Ecosystem
-- [ ] Next.js (SSR, SSG, ISR)  
-- [ ] TypeScript with React  
-- [ ] UI Libraries (ShadCN, MUI, Chakra, AntD, Tailwind)  
-- [ ] Storybook  
-- [ ] React Native Basics  
+
+- [ ] Next.js (SSR, SSG, ISR)
+- [ ] TypeScript with React
+- [ ] UI Libraries (ShadCN, MUI, Chakra, AntD, Tailwind)
+- [ ] Storybook
+- [ ] React Native Basics
 
 ## 15. Best Practices
-- [ ] Project Folder Structure  
-- [ ] Reusable Components  
-- [ ] Accessibility (a11y)  
-- [ ] Security Best Practices in React  
-- [ ] Performance Audits  
-- [ ] Clean Code & Naming Conventions  
+
+- [ ] Project Folder Structure
+- [ ] Reusable Components
+- [ ] Accessibility (a11y)
+- [ ] Security Best Practices in React
+- [ ] Performance Audits
+- [ ] Clean Code & Naming Conventions

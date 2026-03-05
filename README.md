@@ -338,28 +338,79 @@ Node.js is powered by the Chrome V8 JavaScript engine and operates on an event-d
 <details>
 <summary><b >Node.js vs Browser JavaScript</b></summary>
 
-TypeScript is an open-source programming language developed
+Both run JavaScript, but in completely different environments with different purposes:
+
+| Feature             | Browser JS                       | Node.js                           |
+| ------------------- | -------------------------------- | --------------------------------- |
+| **Purpose**         | UI interaction, DOM manipulation | Server-side logic, backend        |
+| **Environment**     | Inside a web browser             | Runs on your machine/server       |
+| **Global Object**   | `window`                         | `global`                          |
+| **File System**     | ❌ No (security reasons)         | ✅ Yes (`fs` module)              |
+| **HTTP Requests**   | Fetch API / XMLHttpRequest       | Built-in `http`/`https` modules   |
+| **Modules**         | ES Modules (`import/export`)     | CommonJS (`require`) + ES Modules |
+| **Package Manager** | CDN / bundlers                   | npm / yarn                        |
 
 </details>
 
 <details>
 <summary><b >Runtime vs Framework</b></summary>
 
-TypeScript is an open-source programming language developed
+**What is a Runtime?** => A Runtime is the environment where your code executes. It provides the core engine, memory management, and low-level system access needed to actually run your program.
 
-</details>
-
-<details>
-<summary><b >Node.js Use Cases</b></summary>
-
-TypeScript is an open-source programming language developed
+**What is a Framework?** => A Framework is a pre-built structure/toolkit that provides rules, patterns, and tools to help you build applications faster. It runs on top of a runtime.
 
 </details>
 
 <details>
 <summary><b >V8 Engine overview</b></summary>
 
-TypeScript is an open-source programming language developed
+V8 is the translator + executor — it takes your JavaScript code and turns it into machine code that your CPU can directly understand and run.
+
+**_How V8 Works_**
+
+```md
+JS Code → [Parser] → AST → [Ignition] → Bytecode
+↓
+[TurboFan]
+↓
+Optimized Machine Code
+↓
+CPU Runs It
+```
+
+```javascript
+// Step 1 — Parsing V8 reads JS and builds an AST (Abstract Syntax Tree)
+const add = (a, b) => a + b;
+
+// V8 sees it as a tree:
+// VariableDeclaration
+//   └── ArrowFunctionExpression
+//         ├── Params: [a, b]
+//         └── BinaryExpression: a + b
+
+
+// Step 2 — Ignition (Interpreter)
+
+//Converts AST → **Bytecode** (faster to start executing)
+
+
+// Ignition Bytecode (simplified):
+LdaNamedProperty a        // Load variable 'a'
+Add b                     // Add 'b' to it
+Return                    // Return result
+
+
+// Step 3 — TurboFan (JIT Compiler)
+
+/* Watches **hot code** (frequently run code) and compiles it to
+highly optimized **native machine code** */
+
+
+// TurboFan output (conceptual x86 assembly):
+MOV eax, [a]
+ADD eax, [b]
+RET
+```
 
 </details>
 
@@ -2186,7 +2237,7 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
   - [13. Security in JavaScript](#13-security-in-javascript)
   - [14. Modern JavaScript (ES6+ to ES2025)](#14-modern-javascript-es6-to-es2025)
 
-## 1. JavaScript Fundamentals (Basics)
+## 📑 JavaScript
 
 - [ ] Introduction to JavaScript
       👉 “JavaScript is a high-level, interpreted, single-threaded, and dynamically typed programming language that is mainly used in web development. It was created in 1995 by Brendan Eich at Netscape. Initially it was called Mocha, then LiveScript, and finally JavaScript. Today, it is standardized by ECMAScript.

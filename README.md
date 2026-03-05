@@ -345,7 +345,7 @@ Both run JavaScript, but in completely different environments with different pur
 | **Purpose**         | UI interaction, DOM manipulation | Server-side logic, backend        |
 | **Environment**     | Inside a web browser             | Runs on your machine/server       |
 | **Global Object**   | `window`                         | `global`                          |
-| **File System**     | ❌ No (security reasons)         | ✅ Yes (`fs` module)              |
+| **File System**     | No (security reasons)            | Yes (`fs` module)                 |
 | **HTTP Requests**   | Fetch API / XMLHttpRequest       | Built-in `http`/`https` modules   |
 | **Modules**         | ES Modules (`import/export`)     | CommonJS (`require`) + ES Modules |
 | **Package Manager** | CDN / bundlers                   | npm / yarn                        |
@@ -379,17 +379,18 @@ CPU Runs It
 ```
 
 ```javascript
-// Step 1 — Parsing V8 reads JS and builds an AST (Abstract Syntax Tree)
+/* Step 1 — Parsing V8 reads JS and builds an AST (Abstract Syntax Tree) */
 const add = (a, b) => a + b;
 
-// V8 sees it as a tree:
-// VariableDeclaration
-//   └── ArrowFunctionExpression
-//         ├── Params: [a, b]
-//         └── BinaryExpression: a + b
+/*
+ V8 sees it as a tree:
+ VariableDeclaration
+   └── ArrowFunctionExpression
+        ├── Params: [a, b]
+        └── BinaryExpression: a + b
+*/
 
-
-// Step 2 — Ignition (Interpreter)
+/* Step 2 — Ignition (Interpreter) */
 
 //Converts AST → **Bytecode** (faster to start executing)
 
@@ -400,7 +401,7 @@ Add b                     // Add 'b' to it
 Return                    // Return result
 
 
-// Step 3 — TurboFan (JIT Compiler)
+/* Step 3 — TurboFan (JIT Compiler) */
 
 /* Watches **hot code** (frequently run code) and compiles it to
 highly optimized **native machine code** */
@@ -410,14 +411,51 @@ highly optimized **native machine code** */
 MOV eax, [a]
 ADD eax, [b]
 RET
+
+
+
+/* Step 4 — Garbage Collection (Orinoco) */
+
+// V8 automatically frees unused memory so you don't have to
+
+
+function createUser() {
+  let user = { name: 'Rahim', age: 25 }; // allocated in memory
+  return user.name;
+} // 'user' object → no longer referenced → V8 GC cleans it up
+
 ```
 
-</details>
+**Example: V8 in Chrome DevTools**
 
-<details>
-<summary><b >Node.js Architecture overview</b></summary>
+```javascript
+// This function will be HOT (called many times) → TurboFan optimizes it
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
 
-TypeScript is an open-source programming language developed
+// Cold run — Ignition interprets
+console.time('cold');
+fibonacci(30);
+console.timeEnd('cold'); // ~15ms
+
+// Hot run — TurboFan has compiled it
+console.time('hot');
+fibonacci(30);
+console.timeEnd('hot'); // ~2ms ← same code, MUCH faster ⚡
+```
+
+**V8 Engine — Key Components**
+
+| Component     | Role                                                          |
+| ------------- | ------------------------------------------------------------- |
+| **Parser**    | Reads JS → builds AST                                         |
+| **Ignition**  | AST → Bytecode (interpreter)                                  |
+| **TurboFan**  | Bytecode → Optimized machine code (JIT)                       |
+| **Orinoco**   | Garbage Collector — frees unused memory                       |
+| **Liftoff**   | WebAssembly baseline compiler                                 |
+| **Sparkplug** | Fast non-optimizing JS compiler (between Ignition & TurboFan) |
 
 </details>
 

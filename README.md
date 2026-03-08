@@ -233,25 +233,25 @@
 
 > Node.js is a JavaScript runtime built on Chrome’s V8 engine designed for scalable network applications and backend development.
 
-| Topics                                                                       | Overview                                                                   |
-| ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [01. Introduction & Environment Setup](#01-introduction--environment-setup)  | What is Node.js, installation, runtime basics, REPL, versioning            |
-| [02. Node.js Architecture & Event Loop](#02-nodejs-architecture--event-loop) | Single-threaded model, non-blocking I/O, event loop phases, libuv          |
-| [03. Core Modules Deep Dive](#03-core-modules-deep-dive)                     | fs, path, os, http, events, buffer, stream, crypto                         |
-| [04. Modules & Package Management](#04-modules--package-management)          | CommonJS vs ESM, package.json, npm, semver, dependency management          |
-| [05. Asynchronous Programming](#05-asynchronous-programming)                 | Callbacks, Promises, async/await, error handling, microtasks vs macrotasks |
-| [06. Streams & Buffer Management](#06-streams--buffer-management)            | Readable, writable, duplex, transform streams, backpressure handling       |
-| [07. Building HTTP Servers & APIs](#07-building-http-servers--apis)          | Creating servers, routing, middleware concept, REST API basics             |
-| [08. Working with Databases](#08-working-with-databases)                     | MongoDB driver, connection pooling, transactions, SQL integration          |
-| [09. Authentication & Security](#09-authentication--security)                | JWT, bcrypt, sessions, cookies, CSRF, XSS protection                       |
-| [10. Error Handling & Debugging](#10-error-handling--debugging)              | Custom errors, global error handling, logging, debugging tools             |
-| [11. Testing & Quality Assurance](#11-testing--quality-assurance)            | Unit testing, integration testing, Jest, mocking                           |
-| [12. Performance Optimization](#12-performance-optimization)                 | Profiling, memory leaks, clustering, worker threads, caching               |
-| [13. Deployment & Production](#13-deployment--production)                    | PM2, Docker, environment configs, CI/CD, graceful shutdown                 |
-| [14. CLI Tools Development](#14-cli-tools-development)                       | Building CLI tools, argument parsing, publishing npm packages              |
-| [15. Advanced Node Internals](#15-advanced-node-internals)                   | Child processes, worker threads, Node-API, stream internals                |
+| Topics                                                                        | Overview                                                                   |
+| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [01. Introduction & Global Environment](#01-introduction--global-environment) | What is Node.js, installation, runtime basics, REPL, versioning            |
+| [02. Node.js Architecture & Event Loop](#02-nodejs-architecture--event-loop)  | Single-threaded model, non-blocking I/O, event loop phases, libuv          |
+| [03. Core Modules Deep Dive](#03-core-modules-deep-dive)                      | fs, path, os, http, events, buffer, stream, crypto                         |
+| [04. Modules & Package Management](#04-modules--package-management)           | CommonJS vs ESM, package.json, npm, semver, dependency management          |
+| [05. Asynchronous Programming](#05-asynchronous-programming)                  | Callbacks, Promises, async/await, error handling, microtasks vs macrotasks |
+| [06. Streams & Buffer Management](#06-streams--buffer-management)             | Readable, writable, duplex, transform streams, backpressure handling       |
+| [07. Building HTTP Servers & APIs](#07-building-http-servers--apis)           | Creating servers, routing, middleware concept, REST API basics             |
+| [08. Working with Databases](#08-working-with-databases)                      | MongoDB driver, connection pooling, transactions, SQL integration          |
+| [09. Authentication & Security](#09-authentication--security)                 | JWT, bcrypt, sessions, cookies, CSRF, XSS protection                       |
+| [10. Error Handling & Debugging](#10-error-handling--debugging)               | Custom errors, global error handling, logging, debugging tools             |
+| [11. Testing & Quality Assurance](#11-testing--quality-assurance)             | Unit testing, integration testing, Jest, mocking                           |
+| [12. Performance Optimization](#12-performance-optimization)                  | Profiling, memory leaks, clustering, worker threads, caching               |
+| [13. Deployment & Production](#13-deployment--production)                     | PM2, Docker, environment configs, CI/CD, graceful shutdown                 |
+| [14. CLI Tools Development](#14-cli-tools-development)                        | Building CLI tools, argument parsing, publishing npm packages              |
+| [15. Advanced Node Internals](#15-advanced-node-internals)                    | Child processes, worker threads, Node-API, stream internals                |
 
-### 01. Introduction & Environment Setup
+### 01. Introduction & Global Environment
 
 #### `Core Basics`
 
@@ -459,59 +459,8 @@ console.timeEnd('hot'); // ~2ms ← same code, MUCH faster ⚡
 
 </details>
 
-#### Installation & Setup
-
-<details>
-<summary><b >Installing Node (nvm recommended)</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >LTS vs Current versions</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >Checking version</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >Node REPL usage</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >Running .js files</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >Project initialization (npm init)</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
 <details>
 <summary><b >package.json basics</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >Project folder structure best practices</b></summary>
 
 TypeScript is an open-source programming language developed
 
@@ -579,7 +528,21 @@ TypeScript is an open-source programming language developed
 
 ### 02. Node.js Architecture & Event Loop
 
-- Single-threaded model
+<details>
+<summary><b >Single-threaded model</b></summary>
+
+Node.js uses a single-threaded model for executing JavaScript code. This means that the main JavaScript execution happens in one thread only.
+
+However, Node.js can still handle many operations at the same time because it uses asynchronous programming and an event loop.
+
+Traditional Server (Multi-threaded) Node.js (Single-threaded)
+────────────────────────────────── ─────────────────────────
+Request 1 → Thread 1 Request 1 ──┐
+Request 2 → Thread 2 Request 2 ──┤──▶ ONE THREAD
+Request 3 → Thread 3 Request 3 ──┘
+(memory expensive, context switching) (lightweight, event-driven)
+
+</details>
 - Event-driven architecture
 - Non-blocking I/O
 - libuv overview
@@ -2251,29 +2214,92 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
 ## 📑 JavaScript
 
 - [Full Stack Interview Preparation Guide](#full-stack-interview-preparation-guide)
-- [📑 TypeScript](#-typescript)
-  - [01. Introduction \& Project Setup](#01-introduction--project-setup)
-  - [02. Core Types \& Type System Foundations](#02-core-types--type-system-foundations)
-  - [03. Functions \& Function Typing](#03-functions--function-typing)
-  - [04. Type Narrowing \& Type System Analysis](#04-type-narrowing--type-system-analysis)
-  - [05. Generics \& Reusable Type Patterns](#05-generics--reusable-type-patterns)
-  - [06. Classes \& OOP in TypeScript](#06-classes--oop-in-typescript)
-  - [07. Built-in Utility Types](#07-built-in-utility-types)
-- [📑 JavaScript](#-javascript)
-- [1. JavaScript Fundamentals (Basics)](#1-javascript-fundamentals-basics)
-  - [2. Intermediate JavaScript](#2-intermediate-javascript)
-  - [3. Functions \& Advanced Concepts](#3-functions--advanced-concepts)
-  - [4. Object-Oriented Programming (OOP) in JS](#4-object-oriented-programming-oop-in-js)
-  - [5. Asynchronous JavaScript](#5-asynchronous-javascript)
-  - [6. Advanced JavaScript](#6-advanced-javascript)
-  - [7. JavaScript Internals](#7-javascript-internals)
-  - [8. DOM (Document Object Model)](#8-dom-document-object-model)
-  - [9. Browser APIs](#9-browser-apis)
-  - [10. Advanced Patterns \& Architecture](#10-advanced-patterns--architecture)
-  - [11. Testing \& Debugging](#11-testing--debugging)
-  - [12. Performance Optimization](#12-performance-optimization)
-  - [13. Security in JavaScript](#13-security-in-javascript)
-  - [14. Modern JavaScript (ES6+ to ES2025)](#14-modern-javascript-es6-to-es2025)
+  - [📑 Next.js](#-nextjs)
+    - [01. Core Architecture \& Fundamentals](#01-core-architecture--fundamentals)
+    - [02. Advanced Routing System](#02-advanced-routing-system)
+      - [🔹 App Router](#-app-router)
+      - [🔹 File-Based Routing](#-file-based-routing)
+      - [🔹 Layout \& Navigation](#-layout--navigation)
+    - [03. Rendering Strategies](#03-rendering-strategies)
+      - [🔹 Rendering Modes](#-rendering-modes)
+      - [🔹 Rendering Decision Matrix](#-rendering-decision-matrix)
+    - [04. Data Fetching \& Mutations](#04-data-fetching--mutations)
+      - [🔹 Server Components](#-server-components)
+      - [🔹 Mutations](#-mutations)
+      - [🔹 Client Data Fetching](#-client-data-fetching)
+    - [05. API Routes \& Middleware](#05-api-routes--middleware)
+      - [🔹 Route Handlers](#-route-handlers)
+      - [🔹 Runtime](#-runtime)
+      - [🔹 Middleware](#-middleware)
+    - [06. Authentication \& Security](#06-authentication--security)
+    - [07. Performance Optimization](#07-performance-optimization)
+    - [08. SEO \& Accessibility](#08-seo--accessibility)
+      - [🔹 SEO](#-seo)
+      - [🔹 Accessibility](#-accessibility)
+    - [09. Debugging \& Profiling](#09-debugging--profiling)
+    - [10. Testing Strategy](#10-testing-strategy)
+    - [11. Advanced Patterns](#11-advanced-patterns)
+      - [🔹 Middleware \& Edge](#-middleware--edge)
+      - [🔹 Internationalization](#-internationalization)
+      - [🔹 Real-time Systems](#-real-time-systems)
+  - [📑 Node.js](#-nodejs)
+    - [01. Introduction \& Global Environment](#01-introduction--global-environment)
+      - [`Core Basics`](#core-basics)
+      - [Global Environment](#global-environment)
+      - [Execution Model](#execution-model)
+    - [02. Node.js Architecture \& Event Loop](#02-nodejs-architecture--event-loop)
+      - [Event Loop Deep Dive](#event-loop-deep-dive)
+    - [03. Core Modules (Built-in Modules)](#03-core-modules-built-in-modules)
+      - [File System (fs)](#file-system-fs)
+      - [Path](#path)
+      - [HTTP](#http)
+      - [URL](#url)
+      - [Events](#events)
+      - [Buffer](#buffer)
+      - [Streams (Intro)](#streams-intro)
+      - [OS](#os)
+      - [Crypto](#crypto)
+      - [Timers](#timers)
+    - [04. Modules \& Package Management](#04-modules--package-management)
+      - [package.json Deep Dive](#packagejson-deep-dive)
+      - [npm Ecosystem](#npm-ecosystem)
+    - [05. Asynchronous Programming](#05-asynchronous-programming)
+    - [06. Streams \& Buffer Management](#06-streams--buffer-management)
+    - [07. Building HTTP Servers \& REST APIs](#07-building-http-servers--rest-apis)
+    - [08. Working with Databases](#08-working-with-databases)
+      - [MongoDB](#mongodb)
+      - [SQL](#sql)
+    - [09. Authentication \& Security](#09-authentication--security)
+    - [10. Error Handling \& Debugging](#10-error-handling--debugging)
+    - [11. Testing \& Quality Assurance](#11-testing--quality-assurance)
+    - [12. Performance \& Optimization](#12-performance--optimization)
+    - [13. Deployment \& Production](#13-deployment--production)
+    - [14. CLI Tools Development](#14-cli-tools-development)
+    - [15. Advanced Node Internals](#15-advanced-node-internals)
+  - [📑 TypeScript](#-typescript)
+    - [01. Introduction \& Project Setup](#01-introduction--project-setup)
+    - [02. Core Types \& Type System Foundations](#02-core-types--type-system-foundations)
+    - [03. Functions \& Function Typing](#03-functions--function-typing)
+  - [](#)
+    - [04. Type Narrowing \& Type System Analysis](#04-type-narrowing--type-system-analysis)
+    - [05. Generics \& Reusable Type Patterns](#05-generics--reusable-type-patterns)
+    - [06. Classes \& OOP in TypeScript](#06-classes--oop-in-typescript)
+    - [07. Built-in Utility Types](#07-built-in-utility-types)
+  - [📑 JavaScript](#-javascript)
+  - [📑 JavaScript](#-javascript-1)
+    - [2. Intermediate JavaScript](#2-intermediate-javascript)
+    - [3. Functions \& Advanced Concepts](#3-functions--advanced-concepts)
+    - [4. Object-Oriented Programming (OOP) in JS](#4-object-oriented-programming-oop-in-js)
+    - [5. Asynchronous JavaScript](#5-asynchronous-javascript)
+    - [6. Advanced JavaScript](#6-advanced-javascript)
+    - [7. JavaScript Internals](#7-javascript-internals)
+    - [8. DOM (Document Object Model)](#8-dom-document-object-model)
+    - [9. Browser APIs](#9-browser-apis)
+    - [10. Advanced Patterns \& Architecture](#10-advanced-patterns--architecture)
+    - [11. Testing \& Debugging](#11-testing--debugging)
+    - [12. Performance Optimization](#12-performance-optimization)
+    - [13. Security in JavaScript](#13-security-in-javascript)
+    - [14. Modern JavaScript (ES6+ to ES2025)](#14-modern-javascript-es6-to-es2025)
 
 ## 📑 JavaScript
 

@@ -531,19 +531,190 @@ TypeScript is an open-source programming language developed
 <details>
 <summary><b >Single-threaded model</b></summary>
 
-Node.js uses a single-threaded model for executing JavaScript code. This means that the main JavaScript execution happens in one thread only.
+Node.js is single-threaded for JavaScript, but internally it can still use a thread pool (via libuv) for some heavy I/O tasks.
 
-However, Node.js can still handle many operations at the same time because it uses asynchronous programming and an event loop.
+**The Single-Threaded Model in Node.js means:\***
 
-Traditional Server (Multi-threaded) Node.js (Single-threaded)
-────────────────────────────────── ─────────────────────────
-Request 1 → Thread 1 Request 1 ──┐
-Request 2 → Thread 2 Request 2 ──┤──▶ ONE THREAD
-Request 3 → Thread 3 Request 3 ──┘
-(memory expensive, context switching) (lightweight, event-driven)
+- JavaScript runs on one main thread
+- Tasks execute sequentially
+- I/O operations are asynchronous
+- The event loop handles callbacks and concurrency
+
+**Why Node.js Uses a Single Thread**
+
+The single-threaded design is ideal for I/O-heavy applications, such as:
+
+- API servers
+- Real-time chat applications
+- Streaming platforms
+- Microservices
+
+**Advantages:**
+
+- ✔ Lower memory usage – fewer threads are created
+- ✔ No context switching overhead
+- ✔ High scalability for concurrent requests
+
+```js
+/! Example 1: Execution Order /;
+
+console.log('1️⃣  Start'); // Runs first
+
+setTimeout(() => {
+  console.log('3️⃣  Timeout done'); // Runs last (async)
+}, 0);
+
+console.log('2️⃣  End'); // Runs second
+
+// OUTPUT:
+// 1️⃣  Start
+// 2️⃣  End
+// 3️⃣  Timeout done
+
+> Even with 0ms delay, the timeout waits — the main thread finishes first.
+```
+
+```js
+/! Example 2: Non-Blocking Web Server /;
+
+const http = require('http');
+const fs = require('fs');
+
+const server = http.createServer((req, res) => {
+  if (req.url === '/fast') {
+    // ✅ Instant response — doesn't block others
+    res.end('Fast response!');
+  }
+
+  if (req.url === '/file') {
+    // ✅ File read is handed off to libuv (background)
+    // The single thread is FREE to handle other requests
+    fs.readFile('./data.txt', 'utf8', (err, data) => {
+      res.end(data || 'File loaded!');
+    });
+  }
+});
+
+server.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
+```
+
+**What happens when 3 users hit `/file` simultaneously:**
+
+```
+User A → readFile handed to libuv → thread FREE ──┐
+User B → readFile handed to libuv → thread FREE ──┤ All handled!
+User C → readFile handed to libuv → thread FREE ──┘
+         ↓
+    Callbacks fire when each file is ready
+```
+
+> **The golden rule: Node.js is fast not because it's multi-threaded — but because it never waits. It delegates and moves on.**
 
 </details>
+
 - Event-driven architecture
+- Event-Driven Architecture is a programming pattern where the flow of the program is controlled by events and event handlers (listeners).
+
+  #### 1. What is an Event?
+
+  An event is any action or occurrence that happens in the system.
+  - A user sends an HTTP request
+  - A file finishes reading
+  - A database query completes
+  - A timer finishes
+  - A button is clicked (in browsers)
+
+```md
+#### Event-Driven Flow:
+
+User Action / System Event
+↓
+Event Queue
+↓
+Event Loop
+↓
+Event Listener
+↓
+Callback Function Executes
+```
+
+```js
+/! Real-World Example — HTTP Server
+
+const http = require("http");
+
+const server = http.createServer();
+
+// Listen for "request" events
+server.on("request", (req, res) => {
+  console.log(`Request received: ${req.url}`);
+  res.end("Hello World!");
+});
+
+// Listen for "connection" events
+server.on("connection", (socket) => {
+  console.log("New client connected!");
+});
+
+// Listen for "error" events
+server.on("error", (err) => {
+  console.error(`Server error: ${err.message}`);
+});
+
+server.listen(3000, () => {
+  console.log("Listening on port 3000...");
+});
+
+```
+
+```md
+Browser hits localhost:3000
+│
+▼
+"connection" fires ──▶ logs "New client connected!"
+│
+▼
+"request" fires ──▶ logs URL, sends response
+```
+
+```js
+/! Real-World Example — File Stream
+
+const fs = require("fs");
+
+const stream = fs.createReadStream("bigfile.txt");
+
+// Fires repeatedly as chunks arrive
+stream.on("data", (chunk) => {
+  console.log(`Received ${chunk.length} bytes`);
+});
+
+// Fires once when the file is fully read
+stream.on("end", () => {
+  console.log("File reading complete ✅");
+});
+
+// Fires if something goes wrong
+stream.on("error", (err) => {
+  console.error("Read error:", err.message);
+});
+```
+
+```md
+bigfile.txt (500MB)
+│
+▼
+"data" ──▶ chunk 1 (64KB)
+"data" ──▶ chunk 2 (64KB)
+"data" ──▶ chunk 3 (64KB)
+...
+"end" ──▶ done! ✅
+
+✅ Memory stays low — no full file loaded at once
+```
+
 - Non-blocking I/O
 - libuv overview
 - Thread pool concept
@@ -2248,6 +2419,7 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
       - [Global Environment](#global-environment)
       - [Execution Model](#execution-model)
     - [02. Node.js Architecture \& Event Loop](#02-nodejs-architecture--event-loop)
+      - [1. What is an Event?](#1-what-is-an-event)
       - [Event Loop Deep Dive](#event-loop-deep-dive)
     - [03. Core Modules (Built-in Modules)](#03-core-modules-built-in-modules)
       - [File System (fs)](#file-system-fs)

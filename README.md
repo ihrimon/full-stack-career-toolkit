@@ -510,22 +510,6 @@ TypeScript is an open-source programming language developed
 
 </details>
 
-#### Execution Model
-
-<details>
-<summary><b >Blocking vs Non-blocking</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >Synchronous vs Asynchronous</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
 ### 02. Node.js Architecture & Event Loop
 
 <details>
@@ -614,17 +598,20 @@ User C → readFile handed to libuv → thread FREE ──┘
 
 </details>
 
-- Event-driven architecture
-- Event-Driven Architecture is a programming pattern where the flow of the program is controlled by events and event handlers (listeners).
+<details>
+<summary><b >Event-driven architecture</b></summary>
 
-  #### 1. What is an Event?
+Event-Driven Architecture is a programming pattern where the flow of the program is controlled by events and event handlers (listeners).
 
-  An event is any action or occurrence that happens in the system.
-  - A user sends an HTTP request
-  - A file finishes reading
-  - A database query completes
-  - A timer finishes
-  - A button is clicked (in browsers)
+#### 1. What is an Event?
+
+An event is any action or occurrence that happens in the system.
+
+- A user sends an HTTP request
+- A file finishes reading
+- A database query completes
+- A timer finishes
+- A button is clicked (in browsers)
 
 ```md
 #### Event-Driven Flow:
@@ -715,7 +702,95 @@ bigfile.txt (500MB)
 ✅ Memory stays low — no full file loaded at once
 ```
 
-- Non-blocking I/O
+</details>
+
+<details>
+<summary><b >Non-blocking I/O</b></summary>
+
+Non-Blocking I/O (Input/Output) means that when the program performs operations like reading files, accessing a database, or making network requests, it does not stop the execution of other code while waiting for the operation to complete.
+
+**Blocking (Synchronous) I/O:**
+
+The program waits until the task finishes before moving to the next line.
+
+```js
+const fs = require('fs');
+
+console.log('1️⃣  Start');
+
+// 🚨 BLOCKS the entire thread until file is read
+const data = fs.readFileSync('file.txt', 'utf8');
+console.log('2️⃣  File data:', data);
+
+console.log('3️⃣  End');
+
+// OUTPUT (in order, but thread was FROZEN at step 2):
+// 1️⃣  Start
+// 2️⃣  File data: hello world
+// 3️⃣  End
+```
+
+```
+Timeline:
+──────────────────────────────────────
+[Start] ──▶ [😴 FROZEN reading file] ──▶ [End]
+             nobody else gets served!
+```
+
+**Non-Blocking (Asynchronous) I/O:**
+
+The program does not wait for the operation to finish.
+
+```js
+const fs = require('fs');
+
+console.log('1️⃣  Start');
+
+// ✅ Hands off to OS — thread stays FREE
+fs.readFile('file.txt', 'utf8', (err, data) => {
+  console.log('3️⃣  File data:', data); // fires LATER
+});
+
+console.log('2️⃣  End');
+
+// OUTPUT:
+// 1️⃣  Start
+// 2️⃣  End              ← thread didn't wait!
+// 3️⃣  File data: hello world  ← callback fires when ready
+```
+
+```
+Timeline:
+──────────────────────────────────────────────
+[Start] ──▶ [delegate file read] ──▶ [End] ──▶ [callback fires]
+                    ↓
+              OS reads file
+              in background ✅
+```
+
+---
+
+## What Counts as I/O?
+
+```
+I/O = anything that talks to the outside world
+
+┌─────────────────────────────────────────────┐
+│              I/O OPERATIONS                 │
+│                                             │
+│  📁 File System    → fs.readFile()          │
+│  🌐 Network        → http.request()         │
+│  🗄️  Database      → db.query()             │
+│  ⏱️  Timers        → setTimeout()           │
+│  🔌 Sockets        → net.connect()          │
+│  🖥️  Child Process → exec()                 │
+└─────────────────────────────────────────────┘
+
+All of these are handed off to libuv — thread stays FREE
+```
+
+</details>
+
 - libuv overview
 - Thread pool concept
 
@@ -2417,9 +2492,9 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
     - [01. Introduction \& Global Environment](#01-introduction--global-environment)
       - [`Core Basics`](#core-basics)
       - [Global Environment](#global-environment)
-      - [Execution Model](#execution-model)
     - [02. Node.js Architecture \& Event Loop](#02-nodejs-architecture--event-loop)
       - [1. What is an Event?](#1-what-is-an-event)
+  - [What Counts as I/O?](#what-counts-as-io)
       - [Event Loop Deep Dive](#event-loop-deep-dive)
     - [03. Core Modules (Built-in Modules)](#03-core-modules-built-in-modules)
       - [File System (fs)](#file-system-fs)

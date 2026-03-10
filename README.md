@@ -831,7 +831,51 @@ Network request arrives
 ```
 
 </details>
-- Thread pool concept
+
+</details>
+
+<details>
+<summary><b >Thread pool concept</b></summary>
+
+libuv is the C library underneath Node.js that handles all asynchronous I/O operations.
+
+```js
+// OS-Level Async (Network I/O)
+
+const net = require('net');
+
+// Network I/O → handled directly by OS kernel
+// libuv uses: epoll (Linux), kqueue (macOS), IOCP (Windows)
+const server = net.createServer((socket) => {
+  socket.on('data', (data) => {
+    socket.write('Echo: ' + data);
+  });
+});
+
+server.listen(3000);
+```
+
+```
+Network request arrives
+        │
+        ▼
+  libuv tells OS: "notify me when data arrives"
+        │
+        ▼
+  OS watches the socket (epoll/kqueue)
+        │
+  Data arrives!
+        │
+        ▼
+  OS notifies libuv ──▶ callback pushed to queue ──▶ Event Loop runs it ✅
+
+  ✅ Zero threads used — pure OS-level efficiency
+
+```
+
+</details>
+
+
 
 #### Event Loop Deep Dive
 

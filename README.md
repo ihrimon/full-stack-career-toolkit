@@ -466,7 +466,7 @@ TypeScript is an open-source programming language developed
 
 </details>
 
-#### Global Environment
+#### `Global Environment`
 
 <details>
 <summary><b >global object</b></summary>
@@ -791,7 +791,46 @@ All of these are handed off to libuv — thread stays FREE
 
 </details>
 
-- libuv overview
+<details>
+<summary><b >libuv overview</b></summary>
+
+libuv is the C library underneath Node.js that handles all asynchronous I/O operations.
+
+```js
+// OS-Level Async (Network I/O)
+
+const net = require('net');
+
+// Network I/O → handled directly by OS kernel
+// libuv uses: epoll (Linux), kqueue (macOS), IOCP (Windows)
+const server = net.createServer((socket) => {
+  socket.on('data', (data) => {
+    socket.write('Echo: ' + data);
+  });
+});
+
+server.listen(3000);
+```
+
+```
+Network request arrives
+        │
+        ▼
+  libuv tells OS: "notify me when data arrives"
+        │
+        ▼
+  OS watches the socket (epoll/kqueue)
+        │
+  Data arrives!
+        │
+        ▼
+  OS notifies libuv ──▶ callback pushed to queue ──▶ Event Loop runs it ✅
+
+  ✅ Zero threads used — pure OS-level efficiency
+
+```
+
+</details>
 - Thread pool concept
 
 #### Event Loop Deep Dive
@@ -2495,7 +2534,7 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
     - [02. Node.js Architecture \& Event Loop](#02-nodejs-architecture--event-loop)
       - [1. What is an Event?](#1-what-is-an-event)
   - [What Counts as I/O?](#what-counts-as-io)
-      - [Event Loop Deep Dive](#event-loop-deep-dive)
+    - [Event Loop Deep Dive](#event-loop-deep-dive)
     - [03. Core Modules (Built-in Modules)](#03-core-modules-built-in-modules)
       - [File System (fs)](#file-system-fs)
       - [Path](#path)

@@ -1248,7 +1248,18 @@ CommonJS (CJS) is the module system built into Node.js — it lets you split cod
 
 </details>
 
-- ES Modules (import/export)
+<details>
+<summary><b >ES Modules (import/export)</b></summary>
+
+A module is just a file. Every .js file in ES Modules is its own isolated unit with its own scope, variables, and logic.
+
+**CommonJS — Key Takeaways**
+
+1. **`module.exports`** — what your file shares with the world; nothing leaks out unless explicitly exported
+
+</details>
+
+- 
 - CJS vs ESM differences
 - Module resolution algorithm
 - node_modules structure

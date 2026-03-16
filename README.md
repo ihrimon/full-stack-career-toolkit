@@ -1225,7 +1225,29 @@ Network request arrives
 
 ### 04. Modules & Package Management
 
-- CommonJS (require, module.exports)
+<details>
+<summary><b >CommonJS (require, module.exports)</b></summary>
+
+CommonJS (CJS) is the module system built into Node.js — it lets you split code into separate files and share functionality between them.
+
+**CommonJS — Key Takeaways**
+
+1. **`module.exports`** — what your file shares with the world; nothing leaks out unless explicitly exported
+
+2. **`require()`** — fetches another file's exports and brings them into your current file
+
+3. **Each file is its own module** — variables stay private inside their file; no accidental global leaks
+
+4. **`require()` is cached** — the file runs only once on first load; repeated `require()` calls return the same cached result
+
+5. **Can export anything** — functions, objects, classes, arrays, strings, numbers — any valid JavaScript value
+
+6. **Use `module.exports = {}`** not `exports = {}` for objects — reassigning `exports` breaks the reference to `module.exports`
+
+7. **CommonJS is synchronous** — safe to use at startup/top of file, but never call `require()` inside async callbacks or request handlers mid-flight
+
+</details>
+
 - ES Modules (import/export)
 - CJS vs ESM differences
 - Module resolution algorithm

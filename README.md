@@ -4243,3 +4243,323 @@ test('button increments counter', () => {
 - [ ] Maintain a separate debug and release build configuration
 - [ ] Test on multiple screen sizes and OS versions before release
 - [ ] Provide a rollback plan for critical OTA updates
+
+🧩 1. PHP Fundamentals (Strong Base)
+
+ PHP কীভাবে কাজ করে (request → response)
+
+ PHP tags (<?php ?>)
+
+ Variables ($var)
+
+ Constants (define, const)
+
+ Data Types (string, int, float, bool, array, null)
+
+ Type juggling & type casting
+
+ Echo / Print
+
+ Comments
+
+ Variable scope (local, global, static)
+
+➗ 2. Operators
+
+ Arithmetic (+ - * / %)
+
+ Assignment (= += -=)
+
+ Comparison (== === != !==)
+
+ Logical (&& || !)
+
+ String operator (.)
+
+ Null coalescing (??)
+
+ Ternary operator (?:)
+
+🔁 3. Control Flow
+
+ if / else / elseif
+
+ switch
+
+ match (PHP 8+)
+
+ while / do-while
+
+ for loop
+
+ foreach loop
+
+ break / continue
+
+🧠 4. Functions
+
+ Function declaration
+
+ Parameters & arguments
+
+ Default parameters
+
+ Return values
+
+ Variable functions
+
+ Anonymous functions (closures)
+
+ Arrow functions (fn())
+
+ Recursion
+
+📚 5. Arrays (Very Important)
+
+ Indexed array
+
+ Associative array
+
+ Multidimensional array
+
+ Array destructuring
+
+ Array functions:
+
+ array_map
+
+ array_filter
+
+ array_reduce
+
+ sort, asort, ksort
+
+ Spread operator (...)
+
+🔤 6. Strings
+
+ String functions (strlen, str_replace, substr)
+
+ Concatenation (.)
+
+ Interpolation
+
+ explode, implode
+
+ sprintf
+
+ Heredoc / Nowdoc
+
+ Regular Expressions (preg_match, preg_replace)
+
+🌐 7. Superglobals & Forms
+
+ $_GET, $_POST
+
+ $_REQUEST
+
+ $_SERVER, $_ENV
+
+ $_FILES (file upload)
+
+ $_SESSION
+
+ $_COOKIE
+
+ Form validation
+
+ Sanitization (htmlspecialchars, filter_var)
+
+📁 8. File System
+
+ Read files (fopen, fread, file_get_contents)
+
+ Write files (fwrite, file_put_contents)
+
+ File info (file_exists, filesize)
+
+ Directory handling (mkdir, scandir)
+
+ File uploads
+
+🍪 9. Sessions & Cookies
+
+ session_start
+
+ Store / retrieve session data
+
+ Destroy session
+
+ Set / read cookies
+
+ Secure session handling
+
+⚠️ 10. Error Handling & Debugging
+
+ Error types (Notice, Warning, Fatal)
+
+ try-catch-finally
+
+ Custom exceptions
+
+ Error reporting
+
+ Logging errors
+
+ Debug tools:
+
+ var_dump
+
+ print_r
+
+📅 11. Date, Time & Math
+
+ date(), time()
+
+ strtotime()
+
+ DateTime class
+
+ Timezones
+
+ Math functions (round, ceil, floor)
+
+ Random numbers
+
+🔄 12. Data Formats
+
+ JSON (json_encode, json_decode)
+
+ CSV handling
+
+ XML parsing
+
+ Serialize / unserialize
+
+🧱 13. Object-Oriented PHP (Core Strength)
+
+ Class & Object
+
+ Properties & Methods
+
+ Constructor / Destructor
+
+ Access modifiers
+
+ Inheritance
+
+ Method overriding
+
+ Interfaces
+
+ Abstract classes
+
+ Traits
+
+ Static methods / properties
+
+ Magic methods (__construct, __get, etc.)
+
+📦 14. Namespaces & Autoloading
+
+ Namespace usage
+
+ require, include
+
+ PSR-4 autoloading concept
+
+🗄️ 15. Database (PHP + MySQL)
+
+ PDO connection
+
+ MySQLi
+
+ Prepared statements
+
+ CRUD operations
+
+ Fetch data (fetch, fetchAll)
+
+ Transactions
+
+ SQL Injection prevention
+
+🔐 16. Security (Very Important)
+
+ XSS prevention (htmlspecialchars)
+
+ SQL Injection prevention
+
+ Password hashing (password_hash, password_verify)
+
+ CSRF protection
+
+ Input validation (filter_var)
+
+ Secure cookies & sessions
+
+🌍 17. HTTP & API
+
+ HTTP basics
+
+ Headers handling
+
+ cURL (GET, POST)
+
+ API request/response handling
+
+ JSON API building
+
+📦 18. Composer (Dependency Manager)
+
+ Install Composer
+
+ composer.json
+
+ Install packages
+
+ Autoloading
+
+ Update/remove packages
+
+🧪 19. Testing
+
+ PHPUnit basics
+
+ Writing unit tests
+
+ Assertions
+
+ Mocking basics
+
+⚙️ 20. PHP Configuration & Performance
+
+ php.ini
+
+ PHP CLI (php -v)
+
+ Xdebug
+
+ OPcache
+
+ PHP-FPM basics
+
+🚀 21. Advanced PHP (Master Level)
+
+ Closures & advanced functions
+
+ Generators (yield)
+
+ Match expression
+
+ Nullsafe operator (?->)
+
+ Named arguments
+
+ Union types
+
+ Enums (PHP 8.1+)
+
+ Fibers (advanced)
+
+ Readonly properties

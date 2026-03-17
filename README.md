@@ -4244,322 +4244,221 @@ test('button increments counter', () => {
 - [ ] Test on multiple screen sizes and OS versions before release
 - [ ] Provide a rollback plan for critical OTA updates
 
-🧩 1. PHP Fundamentals (Strong Base)
 
- PHP কীভাবে কাজ করে (request → response)
+## 🐘 PHP (Core to Advanced Backend)
+
+> PHP is a server-side scripting language designed for web development, known for its request-based execution model, deep server integration, and simplicity in building dynamic web applications.
 
- PHP tags (<?php ?>)
+| Topics                                                                     | Overview                                                                 |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [01. Core Architecture & Runtime](#01-core-architecture--runtime)           | Request lifecycle, stateless model, output buffering                     |
+| [02. Language Fundamentals](#02-language-fundamentals)                      | Syntax, variables, types, operators, control flow                        |
+| [03. Superglobals & Request Handling](#03-superglobals--request-handling)   | $_GET, $_POST, $_SERVER, request lifecycle                              |
+| [04. File System & Uploads](#04-file-system--uploads)                       | File handling, uploads, directory management                             |
+| [05. Sessions & State Management](#05-sessions--state-management)           | Sessions, cookies, state persistence                                     |
+| [06. Database Integration](#06-database-integration)                        | PDO, MySQLi, prepared statements, transactions                           |
+| [07. Security & Input Handling](#07-security--input-handling)               | XSS, CSRF, validation, sanitization                                      |
+| [08. Output & Rendering](#08-output--rendering)                             | Echo, templates, output buffering                                        |
+| [09. Error Handling & Debugging](#09-error-handling--debugging)             | Error types, logging, debugging tools                                    |
+| [10. Object-Oriented PHP](#10-object-oriented-php)                          | OOP, traits, interfaces, namespaces                                      |
+| [11. Data Formats & APIs](#11-data-formats--apis)                           | JSON, XML, REST API                                                      |
+| [12. HTTP, cURL & External Services](#12-http-curl--external-services)      | API calls, headers, integrations                                         |
+| [13. Composer & Autoloading](#13-composer--autoloading)                     | Dependency management, PSR-4                                             |
+| [14. PHP Standards (PSR)](#14-php-standards-psr)                            | Coding standards, interoperability                                       |
+| [15. Performance & Configuration](#15-performance--configuration)           | php.ini, OPcache, PHP-FPM                                                |
+| [16. Advanced PHP Features](#16-advanced-php-features)                      | Generators, enums, fibers, modern PHP                                    |
+| [17. Testing Strategy](#17-testing-strategy)                                | PHPUnit, integration testing                                             |
+| [18. Architecture & Patterns](#18-architecture--patterns)                   | MVC, clean architecture, modular design                                  |
 
- Variables ($var)
+---
 
- Constants (define, const)
+### 01. Core Architecture & Runtime
 
- Data Types (string, int, float, bool, array, null)
+- [ ] Request-response lifecycle (per-request execution)
+- [ ] Stateless nature of PHP
+- [ ] Server execution model (Apache/Nginx + PHP-FPM)
+- [ ] Output buffering (`ob_start`, `ob_end_flush`)
+- [ ] Build vs runtime concept
+- [ ] PHP execution vs Node.js model
+
+---
+
+### 02. Language Fundamentals
 
- Type juggling & type casting
+- [ ] PHP syntax basics
+- [ ] Variables & constants
+- [ ] Data types & type juggling
+- [ ] Operators (arithmetic, logical, comparison)
+- [ ] Control structures (`if`, `switch`, loops)
+- [ ] Functions (closures, arrow functions)
 
- Echo / Print
+---
 
- Comments
+### 03. Superglobals & Request Handling
 
- Variable scope (local, global, static)
+- [ ] `$_GET`, `$_POST`
+- [ ] `$_REQUEST`
+- [ ] `$_SERVER`, `$_ENV`
+- [ ] `$_FILES`
+- [ ] Request data lifecycle
+- [ ] Input validation (`filter_input`, `filter_var`)
 
-➗ 2. Operators
+---
 
- Arithmetic (+ - * / %)
+### 04. File System & Uploads
 
- Assignment (= += -=)
+- [ ] File reading (`file_get_contents`, `fopen`)
+- [ ] File writing (`file_put_contents`, `fwrite`)
+- [ ] File uploads (`$_FILES`)
+- [ ] Moving uploaded files
+- [ ] Directory management (`mkdir`, `scandir`)
 
- Comparison (== === != !==)
+---
 
- Logical (&& || !)
+### 05. Sessions & State Management
 
- String operator (.)
+- [ ] `session_start()`
+- [ ] Session storage & lifecycle
+- [ ] Session security
+- [ ] Cookies (set, read, secure flags)
+- [ ] Stateless vs stateful handling
 
- Null coalescing (??)
+---
 
- Ternary operator (?:)
+### 06. Database Integration
 
-🔁 3. Control Flow
+- [ ] PDO connection
+- [ ] MySQLi usage
+- [ ] Prepared statements
+- [ ] CRUD operations
+- [ ] Transactions
+- [ ] Fetching data (`fetch`, `fetchAll`)
 
- if / else / elseif
+---
 
- switch
+### 07. Security & Input Handling
 
- match (PHP 8+)
+- [ ] XSS prevention (`htmlspecialchars`)
+- [ ] SQL Injection prevention
+- [ ] CSRF protection basics
+- [ ] Input validation & sanitization
+- [ ] Password hashing (`password_hash`, `password_verify`)
+- [ ] Secure session handling
 
- while / do-while
+---
 
- for loop
+### 08. Output & Rendering
 
- foreach loop
+- [ ] `echo`, `print`
+- [ ] Mixing PHP with HTML
+- [ ] Template-style rendering
+- [ ] Output buffering
+- [ ] Response handling
 
- break / continue
+---
 
-🧠 4. Functions
+### 09. Error Handling & Debugging
 
- Function declaration
+- [ ] Error types (Notice, Warning, Fatal)
+- [ ] `try-catch-finally`
+- [ ] Custom exceptions
+- [ ] Error reporting configuration
+- [ ] Logging errors
+- [ ] Debugging (`var_dump`, `print_r`)
 
- Parameters & arguments
+---
 
- Default parameters
+### 10. Object-Oriented PHP
 
- Return values
+- [ ] Classes & objects
+- [ ] Properties & methods
+- [ ] Constructor / destructor
+- [ ] Access modifiers
+- [ ] Inheritance & polymorphism
+- [ ] Interfaces & abstract classes
+- [ ] Traits
+- [ ] Static methods & properties
+- [ ] Magic methods
+- [ ] Namespaces
 
- Variable functions
+---
 
- Anonymous functions (closures)
+### 11. Data Formats & APIs
 
- Arrow functions (fn())
+- [ ] JSON (`json_encode`, `json_decode`)
+- [ ] XML parsing
+- [ ] CSV handling
+- [ ] Building REST APIs
+- [ ] API response structure
 
- Recursion
+---
 
-📚 5. Arrays (Very Important)
+### 12. HTTP, cURL & External Services
 
- Indexed array
+- [ ] HTTP headers handling
+- [ ] cURL GET/POST requests
+- [ ] API integration
+- [ ] Handling external services
 
- Associative array
+---
 
- Multidimensional array
+### 13. Composer & Autoloading
 
- Array destructuring
+- [ ] Install Composer
+- [ ] `composer.json`
+- [ ] Install/update packages
+- [ ] PSR-4 autoloading
+- [ ] Dependency management
 
- Array functions:
+---
 
- array_map
+### 14. PHP Standards (PSR)
 
- array_filter
+- [ ] PSR-1 (basic standard)
+- [ ] PSR-12 (coding style)
+- [ ] PSR-4 (autoloading)
+- [ ] PSR ecosystem understanding
 
- array_reduce
+---
 
- sort, asort, ksort
+### 15. Performance & Configuration
 
- Spread operator (...)
+- [ ] `php.ini` basics
+- [ ] PHP CLI usage
+- [ ] OPcache
+- [ ] PHP-FPM
+- [ ] Performance optimization basics
 
-🔤 6. Strings
+---
 
- String functions (strlen, str_replace, substr)
+### 16. Advanced PHP Features
 
- Concatenation (.)
+- [ ] Closures & advanced functions
+- [ ] Generators (`yield`)
+- [ ] Match expression
+- [ ] Nullsafe operator (`?->`)
+- [ ] Named arguments
+- [ ] Union types
+- [ ] Enums (PHP 8+)
+- [ ] Fibers (advanced)
 
- Interpolation
+---
 
- explode, implode
+### 17. Testing Strategy
 
- sprintf
+- [ ] PHPUnit setup
+- [ ] Unit testing
+- [ ] Integration testing
+- [ ] Mocking basics
 
- Heredoc / Nowdoc
+---
 
- Regular Expressions (preg_match, preg_replace)
+### 18. Architecture & Patterns
 
-🌐 7. Superglobals & Forms
+- [ ] MVC pattern (manual implementation)
+- [ ] Folder structure design
+- [ ] Separation of concerns
+- [ ] Basic design patterns (Singleton, Factory)
+- [ ] Clean code principles
 
- $_GET, $_POST
-
- $_REQUEST
-
- $_SERVER, $_ENV
-
- $_FILES (file upload)
-
- $_SESSION
-
- $_COOKIE
-
- Form validation
-
- Sanitization (htmlspecialchars, filter_var)
-
-📁 8. File System
-
- Read files (fopen, fread, file_get_contents)
-
- Write files (fwrite, file_put_contents)
-
- File info (file_exists, filesize)
-
- Directory handling (mkdir, scandir)
-
- File uploads
-
-🍪 9. Sessions & Cookies
-
- session_start
-
- Store / retrieve session data
-
- Destroy session
-
- Set / read cookies
-
- Secure session handling
-
-⚠️ 10. Error Handling & Debugging
-
- Error types (Notice, Warning, Fatal)
-
- try-catch-finally
-
- Custom exceptions
-
- Error reporting
-
- Logging errors
-
- Debug tools:
-
- var_dump
-
- print_r
-
-📅 11. Date, Time & Math
-
- date(), time()
-
- strtotime()
-
- DateTime class
-
- Timezones
-
- Math functions (round, ceil, floor)
-
- Random numbers
-
-🔄 12. Data Formats
-
- JSON (json_encode, json_decode)
-
- CSV handling
-
- XML parsing
-
- Serialize / unserialize
-
-🧱 13. Object-Oriented PHP (Core Strength)
-
- Class & Object
-
- Properties & Methods
-
- Constructor / Destructor
-
- Access modifiers
-
- Inheritance
-
- Method overriding
-
- Interfaces
-
- Abstract classes
-
- Traits
-
- Static methods / properties
-
- Magic methods (__construct, __get, etc.)
-
-📦 14. Namespaces & Autoloading
-
- Namespace usage
-
- require, include
-
- PSR-4 autoloading concept
-
-🗄️ 15. Database (PHP + MySQL)
-
- PDO connection
-
- MySQLi
-
- Prepared statements
-
- CRUD operations
-
- Fetch data (fetch, fetchAll)
-
- Transactions
-
- SQL Injection prevention
-
-🔐 16. Security (Very Important)
-
- XSS prevention (htmlspecialchars)
-
- SQL Injection prevention
-
- Password hashing (password_hash, password_verify)
-
- CSRF protection
-
- Input validation (filter_var)
-
- Secure cookies & sessions
-
-🌍 17. HTTP & API
-
- HTTP basics
-
- Headers handling
-
- cURL (GET, POST)
-
- API request/response handling
-
- JSON API building
-
-📦 18. Composer (Dependency Manager)
-
- Install Composer
-
- composer.json
-
- Install packages
-
- Autoloading
-
- Update/remove packages
-
-🧪 19. Testing
-
- PHPUnit basics
-
- Writing unit tests
-
- Assertions
-
- Mocking basics
-
-⚙️ 20. PHP Configuration & Performance
-
- php.ini
-
- PHP CLI (php -v)
-
- Xdebug
-
- OPcache
-
- PHP-FPM basics
-
-🚀 21. Advanced PHP (Master Level)
-
- Closures & advanced functions
-
- Generators (yield)
-
- Match expression
-
- Nullsafe operator (?->)
-
- Named arguments
-
- Union types
-
- Enums (PHP 8.1+)
-
- Fibers (advanced)
-
- Readonly properties
+---

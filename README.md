@@ -1259,7 +1259,7 @@ A module is just a file. Every .js file in ES Modules is its own isolated unit w
 
 </details>
 
-- 
+-
 - CJS vs ESM differences
 - Module resolution algorithm
 - node_modules structure
@@ -4244,38 +4244,47 @@ test('button increments counter', () => {
 - [ ] Test on multiple screen sizes and OS versions before release
 - [ ] Provide a rollback plan for critical OTA updates
 
-
 ## 🐘 PHP (Core to Advanced Backend)
 
 > PHP is a server-side scripting language designed for web development, known for its request-based execution model, deep server integration, and simplicity in building dynamic web applications.
 
-| Topics                                                                     | Overview                                                                 |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [01. Core Architecture & Runtime](#01-core-architecture--runtime)           | Request lifecycle, stateless model, output buffering                     |
-| [02. Language Fundamentals](#02-language-fundamentals)                      | Syntax, variables, types, operators, control flow                        |
-| [03. Superglobals & Request Handling](#03-superglobals--request-handling)   | $_GET, $_POST, $_SERVER, request lifecycle                              |
-| [04. File System & Uploads](#04-file-system--uploads)                       | File handling, uploads, directory management                             |
-| [05. Sessions & State Management](#05-sessions--state-management)           | Sessions, cookies, state persistence                                     |
-| [06. Database Integration](#06-database-integration)                        | PDO, MySQLi, prepared statements, transactions                           |
-| [07. Security & Input Handling](#07-security--input-handling)               | XSS, CSRF, validation, sanitization                                      |
-| [08. Output & Rendering](#08-output--rendering)                             | Echo, templates, output buffering                                        |
-| [09. Error Handling & Debugging](#09-error-handling--debugging)             | Error types, logging, debugging tools                                    |
-| [10. Object-Oriented PHP](#10-object-oriented-php)                          | OOP, traits, interfaces, namespaces                                      |
-| [11. Data Formats & APIs](#11-data-formats--apis)                           | JSON, XML, REST API                                                      |
-| [12. HTTP, cURL & External Services](#12-http-curl--external-services)      | API calls, headers, integrations                                         |
-| [13. Composer & Autoloading](#13-composer--autoloading)                     | Dependency management, PSR-4                                             |
-| [14. PHP Standards (PSR)](#14-php-standards-psr)                            | Coding standards, interoperability                                       |
-| [15. Performance & Configuration](#15-performance--configuration)           | php.ini, OPcache, PHP-FPM                                                |
-| [16. Advanced PHP Features](#16-advanced-php-features)                      | Generators, enums, fibers, modern PHP                                    |
-| [17. Testing Strategy](#17-testing-strategy)                                | PHPUnit, integration testing                                             |
-| [18. Architecture & Patterns](#18-architecture--patterns)                   | MVC, clean architecture, modular design                                  |
+| Topics                                                                    | Overview                                             |
+| ------------------------------------------------------------------------- | ---------------------------------------------------- |
+| [01. Core Architecture & Runtime](#01-core-architecture--runtime)         | Request lifecycle, stateless model, output buffering |
+| [02. Language Fundamentals](#02-language-fundamentals)                    | Syntax, variables, types, operators, control flow    |
+| [03. Superglobals & Request Handling](#03-superglobals--request-handling) | $\_GET, $\_POST, $\_SERVER, request lifecycle        |
+| [04. File System & Uploads](#04-file-system--uploads)                     | File handling, uploads, directory management         |
+| [05. Sessions & State Management](#05-sessions--state-management)         | Sessions, cookies, state persistence                 |
+| [06. Database Integration](#06-database-integration)                      | PDO, MySQLi, prepared statements, transactions       |
+| [07. Security & Input Handling](#07-security--input-handling)             | XSS, CSRF, validation, sanitization                  |
+| [08. Output & Rendering](#08-output--rendering)                           | Echo, templates, output buffering                    |
+| [09. Error Handling & Debugging](#09-error-handling--debugging)           | Error types, logging, debugging tools                |
+| [10. Object-Oriented PHP](#10-object-oriented-php)                        | OOP, traits, interfaces, namespaces                  |
+| [11. Data Formats & APIs](#11-data-formats--apis)                         | JSON, XML, REST API                                  |
+| [12. HTTP, cURL & External Services](#12-http-curl--external-services)    | API calls, headers, integrations                     |
+| [13. Composer & Autoloading](#13-composer--autoloading)                   | Dependency management, PSR-4                         |
+| [14. PHP Standards (PSR)](#14-php-standards-psr)                          | Coding standards, interoperability                   |
+| [15. Performance & Configuration](#15-performance--configuration)         | php.ini, OPcache, PHP-FPM                            |
+| [16. Advanced PHP Features](#16-advanced-php-features)                    | Generators, enums, fibers, modern PHP                |
+| [17. Testing Strategy](#17-testing-strategy)                              | PHPUnit, integration testing                         |
+| [18. Architecture & Patterns](#18-architecture--patterns)                 | MVC, clean architecture, modular design              |
 
 ---
 
 ### 01. Core Architecture & Runtime
 
 - [ ] Request-response lifecycle (per-request execution)
+
+In PHP, every HTTP request triggers a complete, fresh execution of your script from top to bottom. When the response is sent, PHP tears everything down — no memory, no variables, no state persists to the next request. This is fundamentally different from Node.js or Java servers that stay "alive" between requests.
+
+![alt text](req-res.png)
+
 - [ ] Stateless nature of PHP
+      PHP is inherently stateless — each HTTP request is treated as completely independent. When a request finishes, PHP tears down everything: variables, objects, database connections, and all runtime data vanish.
+
+  **Why PHP Works This Way**
+  PHP was designed around the **shared-nothing architecture** — each request is a self-contained unit. This maps naturally to how HTTP itself works (HTTP is also stateless by design).
+
 - [ ] Server execution model (Apache/Nginx + PHP-FPM)
 - [ ] Output buffering (`ob_start`, `ob_end_flush`)
 - [ ] Build vs runtime concept

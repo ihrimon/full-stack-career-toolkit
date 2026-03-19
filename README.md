@@ -4287,6 +4287,21 @@ In PHP, every HTTP request triggers a complete, fresh execution of your script f
 
 - [ ] Server execution model (Apache/Nginx + PHP-FPM)
 - [ ] Output buffering (`ob_start`, `ob_end_flush`)
+      Output buffering lets you capture output (HTML, text, etc.) before it's sent to the browser — giving you full control over when and how content is delivered.
+
+        By default, PHP sends output to the browser immediately. With output buffering, output is held in memory (the "buffer") until you decide to flush or discard it.
+**Core Functions**
+
+        | Function | Description |
+
+  |---|---|
+  | `ob_start()` | Starts output buffering |
+  | `ob_get_contents()` | Gets current buffer contents (without clearing) |
+  | `ob_end_flush()` | Sends buffer to browser & turns buffering off |
+  | `ob_end_clean()` | Discards buffer & turns buffering off |
+  | `ob_flush()` | Sends buffer but keeps buffering on |
+  | `ob_get_clean()` | Gets contents + clears + turns buffering off |
+
 - [ ] Build vs runtime concept
 - [ ] PHP execution vs Node.js model
 

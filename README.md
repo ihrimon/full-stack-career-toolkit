@@ -1259,7 +1259,7 @@ const { pipeline } = require('stream/promises');
 async function streamFiles() {
   await pipeline(
     fs.createReadStream('large.txt'),
-    fs.createWriteStream('copy.txt')
+    fs.createWriteStream('copy.txt'),
   );
   console.log('Streamed');
 }
@@ -1274,6 +1274,183 @@ streamFiles();
 - path.resolve
 - path.basename
 - path.extname
+
+<details>
+<summary><b >Path</b></summary>
+
+The `path` module provides utilities for working with file and directory paths — safely and cross-platform.
+
+**1. path.join()**
+Joins multiple path segments into one clean path.
+
+```js
+const path = require('path');
+const fs = require('fs').promises;
+
+const BASE_DIR = path.join(__dirname, 'data');
+const CONFIG_FILE = path.join(__dirname, 'config', 'app.json');
+const LOG_FILE = path.join(__dirname, 'logs', 'app.log');
+const UPLOAD_DIR = path.join(__dirname, 'public', 'uploads');
+
+async function setup() {
+  // Use joined paths safely — works on Windows AND Linux
+  await fs.mkdir(BASE_DIR, { recursive: true });
+  await fs.mkdir(UPLOAD_DIR, { recursive: true });
+
+  await fs.writeFile(LOG_FILE, 'App started\n');
+  console.log('Paths set up ✅');
+
+  console.log('Base:   ', BASE_DIR);
+  console.log('Config: ', CONFIG_FILE);
+  console.log('Log:    ', LOG_FILE);
+}
+
+setup();
+```
+
+```
+Output:
+Paths set up ✅
+Base:    /home/user/project/data
+Config:  /home/user/project/config/app.json
+Log:     /home/user/project/logs/app.log
+```
+
+**2. path.resolve()**
+Resolves a sequence of paths into an absolute path — starting from the right.
+
+```js
+const path = require('path');
+const http = require('http');
+const fs = require('fs');
+
+const PUBLIC_DIR = path.resolve(__dirname, 'public');
+
+const server = http.createServer((req, res) => {
+  // Build safe absolute path from request URL
+  const filePath = path.resolve(PUBLIC_DIR, '.' + req.url);
+
+  // Security check — prevent path traversal attacks
+  if (!filePath.startsWith(PUBLIC_DIR)) {
+    res.writeHead(403);
+    res.end('Forbidden');
+    return;
+  }
+
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      res.writeHead(404);
+      res.end('Not found');
+      return;
+    }
+    res.writeHead(200);
+    res.end(data);
+  });
+});
+
+server.listen(3000);
+```
+
+```
+Request: GET /index.html
+filePath: /home/user/project/public/index.html  ✅
+
+Request: GET /../../etc/passwd        (attack attempt!)
+filePath: /etc/passwd                 ❌ blocked — not inside PUBLIC_DIR
+```
+
+**3. path.basename()**
+Returns the last part of a path — the filename.
+
+```js
+const path = require('path');
+const fs = require('fs').promises;
+
+async function handleUpload(filePath) {
+  const filename = path.basename(filePath); // "photo.jpg"
+  const nameOnly = path.basename(filePath, path.extname(filePath)); // "photo"
+  const ext = path.extname(filePath); // ".jpg"
+
+  // Sanitize filename (remove spaces, special chars)
+  const safeFilename = filename
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9.\-]/g, '');
+
+  // Build destination path
+  const destDir = path.join(__dirname, 'uploads');
+  const destPath = path.join(destDir, safeFilename);
+
+  await fs.mkdir(destDir, { recursive: true });
+  await fs.copyFile(filePath, destPath);
+
+  console.log(`Original:  ${filename}`);
+  console.log(`Safe name: ${safeFilename}`);
+  console.log(`Saved to:  ${destPath}`);
+}
+
+handleUpload('/tmp/My Photo File.jpg');
+```
+
+```
+Output:
+Original:  My Photo File.jpg
+Safe name: my-photo-file.jpg
+Saved to:  /home/user/project/uploads/my-photo-file.jpg
+```
+
+**4. path.extname()**
+Returns the file extension including the dot.
+
+```js
+const path = require("path");
+const fs   = require("fs").promises;
+
+const ALLOWED_IMAGES = [".jpg", ".jpeg", ".png", ".gif", ".webp"];
+const ALLOWED_DOCS   = [".pdf", ".doc", ".docx", ".txt", ".md"];
+const MAX_SIZE_MB    = 5;
+
+async function validateFile(filePath) {
+  const ext      = path.extname(filePath).toLowerCase();
+  const filename = path.basename(filePath);
+  const stat     = await fs.stat(filePath);
+  const sizeMB   = (stat.size / (1024 * 1024)).toFixed(2);
+
+  console.log(`File:      ${filename}`);
+  console.log(`Extension: ${ext}`);
+  console.log(`Size:      ${sizeMB} MB`);
+
+  // Type check
+  if (ALLOWED_IMAGES.includes(ext)) {
+    console.log("Type: ✅ Image — allowed");
+  } else if (ALLOWED_DOCS.includes(ext)) {
+    console.log("Type: ✅ Document — allowed");
+  } else {
+    console.log(`Type: ❌ ${ext} not allowed`);
+    return false;
+  }
+
+  // Size check
+  if (parseFloat(sizeMB) > MAX_SIZE_MB) {
+    console.log(`Size: ❌ Exceeds ${MAX_SIZE_MB}MB limit`);
+    return false;
+  }
+
+  console.log("Validation: ✅ Passed");
+  return true;
+}
+
+validateFile("/uploads/profile.png");
+```
+```
+File:      profile.png
+Extension: .png
+Size:      2.34 MB
+Type: ✅ Image — allowed
+Validation: ✅ Passed
+```
+
+</details>
 
 #### HTTP
 

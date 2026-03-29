@@ -1154,13 +1154,119 @@ Network request arrives
 
 #### File System (fs)
 
-- readFile / readFileSync
-- writeFile / writeFileSync
-- appendFile
-- fs.promises
-- Directory operations
-- File watching
-- File streams
+<details>
+<summary><b >File System (fs)</b></summary>
+
+Node.js core modules like `fs` (File System) provide built-in functionality for file and directory operations without external dependencies. The fs module supports both synchronous (blocking) and asynchronous (non-blocking) methods, with modern promise-based APIs for cleaner async code.
+
+**readFile / readFileSync**
+`readFile` reads file content asynchronously using callbacks, while `readFileSync` does so synchronously, blocking execution until complete. Use async for better performance in I/O-heavy apps.
+
+```js
+const fs = require('fs');
+
+// Async readFile (callback style)
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) throw err;
+  console.log(data);
+});
+
+// Sync readFileSync
+const data = fs.readFileSync('example.txt', 'utf8');
+console.log(data);
+```
+
+**writeFile / writeFileSync**
+writeFile overwrites or creates a file asynchronously; writeFileSync does the same synchronously. Both accept encoding like 'utf8' for text files.
+
+```js
+// Async writeFile
+fs.writeFile('output.txt', 'Hello, Node.js!', 'utf8', (err) => {
+  if (err) throw err;
+  console.log('File written');
+});
+
+// Sync writeFileSync
+fs.writeFileSync('output.txt', 'Hello, Node.js!');
+```
+
+**appendFile**
+`appendFile` adds content to a file's end asynchronously (creates if missing); there's also appendFileSync. Ideal for logs without overwriting.
+
+```js
+fs.appendFile('log.txt', 'New entry\n', 'utf8', (err) => {
+  if (err) throw err;
+  console.log('Appended');
+});
+```
+
+**fs.promises - Modern Async/Await Style**
+fs.promises provides promise-based versions of async methods, enabling async/await for readable code (Node.js 10+).
+
+```js
+const fs = require('fs').promises;
+
+async function example() {
+  try {
+    const data = await fs.readFile('example.txt', 'utf8');
+    await fs.writeFile('copy.txt', data);
+    console.log('Done');
+  } catch (err) {
+    console.error(err);
+  }
+}
+example();
+```
+
+**Directory Operations**
+Methods like `mkdir/mkdirSync` create directories, `readdir/readdirSync` list contents, `rmdir/rmdirSync` (or rm in newer Node) remove them.
+
+```js
+const fs = require('fs').promises;
+
+// Create directory
+await fs.mkdir('newdir', { recursive: true });
+
+// List contents
+const files = await fs.readdir('./');
+
+// Remove directory (Node 14.14+)
+await fs.rm('newdir', { recursive: true, force: true });
+```
+
+**File Watching**
+`watch` or `watchFile` monitors file changes, calling a listener on modify/add/rename/delete. Use fs.promises.watch for async.
+
+```js
+fs.watch('example.txt', (eventType, filename) => {
+  console.log(`File ${filename} changed: ${eventType}`);
+});
+
+// Or with fs.promises
+const watcher = fs.promises.watch('example.txt');
+for await (const event of watcher) {
+  console.log(event);
+}
+```
+
+**File Streams**
+Streams handle large files efficiently via chunks: `createReadStream` for reading, `createWriteStream` for writing. Use pipeline for safe chaining.
+
+```js
+const fs = require('fs');
+const { pipeline } = require('stream/promises');
+
+async function streamFiles() {
+  await pipeline(
+    fs.createReadStream('large.txt'),
+    fs.createWriteStream('copy.txt')
+  );
+  console.log('Streamed');
+}
+streamFiles();
+```
+
+</details>
 
 #### Path
 
@@ -2865,11 +2971,44 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
   - [📑 Node.js](#-nodejs)
     - [01. Introduction \& Global Environment](#01-introduction--global-environment)
       - [`Core Basics`](#core-basics)
-      - [Global Environment](#global-environment)
+      - [`Global Environment`](#global-environment)
     - [02. Node.js Architecture \& Event Loop](#02-nodejs-architecture--event-loop)
       - [1. What is an Event?](#1-what-is-an-event)
+- [Redis](#redis)
+  - [Table of Contents](#table-of-contents)
+  - [01. Installation \& Setup](#01-installation--setup)
+  - [02. Configuration (`redis.conf`)](#02-configuration-redisconf)
+    - [🔹 Network](#-network)
+    - [🔹 Memory](#-memory)
+    - [🔹 Logging](#-logging)
+  - [03. Persistence](#03-persistence)
+    - [🔹 RDB (Snapshot)](#-rdb-snapshot)
+    - [🔹 AOF (Append Only File)](#-aof-append-only-file)
+  - [04. Security](#04-security)
+  - [05. Data Structures](#05-data-structures)
+    - [🔹 String](#-string)
+    - [🔹 List](#-list)
+    - [🔹 Hash](#-hash)
+    - [🔹 Set](#-set)
+    - [🔹 Sorted Set](#-sorted-set)
+    - [🔹 Bitmap \& HyperLogLog](#-bitmap--hyperloglog)
+  - [06. Core Commands](#06-core-commands)
+    - [🔹 Key Management](#-key-management)
+    - [🔹 Transactions](#-transactions)
+    - [🔹 Scripting](#-scripting)
+  - [07. Caching Patterns](#07-caching-patterns)
+  - [08. Performance](#08-performance)
+  - [09. Pub/Sub \& Streams](#09-pubsub--streams)
+    - [🔹 Pub/Sub](#-pubsub)
+    - [🔹 Streams (Redis 5.0+)](#-streams-redis-50)
+  - [10. Monitoring](#10-monitoring)
+  - [11. High Availability](#11-high-availability)
+    - [🔹 Replication](#-replication)
+    - [🔹 Sentinel](#-sentinel)
+    - [🔹 Cluster](#-cluster)
+  - [12. Production Best Practices](#12-production-best-practices)
   - [What Counts as I/O?](#what-counts-as-io)
-    - [Event Loop Deep Dive](#event-loop-deep-dive)
+      - [Event Loop Deep Dive](#event-loop-deep-dive)
     - [03. Core Modules (Built-in Modules)](#03-core-modules-built-in-modules)
       - [File System (fs)](#file-system-fs)
       - [Path](#path)
@@ -2921,6 +3060,135 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
     - [12. Performance Optimization](#12-performance-optimization)
     - [13. Security in JavaScript](#13-security-in-javascript)
     - [14. Modern JavaScript (ES6+ to ES2025)](#14-modern-javascript-es6-to-es2025)
+- [Redis Checklist](#redis-checklist)
+  - [Table of Contents](#table-of-contents-1)
+  - [01. Installation \& Setup](#01-installation--setup-1)
+  - [02. Configuration (`redis.conf`)](#02-configuration-redisconf-1)
+    - [🔹 Network](#-network-1)
+    - [🔹 Memory](#-memory-1)
+    - [🔹 Logging](#-logging-1)
+  - [03. Persistence](#03-persistence-1)
+    - [🔹 RDB (Snapshot)](#-rdb-snapshot-1)
+    - [🔹 AOF (Append Only File)](#-aof-append-only-file-1)
+  - [04. Security](#04-security-1)
+  - [05. Data Structures](#05-data-structures-1)
+    - [🔹 String](#-string-1)
+    - [🔹 List](#-list-1)
+    - [🔹 Hash](#-hash-1)
+    - [🔹 Set](#-set-1)
+    - [🔹 Sorted Set](#-sorted-set-1)
+    - [🔹 Bitmap \& HyperLogLog](#-bitmap--hyperloglog-1)
+  - [06. Core Commands](#06-core-commands-1)
+    - [🔹 Key Management](#-key-management-1)
+    - [🔹 Transactions](#-transactions-1)
+    - [🔹 Scripting](#-scripting-1)
+  - [07. Caching Patterns](#07-caching-patterns-1)
+  - [08. Performance](#08-performance-1)
+  - [09. Pub/Sub \& Streams](#09-pubsub--streams-1)
+    - [🔹 Pub/Sub](#-pubsub-1)
+    - [🔹 Streams (Redis 5.0+)](#-streams-redis-50-1)
+  - [10. Monitoring](#10-monitoring-1)
+  - [11. High Availability](#11-high-availability-1)
+    - [🔹 Replication](#-replication-1)
+    - [🔹 Sentinel](#-sentinel-1)
+    - [🔹 Cluster](#-cluster-1)
+  - [12. Production Best Practices](#12-production-best-practices-1)
+- [Socket.io Checklist](#socketio-checklist)
+  - [Table of Contents](#table-of-contents-2)
+  - [01. Installation \& Setup](#01-installation--setup-2)
+  - [02. Core Concepts](#02-core-concepts)
+  - [03. Server Configuration](#03-server-configuration)
+    - [🔹 CORS](#-cors)
+    - [🔹 Transport](#-transport)
+    - [🔹 Ping \& Timeout](#-ping--timeout)
+    - [🔹 Adapter](#-adapter)
+  - [04. Client Configuration](#04-client-configuration)
+  - [05. Events \& Communication](#05-events--communication)
+    - [🔹 Basic Emit](#-basic-emit)
+    - [🔹 Acknowledgements](#-acknowledgements)
+    - [🔹 Event Patterns](#-event-patterns)
+  - [06. Namespaces](#06-namespaces)
+  - [07. Rooms](#07-rooms)
+  - [08. Authentication \& Authorization](#08-authentication--authorization)
+  - [09. Scaling \& Redis Adapter](#09-scaling--redis-adapter)
+  - [10. Error Handling](#10-error-handling)
+  - [11. Performance Optimization](#11-performance-optimization)
+  - [12. Monitoring \& Debugging](#12-monitoring--debugging)
+  - [13. Security](#13-security)
+  - [14. Testing](#14-testing)
+    - [🔹 Unit Testing](#-unit-testing)
+    - [🔹 Integration Testing](#-integration-testing)
+    - [🔹 E2E Testing](#-e2e-testing)
+  - [15. Production Best Practices](#15-production-best-practices)
+- [React Native Checklist](#react-native-checklist)
+  - [Table of Contents](#table-of-contents-3)
+  - [01. Installation \& Setup](#01-installation--setup-3)
+  - [02. Core Concepts](#02-core-concepts-1)
+  - [03. UI \& Styling](#03-ui--styling)
+    - [🔹 StyleSheet](#-stylesheet)
+    - [🔹 Flexbox](#-flexbox)
+    - [🔹 Dimensions \& Responsive Design](#-dimensions--responsive-design)
+    - [🔹 Theming \& Dark Mode](#-theming--dark-mode)
+    - [🔹 Custom Fonts \& Icons](#-custom-fonts--icons)
+  - [04. Navigation](#04-navigation)
+    - [🔹 React Navigation Setup](#-react-navigation-setup)
+    - [🔹 Navigator Types](#-navigator-types)
+    - [🔹 Navigation Patterns](#-navigation-patterns)
+    - [🔹 Deep Linking](#-deep-linking)
+  - [05. State Management](#05-state-management)
+    - [🔹 Local State](#-local-state)
+    - [🔹 Global State](#-global-state)
+    - [🔹 Server State](#-server-state)
+    - [🔹 Persistent State](#-persistent-state)
+  - [06. Data Fetching \& API](#06-data-fetching--api)
+  - [07. Native Device Features](#07-native-device-features)
+    - [🔹 Permissions](#-permissions)
+    - [🔹 Camera \& Media](#-camera--media)
+    - [🔹 Location](#-location)
+    - [🔹 Storage](#-storage)
+    - [🔹 Other Device APIs](#-other-device-apis)
+  - [08. Authentication](#08-authentication)
+  - [09. Animations](#09-animations)
+    - [🔹 Animated API (Built-in)](#-animated-api-built-in)
+    - [🔹 Reanimated (Recommended)](#-reanimated-recommended)
+    - [🔹 Gesture Handler](#-gesture-handler)
+    - [🔹 Layout Animations](#-layout-animations)
+  - [10. Performance Optimization](#10-performance-optimization)
+    - [🔹 List Performance](#-list-performance)
+    - [🔹 Re-render Prevention](#-re-render-prevention)
+    - [🔹 Image Performance](#-image-performance)
+    - [🔹 JavaScript Engine](#-javascript-engine)
+    - [🔹 Bundle Size](#-bundle-size)
+  - [11. Push Notifications](#11-push-notifications)
+  - [12. Testing](#12-testing)
+    - [🔹 Unit Testing](#-unit-testing-1)
+    - [🔹 Integration Testing](#-integration-testing-1)
+    - [🔹 E2E Testing (Detox)](#-e2e-testing-detox)
+  - [13. Error Handling \& Monitoring](#13-error-handling--monitoring)
+  - [14. Security](#14-security)
+  - [15. Deployment \& Release](#15-deployment--release)
+    - [🔹 Android](#-android)
+    - [🔹 iOS](#-ios)
+    - [🔹 Version Management](#-version-management)
+  - [16. Production Best Practices](#16-production-best-practices)
+  - [🐘 PHP (Core to Advanced Backend)](#-php-core-to-advanced-backend)
+    - [01. Core Architecture \& Runtime](#01-core-architecture--runtime)
+    - [03. Superglobals \& Request Handling](#03-superglobals--request-handling)
+    - [04. File System \& Uploads](#04-file-system--uploads)
+    - [05. Sessions \& State Management](#05-sessions--state-management)
+    - [06. Database Integration](#06-database-integration)
+    - [07. Security \& Input Handling](#07-security--input-handling)
+    - [08. Output \& Rendering](#08-output--rendering)
+    - [09. Error Handling \& Debugging](#09-error-handling--debugging)
+    - [10. Object-Oriented PHP](#10-object-oriented-php)
+    - [11. Data Formats \& APIs](#11-data-formats--apis)
+    - [12. HTTP, cURL \& External Services](#12-http-curl--external-services)
+    - [13. Composer \& Autoloading](#13-composer--autoloading)
+    - [14. PHP Standards (PSR)](#14-php-standards-psr)
+    - [15. Performance \& Configuration](#15-performance--configuration)
+    - [16. Advanced PHP Features](#16-advanced-php-features)
+    - [17. Testing Strategy](#17-testing-strategy)
+    - [18. Architecture \& Patterns](#18-architecture--patterns)
 
 ## 📑 JavaScript
 
@@ -4289,10 +4557,11 @@ In PHP, every HTTP request triggers a complete, fresh execution of your script f
 - [ ] Output buffering (`ob_start`, `ob_end_flush`)
       Output buffering lets you capture output (HTML, text, etc.) before it's sent to the browser — giving you full control over when and how content is delivered.
 
-        By default, PHP sends output to the browser immediately. With output buffering, output is held in memory (the "buffer") until you decide to flush or discard it.
-**Core Functions**
+          By default, PHP sends output to the browser immediately. With output buffering, output is held in memory (the "buffer") until you decide to flush or discard it.
 
-        | Function | Description |
+  **Core Functions**
+
+          | Function | Description |
 
   |---|---|
   | `ob_start()` | Starts output buffering |
@@ -4304,17 +4573,6 @@ In PHP, every HTTP request triggers a complete, fresh execution of your script f
 
 - [ ] Build vs runtime concept
 - [ ] PHP execution vs Node.js model
-
----
-
-### 02. Language Fundamentals
-
-- [ ] PHP syntax basics
-- [ ] Variables & constants
-- [ ] Data types & type juggling
-- [ ] Operators (arithmetic, logical, comparison)
-- [ ] Control structures (`if`, `switch`, loops)
-- [ ] Functions (closures, arrow functions)
 
 ---
 

@@ -1159,295 +1159,197 @@ Network request arrives
 
 Node.js core modules like `fs` (File System) provide built-in functionality for file and directory operations without external dependencies. The fs module supports both synchronous (blocking) and asynchronous (non-blocking) methods, with modern promise-based APIs for cleaner async code.
 
-**readFile / readFileSync**
-`readFile` reads file content asynchronously using callbacks, while `readFileSync` does so synchronously, blocking execution until complete. Use async for better performance in I/O-heavy apps.
+**readFile / readFileSync:** `readFile` reads file content asynchronously using callbacks, while `readFileSync` does so synchronously, blocking execution until complete. Use async for better performance in I/O-heavy apps.
+
+**writeFile / writeFileSync:** writeFile overwrites or creates a file asynchronously; writeFileSync does the same synchronously. Both accept encoding like 'utf8' for text files.
+
+**appendFile:** `appendFile` adds content to a file's end asynchronously (creates if missing); there's also appendFileSync. Ideal for logs without overwriting.
+
+**fs.promises - Modern Async/Await Style:** fs.promises provides promise-based versions of async methods, enabling async/await for readable code (Node.js 10+).
+
+**Directory Operations:** Methods like `mkdir/mkdirSync` create directories, `readdir/readdirSync` list contents, `rmdir/rmdirSync` (or rm in newer Node) remove them.
+
+**File Watching:** `watch` or `watchFile` monitors file changes, calling a listener on modify/add/rename/delete. Use fs.promises.watch for async.
+
+**File Streams:** Streams handle large files efficiently via chunks: `createReadStream` for reading, `createWriteStream` for writing. Use pipeline for safe chaining.
 
 ```js
+/* Real-World — Copy large file with progress */
+
 const fs = require('fs');
+const path = require('path');
 
-// Async readFile (callback style)
-fs.readFile('example.txt', 'utf8', (err, data) => {
-  if (err) throw err;
-  console.log(data);
-});
+async function copyWithProgress(src, dest) {
+  const { size } = await require('fs').promises.stat(src);
+  let transferred = 0;
 
-// Sync readFileSync
-const data = fs.readFileSync('example.txt', 'utf8');
-console.log(data);
-```
+  const readStream = fs.createReadStream(src);
+  const writeStream = fs.createWriteStream(dest);
 
-**writeFile / writeFileSync**
-writeFile overwrites or creates a file asynchronously; writeFileSync does the same synchronously. Both accept encoding like 'utf8' for text files.
+  readStream.on('data', (chunk) => {
+    transferred += chunk.length;
+    const pct = ((transferred / size) * 100).toFixed(1);
+    process.stdout.write(`\rCopying... ${pct}%`);
+  });
 
-```js
-// Async writeFile
-fs.writeFile('output.txt', 'Hello, Node.js!', 'utf8', (err) => {
-  if (err) throw err;
-  console.log('File written');
-});
+  readStream.pipe(writeStream);
 
-// Sync writeFileSync
-fs.writeFileSync('output.txt', 'Hello, Node.js!');
-```
-
-**appendFile**
-`appendFile` adds content to a file's end asynchronously (creates if missing); there's also appendFileSync. Ideal for logs without overwriting.
-
-```js
-fs.appendFile('log.txt', 'New entry\n', 'utf8', (err) => {
-  if (err) throw err;
-  console.log('Appended');
-});
-```
-
-**fs.promises - Modern Async/Await Style**
-fs.promises provides promise-based versions of async methods, enabling async/await for readable code (Node.js 10+).
-
-```js
-const fs = require('fs').promises;
-
-async function example() {
-  try {
-    const data = await fs.readFile('example.txt', 'utf8');
-    await fs.writeFile('copy.txt', data);
-    console.log('Done');
-  } catch (err) {
-    console.error(err);
-  }
+  writeStream.on('finish', () => {
+    console.log(`\nCopied ${path.basename(src)} → ${dest} ✅`);
+  });
 }
-example();
+
+copyWithProgress('bigvideo.mp4', 'backup/bigvideo.mp4');
 ```
 
-**Directory Operations**
-Methods like `mkdir/mkdirSync` create directories, `readdir/readdirSync` list contents, `rmdir/rmdirSync` (or rm in newer Node) remove them.
-
-```js
-const fs = require('fs').promises;
-
-// Create directory
-await fs.mkdir('newdir', { recursive: true });
-
-// List contents
-const files = await fs.readdir('./');
-
-// Remove directory (Node 14.14+)
-await fs.rm('newdir', { recursive: true, force: true });
+```
+Copying... 23.4%
+Copying... 67.8%
+Copying... 100.0%
+Copied bigvideo.mp4 → backup/bigvideo.mp4 ✅
 ```
 
-**File Watching**
-`watch` or `watchFile` monitors file changes, calling a listener on modify/add/rename/delete. Use fs.promises.watch for async.
+```
+## Quick Reference
 
-```js
-fs.watch('example.txt', (eventType, filename) => {
-  console.log(`File ${filename} changed: ${eventType}`);
-});
-
-// Or with fs.promises
-const watcher = fs.promises.watch('example.txt');
-for await (const event of watcher) {
-  console.log(event);
-}
+METHOD                      ASYNC?    USE FOR
+──────────────────────────────────────────────────────────
+fs.readFile()               ✅ async  read small–medium files
+fs.readFileSync()           ❌ sync   startup config only
+fs.writeFile()              ✅ async  write/overwrite a file
+fs.writeFileSync()          ❌ sync   startup/scripts only
+fs.appendFile()             ✅ async  add to end of file
+fs.promises.readFile()      ✅ async  modern await style
+fs.promises.writeFile()     ✅ async  modern await style
+fs.mkdir()                  ✅ async  create directory
+fs.readdir()                ✅ async  list directory contents
+fs.unlink()                 ✅ async  delete a file
+fs.rename()                 ✅ async  rename or move a file
+fs.stat()                   ✅ async  get file info / metadata
+fs.watch()                  🔁 event  watch file/dir for changes
+fs.createReadStream()       🌊 stream  read large files in chunks
+fs.createWriteStream()      🌊 stream  write large files in chunks
+.pipe()                     🌊 stream  connect read → write stream
 ```
 
-**File Streams**
-Streams handle large files efficiently via chunks: `createReadStream` for reading, `createWriteStream` for writing. Use pipeline for safe chaining.
 
-```js
-const fs = require('fs');
-const { pipeline } = require('stream/promises');
+```
+## Key Rules to Remember
 
-async function streamFiles() {
-  await pipeline(
-    fs.createReadStream('large.txt'),
-    fs.createWriteStream('copy.txt'),
-  );
-  console.log('Streamed');
-}
-streamFiles();
+✅  Always use async versions inside servers and request handlers
+✅  Use fs.promises with async/await for the cleanest code
+✅  Use streams (pipe) for files larger than ~50MB
+✅  Always handle errors — missing files crash the process
+✅  { recursive: true } for nested mkdir / rm operations
+⚠️  readFileSync / writeFileSync block the entire thread
+⚠️  writeFile overwrites — use appendFile to add content
+⚠️  fs.watch can be unreliable on some OS — use chokidar in production
 ```
 
 </details>
-
-#### Path
-
-- path.join
-- path.resolve
-- path.basename
-- path.extname
 
 <details>
 <summary><b >Path</b></summary>
 
 The `path` module provides utilities for working with file and directory paths — safely and cross-platform.
 
-**1. path.join()**
-Joins multiple path segments into one clean path.
+**1. path.join()** Joins multiple path segments into one clean path.
+
+**2. path.resolve()** Resolves a sequence of paths into an absolute path — starting from the right.
+
+**3. path.basename()** Returns the last part of a path — the filename.
+
+**4. path.extname()** Returns the file extension including the dot.
 
 ```js
 const path = require('path');
 const fs = require('fs').promises;
 
-const BASE_DIR = path.join(__dirname, 'data');
-const CONFIG_FILE = path.join(__dirname, 'config', 'app.json');
-const LOG_FILE = path.join(__dirname, 'logs', 'app.log');
-const UPLOAD_DIR = path.join(__dirname, 'public', 'uploads');
-
-async function setup() {
-  // Use joined paths safely — works on Windows AND Linux
-  await fs.mkdir(BASE_DIR, { recursive: true });
-  await fs.mkdir(UPLOAD_DIR, { recursive: true });
-
-  await fs.writeFile(LOG_FILE, 'App started\n');
-  console.log('Paths set up ✅');
-
-  console.log('Base:   ', BASE_DIR);
-  console.log('Config: ', CONFIG_FILE);
-  console.log('Log:    ', LOG_FILE);
-}
-
-setup();
-```
-
-```
-Output:
-Paths set up ✅
-Base:    /home/user/project/data
-Config:  /home/user/project/config/app.json
-Log:     /home/user/project/logs/app.log
-```
-
-**2. path.resolve()**
-Resolves a sequence of paths into an absolute path — starting from the right.
-
-```js
-const path = require('path');
-const http = require('http');
-const fs = require('fs');
-
-const PUBLIC_DIR = path.resolve(__dirname, 'public');
-
-const server = http.createServer((req, res) => {
-  // Build safe absolute path from request URL
-  const filePath = path.resolve(PUBLIC_DIR, '.' + req.url);
-
-  // Security check — prevent path traversal attacks
-  if (!filePath.startsWith(PUBLIC_DIR)) {
-    res.writeHead(403);
-    res.end('Forbidden');
-    return;
+class ProjectPaths {
+  constructor(rootDir) {
+    this.root = path.resolve(rootDir);
+    this.src = path.join(this.root, 'src');
+    this.public = path.join(this.root, 'public');
+    this.uploads = path.join(this.root, 'public', 'uploads');
+    this.logs = path.join(this.root, 'logs');
+    this.config = path.join(this.root, 'config');
   }
 
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.writeHead(404);
-      res.end('Not found');
-      return;
+  // Safely resolve a file under uploads
+  uploadPath(filename) {
+    const safe = path.basename(filename); // strip any ../ attacks
+    return path.join(this.uploads, safe);
+  }
+
+  // Validate file extension before saving
+  isAllowed(filename) {
+    const ext = path.extname(filename).toLowerCase();
+    return ['.jpg', '.png', '.pdf', '.txt'].includes(ext);
+  }
+
+  async createAll() {
+    const dirs = [this.src, this.public, this.uploads, this.logs, this.config];
+    for (const dir of dirs) {
+      await fs.mkdir(dir, { recursive: true });
     }
-    res.writeHead(200);
-    res.end(data);
-  });
-});
-
-server.listen(3000);
-```
-
-```
-Request: GET /index.html
-filePath: /home/user/project/public/index.html  ✅
-
-Request: GET /../../etc/passwd        (attack attempt!)
-filePath: /etc/passwd                 ❌ blocked — not inside PUBLIC_DIR
-```
-
-**3. path.basename()**
-Returns the last part of a path — the filename.
-
-```js
-const path = require('path');
-const fs = require('fs').promises;
-
-async function handleUpload(filePath) {
-  const filename = path.basename(filePath); // "photo.jpg"
-  const nameOnly = path.basename(filePath, path.extname(filePath)); // "photo"
-  const ext = path.extname(filePath); // ".jpg"
-
-  // Sanitize filename (remove spaces, special chars)
-  const safeFilename = filename
-    .toLowerCase()
-    .replace(/\s+/g, '-')
-    .replace(/[^a-z0-9.\-]/g, '');
-
-  // Build destination path
-  const destDir = path.join(__dirname, 'uploads');
-  const destPath = path.join(destDir, safeFilename);
-
-  await fs.mkdir(destDir, { recursive: true });
-  await fs.copyFile(filePath, destPath);
-
-  console.log(`Original:  ${filename}`);
-  console.log(`Safe name: ${safeFilename}`);
-  console.log(`Saved to:  ${destPath}`);
+    console.log('All project directories created ✅');
+  }
 }
 
-handleUpload('/tmp/My Photo File.jpg');
+const project = new ProjectPaths(__dirname);
+
+(async () => {
+  await project.createAll();
+
+  console.log('Root:    ', project.root);
+  console.log('Uploads: ', project.uploads);
+  console.log('Upload:  ', project.uploadPath('../../../etc/passwd')); // safe!
+  console.log('Allowed: ', project.isAllowed('resume.pdf')); // true
+  console.log('Allowed: ', project.isAllowed('virus.exe')); // false
+})();
 ```
 
 ```
-Output:
-Original:  My Photo File.jpg
-Safe name: my-photo-file.jpg
-Saved to:  /home/user/project/uploads/my-photo-file.jpg
+All project directories created ✅
+Root:     /home/user/myapp
+Uploads:  /home/user/myapp/public/uploads
+Upload:   /home/user/myapp/public/uploads/passwd   ← ../ stripped ✅
+Allowed:  true
+Allowed:  false
 ```
 
-**4. path.extname()**
-Returns the file extension including the dot.
-
-```js
-const path = require("path");
-const fs   = require("fs").promises;
-
-const ALLOWED_IMAGES = [".jpg", ".jpeg", ".png", ".gif", ".webp"];
-const ALLOWED_DOCS   = [".pdf", ".doc", ".docx", ".txt", ".md"];
-const MAX_SIZE_MB    = 5;
-
-async function validateFile(filePath) {
-  const ext      = path.extname(filePath).toLowerCase();
-  const filename = path.basename(filePath);
-  const stat     = await fs.stat(filePath);
-  const sizeMB   = (stat.size / (1024 * 1024)).toFixed(2);
-
-  console.log(`File:      ${filename}`);
-  console.log(`Extension: ${ext}`);
-  console.log(`Size:      ${sizeMB} MB`);
-
-  // Type check
-  if (ALLOWED_IMAGES.includes(ext)) {
-    console.log("Type: ✅ Image — allowed");
-  } else if (ALLOWED_DOCS.includes(ext)) {
-    console.log("Type: ✅ Document — allowed");
-  } else {
-    console.log(`Type: ❌ ${ext} not allowed`);
-    return false;
-  }
-
-  // Size check
-  if (parseFloat(sizeMB) > MAX_SIZE_MB) {
-    console.log(`Size: ❌ Exceeds ${MAX_SIZE_MB}MB limit`);
-    return false;
-  }
-
-  console.log("Validation: ✅ Passed");
-  return true;
-}
-
-validateFile("/uploads/profile.png");
 ```
+// Quick Reference
+
+METHOD                             RETURNS
+──────────────────────────────────────────────────────────────
+path.join("a", "b", "c")          "a/b/c"
+path.resolve("a", "b")            "/cwd/a/b"         (absolute)
+path.basename("/dir/file.txt")    "file.txt"
+path.basename("/dir/file.txt",    "file"
+             ".txt")
+path.extname("file.txt")          ".txt"
+path.dirname("/dir/file.txt")     "/dir"
+path.parse("/dir/file.txt")       { root, dir, base, ext, name }
+path.format({ dir, name, ext })   "/dir/file.txt"
+path.isAbsolute("/dir/file")      true / false
+path.sep                          "/" or "\"
+path.delimiter                    ":" or ";"
 ```
-File:      profile.png
-Extension: .png
-Size:      2.34 MB
-Type: ✅ Image — allowed
-Validation: ✅ Passed
+
+```
+// Key Takeaways
+
+✅  Always use path.join() instead of string concatenation for paths
+✅  path.resolve() always returns an absolute path
+✅  path.basename() extracts the filename from a full path
+✅  path.extname() gets the file extension for type checking
+✅  Use __dirname + path.join() to build paths relative to current file
+✅  path protects against OS differences (/ vs \)
+⚠️  path.extname("file.tar.gz") → ".gz" only (not ".tar.gz")
+⚠️  path.resolve("/a", "/b") → "/b" (absolute segment resets path)
+⚠️  Always use path.basename() to sanitize user-provided filenames
+
 ```
 
 </details>
@@ -3188,7 +3090,6 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
       - [Event Loop Deep Dive](#event-loop-deep-dive)
     - [03. Core Modules (Built-in Modules)](#03-core-modules-built-in-modules)
       - [File System (fs)](#file-system-fs)
-      - [Path](#path)
       - [HTTP](#http)
       - [URL](#url)
       - [Events](#events)

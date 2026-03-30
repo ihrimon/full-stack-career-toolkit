@@ -1152,8 +1152,6 @@ Network request arrives
 
 ### 03. Core Modules (Built-in Modules)
 
-#### File System (fs)
-
 <details>
 <summary><b >File System (fs)</b></summary>
 
@@ -3089,7 +3087,6 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
   - [What Counts as I/O?](#what-counts-as-io)
       - [Event Loop Deep Dive](#event-loop-deep-dive)
     - [03. Core Modules (Built-in Modules)](#03-core-modules-built-in-modules)
-      - [File System (fs)](#file-system-fs)
       - [HTTP](#http)
       - [URL](#url)
       - [Events](#events)
@@ -3267,6 +3264,37 @@ const params: Parameters<(a: number, b: string) => void> = [1, 'hello'];
     - [16. Advanced PHP Features](#16-advanced-php-features)
     - [17. Testing Strategy](#17-testing-strategy)
     - [18. Architecture \& Patterns](#18-architecture--patterns)
+- [PHP Learning Checklist](#php-learning-checklist)
+  - [Phase 1 — Introduction \& Setup](#phase-1--introduction--setup)
+    - [Environment Setup](#environment-setup)
+    - [Basic Syntax](#basic-syntax)
+  - [Phase 2 — Data Types \& Variables](#phase-2--data-types--variables)
+    - [Variables \& Data Types](#variables--data-types)
+    - [String Operations](#string-operations)
+  - [Phase 3 — Operators \& Control Flow](#phase-3--operators--control-flow)
+    - [Operators](#operators)
+    - [Conditionals](#conditionals)
+    - [Loops](#loops)
+  - [Phase 4 — Arrays \& Functions](#phase-4--arrays--functions)
+    - [Arrays](#arrays)
+    - [Functions](#functions)
+  - [Phase 5 — Form Handling \& HTTP](#phase-5--form-handling--http)
+    - [GET \& POST](#get--post)
+    - [Superglobals](#superglobals)
+  - [Phase 6 — File Operations \& Database](#phase-6--file-operations--database)
+    - [File Operations](#file-operations)
+    - [MySQL Database (PDO)](#mysql-database-pdo)
+  - [Phase 7 — Object-Oriented PHP (OOP)](#phase-7--object-oriented-php-oop)
+    - [Classes \& Objects](#classes--objects)
+    - [OOP Concepts](#oop-concepts)
+  - [Phase 8 — Error Handling \& Modern PHP](#phase-8--error-handling--modern-php)
+    - [Error Handling](#error-handling)
+    - [Modern PHP (PHP 8+)](#modern-php-php-8)
+  - [Phase 9 — Project-Ready Skills](#phase-9--project-ready-skills)
+    - [Framework Introduction](#framework-introduction)
+    - [Practice Projects](#practice-projects)
+  - [Quick Reference](#quick-reference)
+  - [Tips for Success](#tips-for-success)
 
 ## 📑 JavaScript
 
@@ -4822,3 +4850,189 @@ In PHP, every HTTP request triggers a complete, fresh execution of your script f
 - [ ] Clean code principles
 
 ---
+
+
+# PHP Learning Checklist 
+
+## Phase 1 — Introduction & Setup
+
+### Environment Setup
+- [ ] Understand what PHP is and why it's worth learning
+- [ ] Install XAMPP or Laragon on your computer
+- [ ] Set up VS Code with the PHP Intelephense extension
+- [ ] Create and run your first `hello.php` file
+
+### Basic Syntax
+- [ ] Learn PHP tags: `<?php ... ?>`
+- [ ] Use `echo` and `print` to display output
+- [ ] Write single-line (`//`) and multi-line (`/* */`) comments
+- [ ] Understand PHP file naming conventions
+
+---
+
+## Phase 2 — Data Types & Variables
+
+### Variables & Data Types
+- [ ] Declare variables (`$name = "Ali"`)
+- [ ] Understand String, Integer, Float, and Boolean types
+- [ ] Learn about `NULL` and type casting
+- [ ] Use `var_dump()` and `gettype()` to inspect variables
+
+### String Operations
+- [ ] Concatenate strings using the `.` operator
+- [ ] Use `strlen()`, `strtolower()`, `strtoupper()`
+- [ ] Use `str_replace()` and `substr()`
+- [ ] Learn Heredoc and Nowdoc syntax
+
+---
+
+## Phase 3 — Operators & Control Flow
+
+### Operators
+- [ ] Arithmetic operators: `+`, `-`, `*`, `/`, `%`
+- [ ] Comparison operators: `==`, `===`, `!=`, `!==`
+- [ ] Logical operators: `&&`, `||`, `!`
+- [ ] Assignment operators: `=`, `+=`, `-=`
+
+### Conditionals
+- [ ] Write `if` / `else` / `elseif` statements
+- [ ] Use `switch` / `case`
+- [ ] Use the ternary operator `? :`
+- [ ] Explore `match` expression (PHP 8+)
+
+### Loops
+- [ ] Use `while` and `do-while` loops
+- [ ] Use `for` loops
+- [ ] Use `foreach` loops (for arrays)
+- [ ] Understand `break` and `continue`
+
+---
+
+## Phase 4 — Arrays & Functions
+
+### Arrays
+- [ ] Create and use indexed arrays
+- [ ] Work with associative arrays (`key => value`)
+- [ ] Understand multidimensional arrays
+- [ ] Use `array_push()`, `array_pop()`, `array_merge()`
+- [ ] Use `array_map()`, `array_filter()`, `array_search()`
+
+### Functions
+- [ ] Define and call functions
+- [ ] Understand parameters and return values
+- [ ] Use default parameter values
+- [ ] Understand variable scope: global vs local
+- [ ] Write anonymous functions and arrow functions
+
+---
+
+## Phase 5 — Form Handling & HTTP
+
+### GET & POST
+- [ ] Build an HTML form
+- [ ] Understand `$_GET` and `$_POST` superglobals
+- [ ] Perform basic form validation
+- [ ] Prevent XSS attacks using `htmlspecialchars()`
+
+### Superglobals
+- [ ] Use `$_SERVER` to get request info
+- [ ] Start and manage sessions with `$_SESSION`
+- [ ] Work with cookies using `$_COOKIE`
+- [ ] Handle file uploads using `$_FILES`
+
+---
+
+## Phase 6 — File Operations & Database
+
+### File Operations
+- [ ] Use `fopen()`, `fread()`, `fwrite()`, `fclose()`
+- [ ] Use `file_get_contents()` and `file_put_contents()`
+- [ ] Check file existence with `file_exists()` and `is_dir()`
+- [ ] Create and delete directories
+
+### MySQL Database (PDO)
+- [ ] Connect to a MySQL database using PDO
+- [ ] Perform CRUD: SELECT, INSERT, UPDATE, DELETE
+- [ ] Use prepared statements to prevent SQL injection
+- [ ] Handle database errors with `try-catch`
+
+---
+
+## Phase 7 — Object-Oriented PHP (OOP)
+
+### Classes & Objects
+- [ ] Create a class and instantiate an object
+- [ ] Define properties and methods
+- [ ] Use `__construct()` and `__destruct()`
+- [ ] Understand access modifiers: `public`, `private`, `protected`
+
+### OOP Concepts
+- [ ] Use inheritance with `extends`
+- [ ] Understand interfaces and abstract classes
+- [ ] Use traits
+- [ ] Work with static properties and methods
+
+---
+
+## Phase 8 — Error Handling & Modern PHP
+
+### Error Handling
+- [ ] Use `try` / `catch` / `finally`
+- [ ] Create custom Exception classes
+- [ ] Configure `error_reporting` and `ini_set`
+- [ ] Log errors using `error_log()`
+
+### Modern PHP (PHP 8+)
+- [ ] Use named arguments
+- [ ] Use the null coalescing operator `??`
+- [ ] Use `match` expressions
+- [ ] Learn about Fibers and Enums
+- [ ] Install and use Composer for dependency management
+- [ ] Understand PSR-4 autoloading
+
+---
+
+## Phase 9 — Project-Ready Skills
+
+### Framework Introduction
+- [ ] Understand the MVC pattern
+- [ ] Get started with Laravel or Slim Framework
+- [ ] Understand routing and middleware
+- [ ] Learn Blade templating (for Laravel)
+
+### Practice Projects
+- [ ] Build a Login / Registration system
+- [ ] Build a CRUD Todo App
+- [ ] Build a simple Blog or CMS
+- [ ] Create a REST API that returns JSON responses
+- [ ] Upload all your projects to GitHub
+
+---
+
+## Quick Reference
+
+| Phase | Topic | Priority |
+|-------|-------|----------|
+| 1 | Setup & Syntax | Must Do |
+| 2 | Variables & Strings | Must Do |
+| 3 | Operators & Control Flow | Must Do |
+| 4 | Arrays & Functions | Must Do |
+| 5 | Forms & HTTP | Must Do |
+| 6 | Files & Database | Must Do |
+| 7 | OOP | Must Do |
+| 8 | Error Handling & PHP 8+ | Important |
+| 9 | Framework & Projects | Goal |
+
+---
+
+## Tips for Success
+
+- **Code every day** — Even 30 minutes of practice beats hours of reading.
+- **Don't just read** — Type out every example yourself.
+- **Build projects** — The final 5 projects will teach you more than all the theory combined.
+- **Use the docs** — [php.net](https://www.php.net/docs.php) is your best friend.
+- **Version control** — Commit your code to GitHub from day one.
+
+---
+
+*Checklist based on the [roadmap.sh/php](https://roadmap.sh/php) guideline — 2026 edition*

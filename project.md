@@ -6,29 +6,7 @@ Features:
 
     Instant feedback (grammar, clarity)
 
-    Tech: React, Web Speech API, OpenAI, Node.js
-
-10. 🎥 YouTube Video Summarizer
-    Paste any YouTube link → shows summarized notes
-
-    Uses OpenAI / Gemini API
-
-    Option to download as notes or flashcards
-
-
-15. 📦 Warehouse / Inventory Management System
-    Add/update/delete products
-
-    Stock alerts, barcode scanner
-
-    Role-based access (admin/staff)
-
-9. 🔍 GitHub Profile Analyzer
-    Enter GitHub username → show top languages, repo stats, contribution graph
-
-    Visual charts
-
-    Option to generate GitHub README.md template
+    Tech: React, Web Speech API, Open AI
 
 10. 📐 Responsive Design Checker
     Enter URL → see how it looks in different breakpoints (mobile, tablet, desktop)
@@ -82,6 +60,4 @@ Features:
 
 👨‍💻 Admin dashboard
 
-কেন ইউনিক?
-
-Most developers encryption system build করে না → তুমি আলাদা হয়ে যাবে।
+Most developers encryption system build don’t use.

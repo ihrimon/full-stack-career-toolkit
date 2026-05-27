@@ -1,12 +1,12 @@
-# Full Stack Interview Preparation Guide
+ # Software Engineering Interview Preparation Guide
 
-> This guide is created as a complete interview preparation roadmap for **Full Stack Developers**. It is designed to help candidates revise core concepts, strengthen **fundamentals**, and confidently face **technical interviews** across the entire full stack ecosystem.
+> This guide is created as a complete interview preparation roadmap for **Full Stack Engineer**. It is designed to help candidates revise core concepts, strengthen **fundamentals**, and confidently face **technical interviews** across the entire full stack ecosystem.
 
 ---
 
 ## 📑 Next.js
 
-> Next.js is a full-stack React framework built by Vercel for building scalable, production-ready web applications with hybrid rendering capabilities.
+Next.js is a full-stack React framework built by vercel.
 
 | Topics                                                                      | Overview                                                          |
 | --------------------------------------------------------------------------- | ----------------------------------------------------------------- |

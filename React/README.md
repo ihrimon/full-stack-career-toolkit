@@ -1,8 +1,6 @@
 # ⚛️ React Mastery Roadmap — Production Engineer Track
 
-> **Goal:** Go from "I know basic React" to a **production-level Frontend Engineer** — someone who can architect, optimize, test, secure, and ship React applications at scale, and explain *why* every decision was made.
-
-> **Prerequisite:** This roadmap assumes you already know React fundamentals — JSX, function components, `useState`, basic `useEffect`, props, and conditional/list rendering. None of that is repeated here. Every section below is intermediate → advanced → production-grade on purpose, so a recruiter or fellow engineer looking at this list can see exactly what depth of React you're building toward.
+> This is a curated, **intermediate → production-level** React checklist — built for someone who already knows the basics and wants to track exactly which advanced concepts they're mastering next: rendering internals, performance engineering, state architecture, testing, security, and everything else that separates "I built a React app" from "I can own a production React codebase." Anyone browsing this list — a recruiter, a teammate, or future-you — can see at a glance what's being studied and why.
 
 ---
 
@@ -10,15 +8,15 @@
 
 - [⚛️ React Mastery Roadmap — Production Engineer Track](#️-react-mastery-roadmap--production-engineer-track)
   - [📑 Table of Contents](#-table-of-contents)
-  - [1. Rendering Model \& Internals](#1-rendering-model--internals)
-  - [2. Hooks — Beyond the Basics](#2-hooks--beyond-the-basics)
-  - [3. Escape Hatches \& Refs](#3-escape-hatches--refs)
-  - [4. Context API at Scale](#4-context-api-at-scale)
-  - [5. Advanced Component Patterns](#5-advanced-component-patterns)
-  - [6. Performance Engineering](#6-performance-engineering)
-  - [7. Forms at Production Level](#7-forms-at-production-level)
-  - [8. Data Fetching \& Server State](#8-data-fetching--server-state)
-  - [9. Routing (React Router)](#9-routing-react-router)
+  - [01. Rendering Model \& Internals](#01-rendering-model--internals)
+  - [02. Hooks — Beyond the Basics](#02-hooks--beyond-the-basics)
+  - [03. Escape Hatches \& Refs](#03-escape-hatches--refs)
+  - [04. Context API at Scale](#04-context-api-at-scale)
+  - [05. Advanced Component Patterns](#05-advanced-component-patterns)
+  - [06. Performance Engineering](#06-performance-engineering)
+  - [07. Forms at Production Level](#07-forms-at-production-level)
+  - [08. Data Fetching \& Server State](#08-data-fetching--server-state)
+  - [09. Routing (React Router)](#09-routing-react-router)
   - [10. Global State Management](#10-global-state-management)
   - [11. Styling at Scale](#11-styling-at-scale)
   - [12. Animation](#12-animation)
@@ -40,7 +38,9 @@
 
 ---
 
-## 1. Rendering Model & Internals
+## 01. Rendering Model & Internals
+
+📖 **[Deep dive with real-world examples →](./checklist/01-rendering-model-and-internals/README.md)**
 
 - [ ] React Fiber architecture (why it replaced the old stack reconciler)
 - [ ] Render phase vs Commit phase
@@ -52,7 +52,7 @@
 
 ---
 
-## 2. Hooks — Beyond the Basics
+## 02. Hooks — Beyond the Basics
 
 - [ ] `useReducer` for complex local state logic
 - [ ] `useMemo` vs `useCallback` — when each actually helps (and when it's noise)
@@ -65,7 +65,7 @@
 
 ---
 
-## 3. Escape Hatches & Refs
+## 03. Escape Hatches & Refs
 
 - [ ] `useRef` beyond DOM access — mutable values that don't trigger re-renders
 - [ ] Direct DOM manipulation when React state isn't the right tool
@@ -74,7 +74,7 @@
 
 ---
 
-## 4. Context API at Scale
+## 04. Context API at Scale
 
 - [ ] Creating and combining multiple contexts cleanly
 - [ ] Context performance pitfalls (why one big context re-renders everything)
@@ -83,7 +83,7 @@
 
 ---
 
-## 5. Advanced Component Patterns
+## 05. Advanced Component Patterns
 
 - [ ] Compound Components pattern
 - [ ] Provider Pattern
@@ -95,7 +95,7 @@
 
 ---
 
-## 6. Performance Engineering
+## 06. Performance Engineering
 
 - [ ] `React.memo` — correct usage and common misuse
 - [ ] Identifying and eliminating unnecessary re-renders
@@ -109,7 +109,7 @@
 
 ---
 
-## 7. Forms at Production Level
+## 07. Forms at Production Level
 
 - [ ] React Hook Form — uncontrolled-first performance model
 - [ ] Schema validation with Zod / Yup
@@ -119,7 +119,7 @@
 
 ---
 
-## 8. Data Fetching & Server State
+## 08. Data Fetching & Server State
 
 - [ ] TanStack Query (React Query) — caching, refetching, invalidation
 - [ ] SWR as an alternative
@@ -131,7 +131,7 @@
 
 ---
 
-## 9. Routing (React Router)
+## 09. Routing (React Router)
 
 - [ ] React Router v6+ (`Route`, `Routes`, `Outlet`, `Link`, `NavLink`)
 - [ ] Nested routes & layout routes

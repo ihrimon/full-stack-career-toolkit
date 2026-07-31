@@ -11,8 +11,6 @@
 [![PHP](https://img.shields.io/badge/PHP-Backend-777bb4)](./PHP)
 [![Status](https://img.shields.io/badge/status-actively%20updated-brightgreen)](.)
 
----
-
 ## 📌 What Is This Repository?
 
 This repo is **not a tutorial series and not a finished course** — it's a continuously-updated personal knowledge base built while actively preparing for full-stack developer interviews. It exists to answer one question well: *"Does this candidate actually understand what they claim to know?"*
@@ -28,7 +26,6 @@ Every topic here follows the same pattern:
 
 **If you are a fellow developer:** feel free to fork this, use the checklists to audit your own knowledge gaps, and run the code examples locally.
 
----
 
 ## 🗂️ Repository Structure
 
@@ -53,8 +50,6 @@ interview-preparation/
 └── images/, req-res.png           → diagrams referenced inside the guides
 ```
 
----
-
 ## 🧠 Topics Covered
 
 | Category | Topics / Tools | Where |
@@ -73,8 +68,6 @@ interview-preparation/
 | **Interview Practice** | Mock interview question bank, behavioral prep | [`Mock Interview/`](./Mock%20Interview) |
 | **Project Ideas** | AI tools, security systems, dashboards for portfolio building | [`project.md`](./project.md) |
 
----
-
 ## 🚀 Featured Hands-On Projects
 
 | Project | Stack | Location |
@@ -84,8 +77,6 @@ interview-preparation/
 | ✊✋✌️ Rock-Paper-Scissors | Vanilla JS | [`JavaScript/40 Days of JavaScript/day-07`](./JavaScript/40%20Days%20of%20JavaScript/day-07) |
 | 📅 40 Days of JavaScript | Vanilla JS, day-by-day exercises | [`JavaScript/40 Days of JavaScript`](./JavaScript/40%20Days%20of%20JavaScript) |
 
----
-
 ## 📖 How to Use This Repo
 
 - **Auditing your own knowledge?** Open any topic folder's `README.md` and go through the `- [ ]` checklist — if a line makes you pause, that's your next thing to study.
@@ -93,12 +84,9 @@ interview-preparation/
 - **Cramming before an interview?** Skip the checklists and go straight to the dedicated Q&A files — [`html/interview-qa.md`](./html/interview-qa.md), [`React/interview-qa.md`](./React/interview-qa.md), and [`Mock Interview/`](./Mock%20Interview) — for direct question → answer pairs instead of topic lists.
 - **Want to run something?** The `JavaScript/` and `typescript/` folders are full of small, focused, runnable files — clone the repo and execute them directly.
 
----
-
 ## 🛣️ Status
 
 This repository is **actively maintained and updated topic by topic** as new concepts are studied — expect frequent small commits rather than big-bang rewrites. Some sections (e.g. PHP language fundamentals) are still being filled in.
 
----
 
 *Have a look around, star it if it's useful, and feel free to open an issue if you spot an error in any of the notes.*

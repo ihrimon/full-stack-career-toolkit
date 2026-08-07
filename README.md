@@ -48,6 +48,7 @@ interview-preparation/
 │
 ├── Mock Interview/                → mock interview question bank + behavioral prep
 ├── Upwork/                        → Upwork freelancing guide (high-ticket clients, AI/automation niche)
+├── English/                       → English fluency guide for client calls & professional communication
 └── images/, req-res.png           → diagrams referenced inside the guides
 ```
 
@@ -69,6 +70,7 @@ interview-preparation/
 | **Interview Practice** | Mock interview question bank, behavioral prep | [`Mock Interview/`](./Mock%20Interview) |
 | **Project Ideas** | AI tools, security systems, dashboards for portfolio building | [`project.md`](./project.md) |
 | **Freelancing Career** | Upwork positioning, market/client research, profile & proposal strategy for AI + full-stack services | [`Upwork/`](./Upwork) |
+| **English Fluency** | Speaking/writing fluency, client call scripts, pronunciation, grammar quick-reference | [`English/`](./English) |
 
 ## 🚀 Featured Hands-On Projects
 

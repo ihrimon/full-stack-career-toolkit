@@ -47,6 +47,7 @@ interview-preparation/
 ├── SocketIO/                      → Socket.IO real-time communication checklist
 │
 ├── Mock Interview/                → mock interview question bank + behavioral prep
+├── Upwork/                        → Upwork freelancing guide (high-ticket clients, AI/automation niche)
 └── images/, req-res.png           → diagrams referenced inside the guides
 ```
 
@@ -67,6 +68,7 @@ interview-preparation/
 | **Career, System Design & AI Engineering** | Software architecture, DevOps, cloud, observability, AI/LLM integration, career positioning | [`full-stack-engineer-guide.md`](./full-stack-engineer-guide.md) |
 | **Interview Practice** | Mock interview question bank, behavioral prep | [`Mock Interview/`](./Mock%20Interview) |
 | **Project Ideas** | AI tools, security systems, dashboards for portfolio building | [`project.md`](./project.md) |
+| **Freelancing Career** | Upwork positioning, market/client research, profile & proposal strategy for AI + full-stack services | [`Upwork/`](./Upwork) |
 
 ## 🚀 Featured Hands-On Projects
 

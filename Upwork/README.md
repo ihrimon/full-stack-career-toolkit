@@ -89,16 +89,46 @@ Phase 6: Scale           → JSS/Top Rated Plus → Rate বৃদ্ধি → 
 
 ### B. প্রতিদিন ৩০ মিনিট "Job Feed Audit" করুন
 
-একটা spreadsheet বানান এবং প্রতিদিন প্রতিটা পিলার থেকে নতুন জব লগ করুন:
+একটা spreadsheet বানান এবং প্রতিদিন প্রতিটা পিলার থেকে নতুন জব লগ করুন। শুধু market snapshot না, নিজের conversion funnel-ও ট্র্যাক করুন — নাহলে বুঝবেন কোথায় ডিমান্ড বেশি, কিন্তু বুঝবেন না কোথায় *আপনি* আসলে জিতছেন।
 
-| Date | Pillar | Job Title | Budget | Client Rating | Client Spend | Proposals | Skills Required |
+**Job Info**
+
+| Date | Pillar | Keyword Used | Job Title | Job Type | Budget | Est. Duration | Experience Level |
 |---|---|---|---|---|---|---|---|
-| ... | AI Integration | ... | ... | ... | ... | ... | ... |
-| ... | RAG | ... | ... | ... | ... | ... | ... |
-| ... | Automation | ... | ... | ... | ... | ... | ... |
-| ... | Frontend/Backend | ... | ... | ... | ... | ... | ... |
+| ... | AI Integration | ... | ... | Fixed/Hourly | ... | <1mo / 1-3mo / 3-6mo / Ongoing | Entry/Inter/Expert |
 
-৭-১৪ দিন পর এই ডেটা analyze করলে বোঝা যাবে **কোন পিলারে সবচেয়ে ভালো budget-to-competition ratio আছে** — সেটাকেই আপনার প্রাইমারি positioning বানান।
+**Client Quality Signals**
+
+| Client Rating | Client Spend | Payment Verified | Client Country | Client Hire Rate |
+|---|---|---|---|---|
+| ... | ... | Yes/No | ... | ... |
+
+**Competition Signals**
+
+| Proposals | Interviewing | Connects Required | Boosted? | Skills Required |
+|---|---|---|---|---|
+| ... | ... | ... | Yes/No | ... |
+
+**Outcome Tracking (ফানেল — সবচেয়ে গুরুত্বপূর্ণ অংশ)**
+
+| Applied? | Response? | Interview? | Hired? | Notes |
+|---|---|---|---|---|
+| Yes/No | Yes/No/Ignored | Yes/No | Yes/No | কেন জিতলেন/হারলেন |
+
+> 💡 সব কলাম এক শিটেই রাখুন, উপরে শুধু বোঝার সুবিধার্থে গ্রুপ করে দেখানো হয়েছে।
+
+### বিশ্লেষণ পদ্ধতি (৭-১৪ দিন পর)
+
+শুধু raw row দেখলে হবে না — একটা pivot summary বানান পিলার-ভিত্তিক:
+
+| Pillar | Avg Budget | Avg Proposals | Budget/Proposal Ratio | Applied | Interview Rate | Win Rate |
+|---|---|---|---|---|---|---|
+
+- **Budget/Proposal Ratio** = Avg Budget ÷ Avg Proposals — যত বেশি, তত ভালো (কম কম্পিটিশনে বেশি টাকা)
+- **Interview Rate** = Interview ÷ Applied — বোঝায় আপনার proposal quality সেই পিলারে কেমন কাজ করছে
+- **Win Rate** = Hired ÷ Applied — চূড়ান্ত positioning সিদ্ধান্ত এখান থেকেই নিন, শুধু market ডিমান্ড দেখে না
+
+**কোন পিলারে প্রাইমারি ফোকাস দেবেন তা ঠিক করার সময় এই ক্রমে গুরুত্ব দিন:** Win Rate > Interview Rate > Budget/Proposal Ratio > Avg Budget। বেশি ডিমান্ড থাকা পিলার সবসময় সেরা পিলার না — যেখানে আপনি সবচেয়ে বেশি জিতছেন, সেটাই আপনার আসল প্রাইমারি positioning হওয়া উচিত।
 
 ### C. বাইরের সোর্স থেকেও Demand যাচাই করুন
 
@@ -242,7 +272,33 @@ Niche-specific skill আগে, generic পরে। উদাহরণ অর�
 
 > 💡 নিজের বানানো demo প্রজেক্ট হলেও সমস্যা নেই — গুরুত্বপূর্ণ হলো এটা **কাজ করে দেখানো** (live link/ভিডিও ডেমো) এবং একটা বাস্তব বিজনেস সমস্যার সাথে যুক্ত করে উপস্থাপন করা।
 
-### F. Hourly Rate / Pricing Strategy
+### F. Certifications — Free Certification Roadmap
+
+Upwork প্রোফাইলের Certifications সেকশন খালি রাখবেন না — এটা credibility ও search relevance দুটোই বাড়ায়। নিচের কোর্সগুলো সম্পূর্ণ ফ্রি এবং আপনার ৬টা পিলারের সাথে সরাসরি ম্যাচ করে:
+
+**১. সবার আগে — Upwork-এর নিজস্ব Free Skill Certifications**
+Profile → Certifications-এ গিয়ে Upwork-এর নিজের ফ্রি স্কিল টেস্ট (JavaScript ইত্যাদি) দিন। এটা Upwork-এর নিজের সিস্টেম হওয়ায় তাদের search/matching algorithm-এ সরাসরি সবচেয়ে বেশি ওজন পায়।
+
+**২. পিলার-ভিত্তিক ফ্রি কোর্স**
+
+| পিলার | কোর্স | প্রোভাইডার | সার্টিফিকেট টাইপ | সময় |
+|---|---|---|---|---|
+| Frontend | Responsive Web Design | freeCodeCamp | ✅ Official free certificate | ~১৫-২০ ঘণ্টা |
+| Frontend | JavaScript Algorithms & Data Structures | freeCodeCamp | ✅ Official free certificate | ~২০-৩০ ঘণ্টা |
+| Frontend | Front End Development Libraries (React) | freeCodeCamp | ✅ Official free certificate | ~১৫-২০ ঘণ্টা |
+| Backend | Back End Development and APIs | freeCodeCamp | ✅ Official free certificate | ~২০-২৫ ঘণ্টা |
+| Backend | Relational Database | freeCodeCamp | ✅ Official free certificate | ~১০-১৫ ঘণ্টা |
+| AI Integration / Agentic AI | Developer Deep-Dives track (Claude API, agent building) | Anthropic Academy (anthropic.skilljar.com) | ✅ Real official certificate (নাম, কোর্স টাইটেল, তারিখসহ) | কোর্সপ্রতি ২০ মিনিট-১ ঘণ্টা |
+| AI Integration | Generative AI Fundamentals skill badge | Google Cloud Skills Boost | ✅ Official free digital badge | ~২ ঘণ্টা |
+| RAG / ML Foundation | Intro to Machine Learning, Deep Learning | Kaggle Learn | ✅ Official free certificate | কোর্সপ্রতি ৩-৪ ঘণ্টা |
+| RAG / Agentic AI (স্কিল-বিল্ডিং) | LangChain: Chat with Your Data, AI Agents in LangGraph, Multi AI Agent Systems with crewAI | DeepLearning.AI | ⚠️ শুধু "Accomplishment" (official certificate না) | কোর্সপ্রতি ১-২ ঘণ্টা |
+| Automation | n8n Beginner's Course (Level 1) | n8n Academy (অফিসিয়াল) | ✅ Official free certification | কয়েক ঘণ্টা |
+
+> 💡 **Anthropic Academy সবচেয়ে বেশি প্রাসঙ্গিক** — ২০২৬-এ লঞ্চ হয়েছে, সম্পূর্ণ ফ্রি, real verifiable certificate দেয়, এবং সরাসরি Claude API/Agent বিল্ডিং কভার করে — এটা আপনার "AI Integration + Agentic AI" পজিশনিং-এর সাথে একদম ম্যাচ করে।
+>
+> ⚠️ DeepLearning.AI-এর কোর্সগুলো (RAG/LangChain/agents নিয়ে সবচেয়ে ভালো কন্টেন্ট) official certificate দেয় না, শুধু "Accomplishment" স্ক্রিনশট দেয়। তাই এগুলো Certifications সেকশনে ফরমালি না বসিয়ে Overview/Portfolio-তে উল্লেখ করা বেশি কার্যকর।
+
+### G. Hourly Rate / Pricing Strategy
 
 - AI/RAG/Agent-সম্পর্কিত কাজের রেট সাধারণ frontend/backend কাজের চেয়ে বেশি রাখা যায় — এই স্কিল কম মানুষের আছে।
 - **শুরুতে market-average-এর কাছাকাছি রাখুন**, সবচেয়ে সস্তা হবেন না।
@@ -250,7 +306,7 @@ Niche-specific skill আগে, generic পরে। উদাহরণ অর�
 - বড়, complex AI/automation প্রজেক্টে **fixed-price milestone-based** deal প্রেফার করুন — hourly-তে আপনার efficiency-র মূল্য কম পাওয়া যায়।
 - Rate বাড়ানোর প্যাটার্ন উদাহরণ: $25/hr → (৫টা ভালো রিভিউ) → $35/hr → (Top Rated হওয়ার পর, AI/Agent প্রজেক্টে established হলে) → $60-80/hr → (Niche এ established Expert হলে) → $100+/hr।
 
-### G. Specialized Profiles ব্যবহার করুন
+### H. Specialized Profiles ব্যবহার করুন
 
 কমপক্ষে ২টা specialized profile বানান:
 1. **"AI Integration & Automation Developer"** — AI/RAG/Agent/Automation-কেন্দ্রিক জবের জন্য
@@ -258,7 +314,7 @@ Niche-specific skill আগে, generic পরে। উদাহরণ অর�
 
 এতে দুই ধরনের সার্চেই ম্যাচ হবে, কিন্তু প্রতিটাতেই প্রোফাইল হাইলি রিলেভেন্ট থাকবে।
 
-### H. Video Introduction
+### I. Video Introduction
 
 ৩০-৬০ সেকেন্ডের ইন্ট্রো ভিডিওতে সরাসরি বলুন: *"I combine full-stack development with AI — so instead of hiring separate people for your app and your AI features, you get one person who builds the whole thing."* এটা একটা শক্তিশালী, মনে রাখার মতো পিচ।
 
@@ -400,6 +456,7 @@ call to walk through the technical approach."
 - [ ] Title AI/Automation + Full-Stack একসাথে ফ্রেম করা
 - [ ] Overview problem→solution→proof→CTA ফরম্যাটে লেখা, business outcome-focused
 - [ ] প্রতিটা পিলার থেকে অন্তত ১টা করে case-study পোর্টফোলিও আছে
+- [ ] Upwork-এর নিজস্ব Free Skill Certification + অন্তত ২-৩টা পিলার-ভিত্তিক ফ্রি সার্টিফিকেট (freeCodeCamp/Anthropic Academy) যোগ করা হয়েছে
 - [ ] Hourly rate বাজার-উপযোগী (সবচেয়ে সস্তা নয়)
 - [ ] Video introduction যোগ করা হয়েছে
 - [ ] ২টা specialized profile তৈরি (AI/Automation + Traditional Full-Stack)

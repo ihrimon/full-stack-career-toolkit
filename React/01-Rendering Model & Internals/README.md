@@ -1,8 +1,8 @@
 # 01. Rendering Model & Internals — Deep Dive
 
-[⬅ Back to React Roadmap](../../README.md)
+[⬅ Back to React Roadmap](../README.md)
 
-> The checklist version of this topic lives in [`React/README.md § 01`](../../README.md#01-rendering-model--internals). This file exists because "know the render phase and commit phase" is a checkbox you can tick without ever having debugged a real re-render bug — this is the version with the bugs, the fixes, and the *why*.
+> The checklist version of this topic lives in [`React/README.md § Phase 01`](../README.md#phase-01---rendering-model--internals). This file exists because "know the render phase and commit phase" is a checkbox you can tick without ever having debugged a real re-render bug — this is the version with the bugs, the fixes, and the *why*.
 
 ---
 
@@ -32,41 +32,43 @@ Before React 16, rendering used a **stack reconciler**: once React started rende
 
 ## 🧱 Render Phase vs Commit Phase
 
-React's work on every update happens in two distinct phases:
+**Think of it like planning a trip vs actually going on the trip.**
 
-| Phase | What happens | Can it be paused/thrown away? | Should it have side effects? |
+- **Render Phase = Planning.** React is just "thinking" — figuring out what the UI *should* look like. Nothing has happened in the real world yet, so React is free to change its mind, scrap the plan, and start over.
+- **Commit Phase = Actually traveling.** The plan is final. React applies it to the real webpage (the DOM). This always finishes — it can't be silently thrown away.
+
+| Phase | What React is doing | Can it be thrown away and redone? | Side effects allowed? |
 |---|---|---|---|
-| **Render** | Calls your component functions, builds the new Fiber tree, runs the diff against the previous tree | ✅ Yes — React may start, abandon, and restart this work | ❌ No — must be a pure calculation |
-| **Commit** | Applies the diffed changes to the real DOM, runs `useLayoutEffect`, then (async) runs `useEffect` | ❌ No — this part is synchronous and always completes | ✅ Yes — this is where side effects belong |
+| **Render** | Calls your component function to decide what the UI should look like | ✅ Yes, freely | ❌ No — just decide, don't *do* |
+| **Commit** | Actually changes the real DOM so you can see it, then runs `useEffect` | ❌ No — always completes | ✅ Yes — this is where "doing" belongs |
 
-**Why "render must be pure" is not a style preference — it's a correctness requirement:**
+**The one rule that matters:** don't do "real world" things (talk to `localStorage`, call an API, start a timer, change `document.title`) directly inside your component function — put them in `useEffect` instead. Here's why, with a simple example:
 
 ```jsx
-// ❌ Side effect during render — breaks under Fiber
-function OrderSummary({ items }) {
-  // This runs on EVERY render attempt, including ones React
-  // decides to throw away and redo (common in Concurrent Mode).
-  analytics.track('order_summary_viewed'); // fires extra times, or fires for a render that never commits
+// ❌ Bad — saving to localStorage directly during render
+function Greeting({ name }) {
+  localStorage.setItem('lastVisitor', name); // runs every time React "thinks", even wasted thinks
 
-  const total = items.reduce((sum, i) => sum + i.price, 0);
-  return <p>Total: ${total}</p>;
+  return <h1>Hello, {name}!</h1>;
 }
 ```
 
-```jsx
-// ✅ Side effect moved to the commit phase, where it belongs
-function OrderSummary({ items }) {
-  const total = items.reduce((sum, i) => sum + i.price, 0);
+**Why this breaks:** React might call `Greeting("Alice")` while "thinking," then decide to throw that away and re-render with `"Bob"` instead. But `localStorage` was already updated to `"Alice"` — even though the user never actually saw "Alice" on screen. You end up with wrong or extra writes that don't match what's really on the page.
 
+```jsx
+// ✅ Good — saving to localStorage after the render is actually shown
+function Greeting({ name }) {
   useEffect(() => {
-    analytics.track('order_summary_viewed'); // only fires after a render actually commits
-  }, [items]);
+    localStorage.setItem('lastVisitor', name); // only runs once this render is real / on screen
+  }, [name]);
 
-  return <p>Total: ${total}</p>;
+  return <h1>Hello, {name}!</h1>;
 }
 ```
 
-Because the render phase can be started and abandoned by React (especially under concurrent features), any side effect placed directly in a component body can run more times than you think, or run for UI that the user never actually saw. `useLayoutEffect`/`useEffect` are guaranteed to run only after a render has actually committed.
+Now `localStorage` only updates when `Greeting` is actually shown to the user, not for "wasted thinking" React did along the way.
+
+> **Quick mental checklist:** ask "does this line touch something *outside* this component?" (storage, network, timers, subscriptions) → put it in `useEffect`. Just calculating what to show from `props`/`state`? → that's fine to leave directly in the component body, that's what render is for.
 
 ---
 
@@ -98,7 +100,15 @@ function TodoRow({ todo, onRemove }) {
 }
 ```
 
-**The bug:** delete the *first* todo. React sees "same key (`0`), same position" for what is now the *second* todo shifted up — so it reuses the existing `TodoRow` instance and its `draft` state instead of unmounting it. The row the user is looking at now shows the wrong text, because the DOM node was reused for different underlying data.
+**The bug, in plain terms:** picture 3 numbered chairs — Chair #1, #2, #3 — each with a notebook tied to the *chair*, not to the person sitting in it.
+
+- Chair #1: Rahim sits here, notebook says "buy milk"
+- Chair #2: Karim sits here, notebook says "buy rice"
+- Chair #3: Jamal sits here, notebook says "buy eggs"
+
+Rahim leaves (deleted). Everyone shifts up one seat: Karim moves to Chair #1, Jamal moves to Chair #2. But the notebooks are tied to the *chairs*, not the people — so Chair #1's notebook still says "buy milk" (Rahim's old note), even though Karim is sitting there now. Karim is now looking at a note that isn't his.
+
+That's exactly what `key={index}` does: React matches by **position** ("chair number"), not by **identity** ("which todo this actually is"). So when the first todo is deleted, everything shifts up, but each row's local `draft` state (the notebook) stays glued to its position instead of following its todo — the input the user sees now shows stale text that belongs to a different item.
 
 ```jsx
 // ✅ Using a stable, unique identifier as key
@@ -162,7 +172,7 @@ function AppProvider({ children }) {
 }
 ```
 
-This is exactly the "Context splitting" checklist item in [§ 04 Context API at Scale](../../README.md#04-context-api-at-scale) — it exists because of this specific re-render mechanic.
+This is exactly the "Context splitting" checklist item in [§ Phase 04 Context API at Scale](../README.md#phase-04---context-api-at-scale) — it exists because of this specific re-render mechanic.
 
 ---
 
@@ -271,3 +281,7 @@ useEffect(() => {
 ```
 
 > **Takeaway:** if StrictMode's double-invoke breaks your component, the bug was already there — StrictMode just moved its discovery from "random production incident" to "immediately, in dev, with a clear repro."
+
+---
+
+💡**[Interview Q&A for this topic →](./interview-qa.md)**

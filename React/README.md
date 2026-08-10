@@ -5,7 +5,7 @@
 ## 📑 Table of Contents
 
 - [Phase 01 — Rendering Model \& Internals ](#phase-01---rendering-model--internals) ✅
-- [Phase 02 — Hooks — Beyond the Basics](#phase-02---hooks--beyond-the-basics)
+- [Phase 02 — Hooks — Beyond the Basics](#phase-02---hooks--beyond-the-basics) ✅
 - [Phase 03 — Escape Hatches \& Refs](#phase-03---escape-hatches--refs)
 - [Phase 04 — Context API at Scale](#phase-04---context-api-at-scale)
 - [Phase 05 — Advanced Component Patterns](#phase-05---advanced-component-patterns)
@@ -44,16 +44,18 @@
 
 📖 **[Deep dive → 01 - Rendering Model & Internals](./01-Rendering%20Model%20%26%20Internals/README.md)**
 
-## Phase 02 - Hooks — Beyond the Basics
+## Phase 02 - Hooks — Beyond the Basics ✅
 
-- [ ] `useReducer` for complex local state logic
-- [ ] `useMemo` vs `useCallback` — when each actually helps (and when it's noise)
-- [ ] `useLayoutEffect` vs `useEffect` — timing differences that matter
-- [ ] `useId` — stable IDs for SSR-safe accessibility wiring
-- [ ] `useTransition` & `useDeferredValue` — concurrent UI without blocking input
-- [ ] `useSyncExternalStore` — subscribing to external stores correctly
-- [ ] Rules of Hooks — the *why*, not just the *what*
-- [ ] Designing custom hooks for reusable stateful logic (naming, return shape, composability)
+- [x] `useReducer` for complex local state logic
+- [x] `useMemo` vs `useCallback` — when each actually helps (and when it's noise)
+- [x] `useLayoutEffect` vs `useEffect` — timing differences that matter
+- [x] `useId` — stable IDs for SSR-safe accessibility wiring
+- [x] `useTransition` & `useDeferredValue` — concurrent UI without blocking input
+- [x] `useSyncExternalStore` — subscribing to external stores correctly
+- [x] Rules of Hooks — the *why*, not just the *what*
+- [x] Designing custom hooks for reusable stateful logic (naming, return shape, composability)
+
+📖 **[Deep dive → 02 - Hooks — Beyond the Basics](./02-Hooks%20%E2%80%94%20Beyond%20the%20Basics/README.md)**
 
 ## Phase 03 - Escape Hatches & Refs
 

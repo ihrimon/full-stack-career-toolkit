@@ -6,7 +6,7 @@
 
 - [Phase 01 — Rendering Model \& Internals ](#phase-01---rendering-model--internals) ✅
 - [Phase 02 — Hooks — Beyond the Basics](#phase-02---hooks--beyond-the-basics) ✅
-- [Phase 03 — Escape Hatches \& Refs](#phase-03---escape-hatches--refs)
+- [Phase 03 — Escape Hatches \& Refs](#phase-03---escape-hatches--refs) ✅
 - [Phase 04 — Context API at Scale](#phase-04---context-api-at-scale)
 - [Phase 05 — Advanced Component Patterns](#phase-05---advanced-component-patterns)
 - [Phase 06 — Performance Engineering](#phase-06---performance-engineering)
@@ -57,12 +57,14 @@
 
 📖 **[Deep dive → 02 - Hooks — Beyond the Basics](./02-Hooks%20%E2%80%94%20Beyond%20the%20Basics/README.md)**
 
-## Phase 03 - Escape Hatches & Refs
+## Phase 03 - Escape Hatches & Refs ✅
 
-- [ ] `useRef` beyond DOM access — mutable values that don't trigger re-renders
-- [ ] Direct DOM manipulation when React state isn't the right tool
-- [ ] `forwardRef` — exposing a DOM node/API from a child component
-- [ ] `useImperativeHandle` — controlling exactly what a ref exposes
+- [x] `useRef` beyond DOM access — mutable values that don't trigger re-renders
+- [x] Direct DOM manipulation when React state isn't the right tool
+- [x] `forwardRef` — exposing a DOM node/API from a child component
+- [x] `useImperativeHandle` — controlling exactly what a ref exposes
+
+📖 **[Deep dive → 03 - Escape Hatches & Refs](./03-Escape%20Hatches%20%26%20Refs/README.md)**
 
 ## Phase 04 - Context API at Scale
 

@@ -1,416 +1,82 @@
-# 🚀 Node.js Mastery Roadmap 🌐⚡
+# 💚 Node.js Mastery Roadmap
+
+> Node.js is a JavaScript runtime built on Chrome's V8 engine, designed for scalable network applications and backend development. This roadmap takes you from fundamentals to production-grade backend engineering, phase by phase — internals, explanations, and runnable examples are folded directly into the topic they belong to, so you read top-to-bottom instead of jumping between a checklist and a separate notes section.
+
+---
 
 ## 📑 Table of Contents
-- [🚀 Node.js Mastery Roadmap 🌐⚡](#-nodejs-mastery-roadmap-)
-  - [📑 Table of Contents](#-table-of-contents)
-  - [1. Node.js Fundamentals](#1-nodejs-fundamentals)
-  - [2. Core Modules](#2-core-modules)
-  - [3. Asynchronous Programming](#3-asynchronous-programming)
-  - [4. Event-Driven Architecture](#4-event-driven-architecture)
-  - [5. Express.js Framework](#5-expressjs-framework)
-  - [6. Template Engines](#6-template-engines)
-  - [7. Database Integration](#7-database-integration)
-  - [8. Authentication \& Security](#8-authentication--security)
-  - [9. File Handling \& Uploads](#9-file-handling--uploads)
-  - [10. WebSockets \& Real-Time](#10-websockets--real-time)
-  - [11. API Design](#11-api-design)
-  - [12. Testing](#12-testing)
-  - [13. Advanced Concepts](#13-advanced-concepts)
-  - [14. Deployment \& DevOps](#14-deployment--devops)
-  - [15. Best Practices](#15-best-practices)
+
+**🟢 Phase 1 — Foundations**
+
+- [01. Node.js Fundamentals](#01-nodejs-fundamentals) ✅
+- [02. Node.js Architecture & Event Loop](#02-nodejs-architecture--event-loop)
+- [03. Core Modules](#03-core-modules)
+- [04. Modules & Package Management](#04-modules--package-management)
+- [05. Asynchronous Programming](#05-asynchronous-programming)
+- [📦 Checkpoint Project 1](#-checkpoint-project-1)
+
+**🟡 Phase 2 — Building Applications**
+
+- [06. Express.js Framework](#06-expressjs-framework)
+- [07. Template Engines](#07-template-engines)
+- [08. Streams & Buffer Management (Deep Dive)](#08-streams--buffer-management-deep-dive)
+- [09. Building HTTP Servers & REST APIs](#09-building-http-servers--rest-apis)
+- [10. Database Integration](#10-database-integration)
+- [11. Authentication & Security](#11-authentication--security)
+- [12. File Handling & Uploads](#12-file-handling--uploads)
+- [13. Error Handling & Debugging](#13-error-handling--debugging)
+- [📦 Checkpoint Project 2](#-checkpoint-project-2)
+
+**🔴 Phase 3 — Scaling & Real-Time**
+
+- [14. WebSockets & Real-Time](#14-websockets--real-time)
+- [15. API Design](#15-api-design)
+- [16. Testing & Quality Assurance](#16-testing--quality-assurance)
+- [17. Performance & Optimization](#17-performance--optimization)
+- [18. Deployment & Production](#18-deployment--production)
+- [📦 Checkpoint Project 3](#-checkpoint-project-3)
+
+**⚫ Phase 4 — Expert & Specialization**
+
+- [19. Advanced Concepts](#19-advanced-concepts)
+- [20. CLI Tools Development](#20-cli-tools-development)
+- [21. Advanced Node Internals](#21-advanced-node-internals)
+- [22. Best Practices](#22-best-practices)
+- [🏆 Capstone Project](#-capstone-project)
 
 ---
 
-## 1. Node.js Fundamentals
-- [ ] What is Node.js & Why use it?  
-- [ ] V8 Engine & libuv  
-- [ ] Single-threaded, Non-blocking I/O  
-- [ ] REPL & Running Scripts  
-- [ ] NPM & Package.json  
-
-## 2. Core Modules
-- [ ] File System (`fs`)  
-- [ ] Path Module  
-- [ ] OS Module  
-- [ ] HTTP & HTTPS Module  
-- [ ] Events & EventEmitter  
-- [ ] Util & Crypto  
-
-## 3. Asynchronous Programming
-- [ ] Callbacks  
-- [ ] Promises  
-- [ ] Async/Await  
-- [ ] Streams (Readable/Writable)  
-- [ ] Buffers & Pipes  
-
-## 4. Event-Driven Architecture
-- [ ] EventEmitter in Depth  
-- [ ] Cluster Module  
-- [ ] Child Processes & Worker Threads  
-
-## 5. Express.js Framework
-- [ ] Introduction to Express  
-- [ ] Routing Basics  
-- [ ] Middleware (Built-in, Custom, Third-party)  
-- [ ] Request & Response Handling  
-- [ ] Error Handling in Express  
-
-## 6. Template Engines
-- [ ] EJS  
-- [ ] Handlebars  
-- [ ] Pug (Jade)  
-
-## 7. Database Integration
-- [ ] MongoDB + Mongoose  
-- [ ] PostgreSQL / MySQL (Sequelize, Prisma, Knex)  
-- [ ] Redis for Caching & Sessions  
-
-## 8. Authentication & Security
-- [ ] JWT Authentication  
-- [ ] OAuth 2.0 / Passport.js  
-- [ ] Bcrypt / Argon2 Password Hashing  
-- [ ] Helmet.js for Security Headers  
-- [ ] Rate Limiting & CORS  
-
-## 9. File Handling & Uploads
-- [ ] Handling File System with `fs`  
-- [ ] File Upload with Multer  
-- [ ] Cloud Uploads (AWS S3, Cloudinary)  
-
-## 10. WebSockets & Real-Time
-- [ ] WebSocket Basics  
-- [ ] Socket.io  
-- [ ] Real-Time Chat App Example  
-
-## 11. API Design
-- [ ] RESTful API Principles  
-- [ ] API Versioning  
-- [ ] GraphQL with Apollo/Express  
-- [ ] Rate Limiting & Pagination  
-
-## 12. Testing
-- [ ] Debugging with Node Inspector  
-- [ ] Unit Testing with Mocha/Chai  
-- [ ] Jest for Testing APIs  
-- [ ] Supertest for Integration Testing  
-
-## 13. Advanced Concepts
-- [ ] Microservices Architecture  
-- [ ] Message Queues (RabbitMQ, Kafka, BullMQ)  
-- [ ] Worker Threads  
-- [ ] Serverless Functions (AWS Lambda, Vercel)  
-
-## 14. Deployment & DevOps
-- [ ] PM2 & Process Management  
-- [ ] Dockerizing Node.js Apps  
-- [ ] Nginx Reverse Proxy  
-- [ ] CI/CD (GitHub Actions, GitLab CI, Jenkins)  
-- [ ] Cloud Deployment (AWS, Heroku, Vercel, Render)  
-
-## 15. Best Practices
-- [ ] Clean Project Structure  
-- [ ] Config Management (dotenv)  
-- [ ] Logging (Winston, Morgan, Pino)  
-- [ ] Error Handling Strategy  
-- [ ] Secure & Scalable Architecture  
-- [ ] Performance Optimization  
-
-
----
-
-## 📖 Extended Deep-Dive Notes
-
-> The section below contains in-depth explanations, internals (V8, libuv, event loop), and runnable code examples for core Node.js concepts. For a dedicated Redis deep-dive, see [Redis Guide](../Redis/README.md).
-
-### 📑 Topic Index
-
-> Node.js is a JavaScript runtime built on Chrome’s V8 engine designed for scalable network applications and backend development.
-
-| Topics                                                                        | Overview                                                                   |
-| ----------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [01. Introduction & Global Environment](#01-introduction--global-environment) | What is Node.js, installation, runtime basics, REPL, versioning            |
-| [02. Node.js Architecture & Event Loop](#02-nodejs-architecture--event-loop)  | Single-threaded model, non-blocking I/O, event loop phases, libuv          |
-| [03. Core Modules Deep Dive](#03-core-modules-deep-dive)                      | fs, path, os, http, events, buffer, stream, crypto                         |
-| [04. Modules & Package Management](#04-modules--package-management)           | CommonJS vs ESM, package.json, npm, semver, dependency management          |
-| [05. Asynchronous Programming](#05-asynchronous-programming)                  | Callbacks, Promises, async/await, error handling, microtasks vs macrotasks |
-| [06. Streams & Buffer Management](#06-streams--buffer-management)             | Readable, writable, duplex, transform streams, backpressure handling       |
-| [07. Building HTTP Servers & APIs](#07-building-http-servers--apis)           | Creating servers, routing, middleware concept, REST API basics             |
-| [08. Working with Databases](#08-working-with-databases)                      | MongoDB driver, connection pooling, transactions, SQL integration          |
-| [09. Authentication & Security](#09-authentication--security)                 | JWT, bcrypt, sessions, cookies, CSRF, XSS protection                       |
-| [10. Error Handling & Debugging](#10-error-handling--debugging)               | Custom errors, global error handling, logging, debugging tools             |
-| [11. Testing & Quality Assurance](#11-testing--quality-assurance)             | Unit testing, integration testing, Jest, mocking                           |
-| [12. Performance Optimization](#12-performance-optimization)                  | Profiling, memory leaks, clustering, worker threads, caching               |
-| [13. Deployment & Production](#13-deployment--production)                     | PM2, Docker, environment configs, CI/CD, graceful shutdown                 |
-| [14. CLI Tools Development](#14-cli-tools-development)                        | Building CLI tools, argument parsing, publishing npm packages              |
-| [15. Advanced Node Internals](#15-advanced-node-internals)                    | Child processes, worker threads, Node-API, stream internals                |
-
-### 01. Introduction & Global Environment
-
-#### `Core Basics`
-
-<details>
-<summary><b >What is Node.js ?</b></summary>
-
-Node.js is powered by the Chrome V8 JavaScript engine and operates on an event-driven, non-blocking I/O model, ensuring high throughput and scalability. It enables JavaScript execution outside the browser, supporting file system access, HTTP servers, database operations, and more.
-
-**Key Characteristics:**
-
-1️⃣ Single-threaded Event Loop:
-
-- Runs on a single main thread
-- Uses an event loop to handle thousands of connections without creating new threads per request.
-- Reduces memory overhead compared to traditional multi-threaded servers.
-
-2️⃣ Non-Blocking I/O
-
-- File system, network, and database operations run asynchronously
-- The main thread does not wait for operations to complete
-- Operations trigger events instead of blocking execution.
-- High performance for I/O-heavy applications
-
-3️⃣ Event-Driven Architecture
-
-- Built around events and callbacks
-- Uses EventEmitter internally
-- Perfect for real-time systems (chat, streaming, APIs)
-
-4️⃣ Asynchronous Programming Model
-
-- Supports callbacks, Promises, and async/await.
-- Efficient handling of background operations.
-- Prevents thread blocking during long-running tasks.
-
-5️⃣ Built on V8 JavaScript Engine
-
-- Powered by Chrome’s V8 engine
-- JIT (Just-In-Time) compilation
-- Converts JavaScript into optimized machine code
-
-6️⃣ libuv Library and Cross-Platform
-
-- Handles asynchronous I/O operations
-- Uses internal thread pool for blocking tasks (DNS, FS)
-- Cross-platform abstraction layer (Windows, macOS, Linux)
-- Supports ARM (IoT, Raspberry Pi, containers)
-
-7️⃣ NPM Ecosystem
-
-- Includes npm (Node Package Manager).
-- Access to millions of open-source packages.
-- Rapid development through reusable libraries.
-- Strong community support.
-
-8️⃣ Highly Scalable & Worker Threads
-
-- Handles many concurrent connections efficiently.
-- Suitable for APIs, microservices and distributed systems.
-- Works well with horizontal scaling strategies.
-- True multi-threading for CPU-intensive tasks
-- Offloads heavy computation from event loop
-
-9️⃣ Stream-Based Processing
-
-- Uses streams for handling large data.
-- Supports readable, writable, duplex, and transform streams.
-- Enables efficient memory usage for large files.
-
-🔟 Fast Data Processing
-
-- JSON is native to JavaScript.
-- Fast JSON parsing and response handling
-- Perfect for REST APIs and real-time data exchange.
-
-1️⃣1️⃣ Production-Ready Features
-
-- Works with PM2, systemd, Docker
-- Graceful shutdown & cluster reloads
-- Observability with Logging, metrics, tracing support
-
-</details>
-
-<details>
-<summary><b >Node.js vs Browser JavaScript</b></summary>
-
-Both run JavaScript, but in completely different environments with different purposes:
-
-| Feature             | Browser JS                       | Node.js                           |
-| ------------------- | -------------------------------- | --------------------------------- |
-| **Purpose**         | UI interaction, DOM manipulation | Server-side logic, backend        |
-| **Environment**     | Inside a web browser             | Runs on your machine/server       |
-| **Global Object**   | `window`                         | `global`                          |
-| **File System**     | No (security reasons)            | Yes (`fs` module)                 |
-| **HTTP Requests**   | Fetch API / XMLHttpRequest       | Built-in `http`/`https` modules   |
-| **Modules**         | ES Modules (`import/export`)     | CommonJS (`require`) + ES Modules |
-| **Package Manager** | CDN / bundlers                   | npm / yarn                        |
-
-</details>
-
-<details>
-<summary><b >Runtime vs Framework</b></summary>
-
-**What is a Runtime?** => A Runtime is the environment where your code executes. It provides the core engine, memory management, and low-level system access needed to actually run your program.
-
-**What is a Framework?** => A Framework is a pre-built structure/toolkit that provides rules, patterns, and tools to help you build applications faster. It runs on top of a runtime.
-
-</details>
-
-<details>
-<summary><b >V8 Engine overview</b></summary>
-
-V8 is the translator + executor — it takes your JavaScript code and turns it into machine code that your CPU can directly understand and run.
-
-**_How V8 Works_**
-
-```md
-JS Code → [Parser] → AST → [Ignition] → Bytecode
-↓
-[TurboFan]
-↓
-Optimized Machine Code
-↓
-CPU Runs It
-```
-
-```javascript
-/* Step 1 — Parsing V8 reads JS and builds an AST (Abstract Syntax Tree) */
-const add = (a, b) => a + b;
-
-/*
- V8 sees it as a tree:
- VariableDeclaration
-   └── ArrowFunctionExpression
-        ├── Params: [a, b]
-        └── BinaryExpression: a + b
-*/
-
-/* Step 2 — Ignition (Interpreter) */
-
-//Converts AST → **Bytecode** (faster to start executing)
-
-
-// Ignition Bytecode (simplified):
-LdaNamedProperty a        // Load variable 'a'
-Add b                     // Add 'b' to it
-Return                    // Return result
-
-
-/* Step 3 — TurboFan (JIT Compiler) */
-
-/* Watches **hot code** (frequently run code) and compiles it to
-highly optimized **native machine code** */
-
-
-// TurboFan output (conceptual x86 assembly):
-MOV eax, [a]
-ADD eax, [b]
-RET
-
-
-
-/* Step 4 — Garbage Collection (Orinoco) */
-
-// V8 automatically frees unused memory so you don't have to
-
-
-function createUser() {
-  let user = { name: 'Rahim', age: 25 }; // allocated in memory
-  return user.name;
-} // 'user' object → no longer referenced → V8 GC cleans it up
-
-```
-
-**Example: V8 in Chrome DevTools**
-
-```javascript
-// This function will be HOT (called many times) → TurboFan optimizes it
-function fibonacci(n) {
-  if (n <= 1) return n;
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-// Cold run — Ignition interprets
-console.time('cold');
-fibonacci(30);
-console.timeEnd('cold'); // ~15ms
-
-// Hot run — TurboFan has compiled it
-console.time('hot');
-fibonacci(30);
-console.timeEnd('hot'); // ~2ms ← same code, MUCH faster ⚡
-```
-
-**V8 Engine — Key Components**
-
-| Component     | Role                                                          |
-| ------------- | ------------------------------------------------------------- |
-| **Parser**    | Reads JS → builds AST                                         |
-| **Ignition**  | AST → Bytecode (interpreter)                                  |
-| **TurboFan**  | Bytecode → Optimized machine code (JIT)                       |
-| **Orinoco**   | Garbage Collector — frees unused memory                       |
-| **Liftoff**   | WebAssembly baseline compiler                                 |
-| **Sparkplug** | Fast non-optimizing JS compiler (between Ignition & TurboFan) |
-
-</details>
-
-<details>
-<summary><b >package.json basics</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-#### `Global Environment`
-
-<details>
-<summary><b >global object</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >process object</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >process.argv</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >Environment variables</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >__dirname, __filename</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
-
-<details>
-<summary><b >process exit events</b></summary>
-
-TypeScript is an open-source programming language developed
-
-</details>
+## 🟢 Phase 1 — Foundations
+
+### 01. Node.js Fundamentals ✅
+
+- [x] What is Node.js & Why use it?
+- [x] Node.js vs Browser JavaScript
+- [x] Runtime vs Framework
+- [x] V8 Engine overview
+- [x] `package.json` basics
+- [x] Global object, `process`, `__dirname`/`__filename`, env vars
+- [x] process Exit Events & Graceful Shutdown
+
+📖 **[Deep dive → 01. Node.js Fundamentals](./01-Node.js%20Fundamentals/README.md)**
 
 ### 02. Node.js Architecture & Event Loop
 
+- [ ] Single-threaded model
+- [ ] Event-driven architecture
+- [ ] Non-blocking I/O
+- [ ] libuv & the thread pool
+- [ ] Event loop phases (timers, pending callbacks, idle/prepare, poll, check, close callbacks)
+- [ ] Microtasks vs Macrotasks
+- [ ] `process.nextTick` vs `setImmediate`
+- [ ] `setTimeout` vs `setImmediate`
+
 <details>
-<summary><b >Single-threaded model</b></summary>
+<summary><b>Single-threaded model</b></summary>
 
 Node.js is single-threaded for JavaScript, but internally it can still use a thread pool (via libuv) for some heavy I/O tasks.
 
-**The Single-Threaded Model in Node.js means:\***
+**The Single-Threaded Model in Node.js means:**
 
 - JavaScript runs on one main thread
 - Tasks execute sequentially
@@ -433,7 +99,7 @@ The single-threaded design is ideal for I/O-heavy applications, such as:
 - ✔ High scalability for concurrent requests
 
 ```js
-/! Example 1: Execution Order /;
+/* Example 1: Execution Order */
 
 console.log('1️⃣  Start'); // Runs first
 
@@ -448,11 +114,11 @@ console.log('2️⃣  End'); // Runs second
 // 2️⃣  End
 // 3️⃣  Timeout done
 
-> Even with 0ms delay, the timeout waits — the main thread finishes first.
+// Even with 0ms delay, the timeout waits — the main thread finishes first.
 ```
 
 ```js
-/! Example 2: Non-Blocking Web Server /;
+/* Example 2: Non-Blocking Web Server */
 
 const http = require('http');
 const fs = require('fs');
@@ -492,7 +158,7 @@ User C → readFile handed to libuv → thread FREE ──┘
 </details>
 
 <details>
-<summary><b >Event-driven architecture</b></summary>
+<summary><b>Event-driven architecture</b></summary>
 
 Event-Driven Architecture is a programming pattern where the flow of the program is controlled by events and event handlers (listeners).
 
@@ -521,32 +187,31 @@ Callback Function Executes
 ```
 
 ```js
-/! Real-World Example — HTTP Server
+/* Real-World Example — HTTP Server */
 
-const http = require("http");
+const http = require('http');
 
 const server = http.createServer();
 
 // Listen for "request" events
-server.on("request", (req, res) => {
+server.on('request', (req, res) => {
   console.log(`Request received: ${req.url}`);
-  res.end("Hello World!");
+  res.end('Hello World!');
 });
 
 // Listen for "connection" events
-server.on("connection", (socket) => {
-  console.log("New client connected!");
+server.on('connection', (socket) => {
+  console.log('New client connected!');
 });
 
 // Listen for "error" events
-server.on("error", (err) => {
+server.on('error', (err) => {
   console.error(`Server error: ${err.message}`);
 });
 
 server.listen(3000, () => {
-  console.log("Listening on port 3000...");
+  console.log('Listening on port 3000...');
 });
-
 ```
 
 ```md
@@ -560,25 +225,25 @@ Browser hits localhost:3000
 ```
 
 ```js
-/! Real-World Example — File Stream
+/* Real-World Example — File Stream */
 
-const fs = require("fs");
+const fs = require('fs');
 
-const stream = fs.createReadStream("bigfile.txt");
+const stream = fs.createReadStream('bigfile.txt');
 
 // Fires repeatedly as chunks arrive
-stream.on("data", (chunk) => {
+stream.on('data', (chunk) => {
   console.log(`Received ${chunk.length} bytes`);
 });
 
 // Fires once when the file is fully read
-stream.on("end", () => {
-  console.log("File reading complete ✅");
+stream.on('end', () => {
+  console.log('File reading complete ✅');
 });
 
 // Fires if something goes wrong
-stream.on("error", (err) => {
-  console.error("Read error:", err.message);
+stream.on('error', (err) => {
+  console.error('Read error:', err.message);
 });
 ```
 
@@ -598,7 +263,7 @@ bigfile.txt (500MB)
 </details>
 
 <details>
-<summary><b >Non-blocking I/O</b></summary>
+<summary><b>Non-blocking I/O</b></summary>
 
 Non-Blocking I/O (Input/Output) means that when the program performs operations like reading files, accessing a database, or making network requests, it does not stop the execution of other code while waiting for the operation to complete.
 
@@ -685,7 +350,7 @@ All of these are handed off to libuv — thread stays FREE
 </details>
 
 <details>
-<summary><b >libuv overview</b></summary>
+<summary><b>libuv overview</b></summary>
 
 libuv is the C library underneath Node.js that handles all asynchronous I/O operations.
 
@@ -720,73 +385,77 @@ Network request arrives
   OS notifies libuv ──▶ callback pushed to queue ──▶ Event Loop runs it ✅
 
   ✅ Zero threads used — pure OS-level efficiency
-
 ```
 
 </details>
 
-</details>
-
 <details>
-<summary><b >Thread pool concept</b></summary>
+<summary><b>Thread pool concept</b></summary>
 
-libuv is the C library underneath Node.js that handles all asynchronous I/O operations.
+Network I/O (above) never touches libuv's thread pool — the OS kernel handles sockets asynchronously by itself. But some operations have **no OS-level async API**, so libuv runs them on an internal **thread pool** (4 threads by default, tunable via `UV_THREADPOOL_SIZE`) instead of blocking the main thread: file system calls, `dns.lookup`, `crypto.pbkdf2`/`scrypt`, and `zlib` compression.
 
 ```js
-// OS-Level Async (Network I/O)
+const crypto = require('crypto');
 
-const net = require('net');
+console.time('threadpool');
 
-// Network I/O → handled directly by OS kernel
-// libuv uses: epoll (Linux), kqueue (macOS), IOCP (Windows)
-const server = net.createServer((socket) => {
-  socket.on('data', (data) => {
-    socket.write('Echo: ' + data);
+// pbkdf2 is CPU-heavy and has no native async OS API,
+// so libuv runs each call on a worker thread from its pool
+for (let i = 0; i < 4; i++) {
+  crypto.pbkdf2('password', 'salt', 100000, 512, 'sha512', () => {
+    console.timeEnd('threadpool');
   });
-});
-
-server.listen(3000);
+}
+// All 4 finish at roughly the same time — 4 threads run in parallel.
+// A 5th concurrent call would have to wait for a thread to free up.
 ```
 
 ```
-Network request arrives
-        │
-        ▼
-  libuv tells OS: "notify me when data arrives"
-        │
-        ▼
-  OS watches the socket (epoll/kqueue)
-        │
-  Data arrives!
-        │
-        ▼
-  OS notifies libuv ──▶ callback pushed to queue ──▶ Event Loop runs it ✅
+UV_THREADPOOL_SIZE=4 (default)
 
-  ✅ Zero threads used — pure OS-level efficiency
+fs.readFile, crypto.pbkdf2, dns.lookup, zlib.gzip
+        │
+        ▼
+  Handed to libuv's thread pool (worker threads written in C)
+        │
+  4 threads process tasks in parallel
+        │
+        ▼
+  Callback fires back on the main thread when done ✅
 
+⚠️  Raise UV_THREADPOOL_SIZE if your app does heavy concurrent fs/crypto work
 ```
 
 </details>
 
-#### Event Loop Deep Dive
+#### Event Loop Phases Deep Dive
 
-- Event loop phases:
-  - Timers
-  - Pending callbacks
-  - Idle / prepare
-  - Poll
-  - Check
-  - Close callbacks
-- Microtasks queue
-- Macrotasks queue
-- process.nextTick vs setImmediate
-- setTimeout vs setImmediate
-- Event loop internals
+- **Timers** — runs callbacks scheduled by `setTimeout`/`setInterval` whose threshold has elapsed
+- **Pending callbacks** — executes I/O callbacks deferred from the previous loop iteration
+- **Idle / prepare** — internal use only
+- **Poll** — retrieves new I/O events and executes their callbacks; this is where most work happens
+- **Check** — runs `setImmediate()` callbacks, right after the poll phase
+- **Close callbacks** — runs `close` event callbacks (e.g. `socket.on('close', ...)`)
+- **Microtask queue** (Promises, `queueMicrotask`) — drained completely after _every_ callback, before the loop moves to its next phase
+- **Macrotask queue** (`setTimeout`, `setInterval`, I/O callbacks) — one task per phase per loop tick
+- **`process.nextTick()` vs `setImmediate()`** — `nextTick` runs before microtasks, even before Promises, and before the loop continues; overusing it recursively can starve I/O. `setImmediate()` runs in the Check phase, after I/O callbacks in the current iteration.
+- **`setTimeout(fn, 0)` vs `setImmediate(fn)`** — order between them is not guaranteed at the top level, but inside an I/O callback `setImmediate` always fires first.
 
-### 03. Core Modules (Built-in Modules)
+### 03. Core Modules
+
+- [ ] File System (`fs`)
+- [ ] Path Module
+- [ ] HTTP & HTTPS Module
+- [ ] URL Module
+- [ ] Events & EventEmitter
+- [ ] Buffer
+- [ ] Streams (intro)
+- [ ] OS Module
+- [ ] Crypto
+- [ ] Timers
 
 <details>
-<summary><b >File System (fs)</b></summary>
+<summary><b>File System (fs)</b></summary>
 
 Node.js core modules like `fs` (File System) provide built-in functionality for file and directory operations without external dependencies. The fs module supports both synchronous (blocking) and asynchronous (non-blocking) methods, with modern promise-based APIs for cleaner async code.
 
@@ -879,7 +548,7 @@ fs.createWriteStream()      🌊 stream  write large files in chunks
 </details>
 
 <details>
-<summary><b >Path</b></summary>
+<summary><b>Path</b></summary>
 
 The `path` module provides utilities for working with file and directory paths — safely and cross-platform.
 
@@ -979,7 +648,6 @@ path.delimiter                    ":" or ";"
 ⚠️  path.extname("file.tar.gz") → ".gz" only (not ".tar.gz")
 ⚠️  path.resolve("/a", "/b") → "/b" (absolute segment resets path)
 ⚠️  Always use path.basename() to sanitize user-provided filenames
-
 ```
 
 </details>
@@ -1015,7 +683,7 @@ path.delimiter                    ":" or ";"
 - Readable
 - Writable
 - Pipe
-- Backpressure basics
+- Backpressure basics — full deep dive in [Streams & Buffer Management](#08-streams--buffer-management-deep-dive)
 
 #### OS
 
@@ -1040,8 +708,16 @@ path.delimiter                    ":" or ";"
 
 ### 04. Modules & Package Management
 
+- [ ] CommonJS (`require`, `module.exports`)
+- [ ] ES Modules (`import`/`export`)
+- [ ] CJS vs ESM differences
+- [ ] Module resolution algorithm
+- [ ] `node_modules` structure
+- [ ] `package.json` deep dive (scripts, dependencies, versioning, main/type)
+- [ ] npm ecosystem (npx, semver, yarn/pnpm, publishing)
+
 <details>
-<summary><b >CommonJS (require, module.exports)</b></summary>
+<summary><b>CommonJS (require, module.exports)</b></summary>
 
 CommonJS (CJS) is the module system built into Node.js — it lets you split code into separate files and share functionality between them.
 
@@ -1064,20 +740,29 @@ CommonJS (CJS) is the module system built into Node.js — it lets you split cod
 </details>
 
 <details>
-<summary><b >ES Modules (import/export)</b></summary>
+<summary><b>ES Modules (import/export)</b></summary>
 
-A module is just a file. Every .js file in ES Modules is its own isolated unit with its own scope, variables, and logic.
+A module is just a file. Every `.js` file in ES Modules is its own isolated unit with its own scope, variables, and logic.
 
-**CommonJS — Key Takeaways**
+**ES Modules — Key Takeaways**
 
-1. **`module.exports`** — what your file shares with the world; nothing leaks out unless explicitly exported
+1. **`export`** — what your file shares with the world; nothing leaks out unless explicitly exported
+
+2. **`import`** — brings another file's exports into your current file, and must reference the full path including the extension (`./utils.js`, not `./utils`)
+
+3. **ESM is asynchronous** — modules are loaded and linked before execution, which is what enables top-level `await`
+
+4. **Static analysis friendly** — because imports/exports are declared at the top level (not conditionally), bundlers can tree-shake unused code
+
+5. **Enable it** via `"type": "module"` in `package.json`, or by using the `.mjs` file extension
+
+6. **No `__dirname`/`__filename`** — use `import.meta.url` with `fileURLToPath()` instead
 
 </details>
 
--
 - CJS vs ESM differences
 - Module resolution algorithm
-- node_modules structure
+- `node_modules` structure
 
 #### package.json Deep Dive
 
@@ -1098,159 +783,224 @@ A module is just a file. Every .js file in ES Modules is its own isolated unit w
 
 ### 05. Asynchronous Programming
 
-- Callback pattern
-- Callback hell
-- Promises
-- Promise chaining
-- async/await
-- try/catch with async
-- Error propagation
-- Unhandled rejections
-- Promise.all
-- Promise.race
-- util.promisify
-- AbortController
+- [ ] Callback pattern & callback hell
+- [ ] Promises & Promise chaining
+- [ ] async/await
+- [ ] try/catch with async, error propagation
+- [ ] Unhandled rejections
+- [ ] `Promise.all` / `Promise.race`
+- [ ] `util.promisify`
+- [ ] `AbortController`
 
-### 06. Streams & Buffer Management
+> Streams and buffers as async primitives are covered in [Core Modules](#03-core-modules) and in depth in [Streams & Buffer Management](#08-streams--buffer-management-deep-dive).
 
-- What is a Stream?
-- Types of Streams:
-  - Readable
-  - Writable
-  - Duplex
-  - Transform
-- Stream events
-- Pipe chaining
-- Transform streams
-- Backpressure deep explanation
-- Handling large files efficiently
-- Buffer vs Stream comparison
+---
 
-### 07. Building HTTP Servers & REST APIs
+### 📦 Checkpoint Project 1
 
-- Creating HTTP server
-- REST API fundamentals
-- Basic routing logic
-- Handling query parameters
-- Parsing request body
-- Handling JSON
-- Middleware pattern
-- CORS handling
-- Serving static files
-- API versioning
-- Status code best practices
-- Error response standardization
-- Environment configuration
+> Build a small CLI tool (no framework yet) that: lists files in a directory by extension using `fs.promises` + `path`, copies a large file with a progress bar (reuse the streaming example from [Core Modules](#03-core-modules)), and reads its own config from environment variables via `process.env` + `process.argv`. This exercises fundamentals, core modules, and async/await together before frameworks enter the picture.
 
-### 08. Working with Databases
+---
 
-#### MongoDB
+## 🟡 Phase 2 — Building Applications
 
-- Connecting with native driver
-- Connection pooling
-- CRUD operations
-- Transactions
-- Handling DB errors
-- Data validation
-- Mongoose overview
+### 06. Express.js Framework
 
-#### SQL
+- [ ] Introduction to Express
+- [ ] Routing Basics
+- [ ] Middleware (Built-in, Custom, Third-party)
+- [ ] Request & Response Handling
+- [ ] Error Handling in Express
 
-- PostgreSQL/MySQL integration
-- Basic queries
-- ORM overview
-- Migration concept
+### 07. Template Engines
 
-### 09. Authentication & Security
+- [ ] EJS
+- [ ] Handlebars
+- [ ] Pug (Jade)
 
-- Password hashing (bcrypt)
-- JWT creation & verification
-- Access vs Refresh token
-- Sessions vs Tokens
-- Cookie handling
-- CSRF protection
-- XSS prevention
-- Rate limiting
-- Helmet usage
-- Secure headers
-- Environment variable security
-- Input validation
-- Avoiding SQL/NoSQL injection
-- HTTPS & TLS basics
+### 08. Streams & Buffer Management (Deep Dive)
 
-### 10. Error Handling & Debugging
+> Builds on the stream basics from [Core Modules](#03-core-modules) — this section goes deeper into backpressure and custom Transform streams.
 
-- Error-first callback pattern
-- Creating custom error classes
-- Centralized error handling
-- try/catch best practices
-- Logging strategies
-- Unhandled rejections
-- Stack trace analysis
-- Debug flag
-- Using Node Inspector
-- Using debug module
+- [ ] Types of Streams: Readable, Writable, Duplex, Transform
+- [ ] Stream events
+- [ ] Pipe chaining
+- [ ] Transform streams
+- [ ] Backpressure — deep explanation
+- [ ] Handling large files efficiently
+- [ ] Buffer vs Stream comparison
 
-### 11. Testing & Quality Assurance
+### 09. Building HTTP Servers & REST APIs
 
-- Unit testing basics
-- Integration testing
-- Testing async code
-- Jest setup
-- Mocha overview
-- Supertest for API testing
-- Mocking
-- Test coverage
-- TDD basics
+- [ ] Creating HTTP server
+- [ ] REST API fundamentals
+- [ ] Basic routing logic
+- [ ] Handling query parameters
+- [ ] Parsing request body
+- [ ] Handling JSON
+- [ ] Middleware pattern
+- [ ] CORS handling
+- [ ] Serving static files
+- [ ] API versioning
+- [ ] Status code best practices
+- [ ] Error response standardization
+- [ ] Environment configuration
 
-### 12. Performance & Optimization
+### 10. Database Integration
 
-- Performance hooks
-- Profiling
-- Memory usage monitoring
-- Detecting memory leaks
-- Garbage collection basics
-- Cluster module
-- Worker threads
-- Horizontal scaling
-- Load balancing
-- Caching strategy (Redis overview)
-- Gzip compression
-- HTTP keep-alive
+- [ ] MongoDB + Mongoose
+- [ ] Connecting with the native driver & connection pooling
+- [ ] CRUD operations & transactions
+- [ ] Data validation & handling DB errors
+- [ ] PostgreSQL / MySQL (Sequelize, Prisma, Knex)
+- [ ] ORM overview & migration concept
+- [ ] Redis for Caching & Sessions
 
-### 13. Deployment & Production
+### 11. Authentication & Security
 
-- Production environment setup
-- dotenv usage
-- PM2 process manager
-- Dockerizing Node app
-- CI/CD basics
-- Logging in production
-- Monitoring tools
-- Health checks
-- Graceful shutdown
-- Handling SIGINT & SIGTERM
-- Zero downtime deployment
+- [ ] Password hashing (Bcrypt / Argon2)
+- [ ] JWT creation & verification
+- [ ] Access vs Refresh tokens
+- [ ] Sessions vs Tokens, cookie handling
+- [ ] OAuth 2.0 / Passport.js
+- [ ] CSRF protection & XSS prevention
+- [ ] Rate Limiting & CORS
+- [ ] Helmet.js for security headers
+- [ ] Environment variable security
+- [ ] Input validation & avoiding SQL/NoSQL injection
+- [ ] HTTPS & TLS basics
 
-### 14. CLI Tools Development
+### 12. File Handling & Uploads
 
-- Creating CLI tool
-- Parsing arguments
-- Commander usage
-- Yargs usage
-- Shebang (#!/usr/bin/env node)
-- Making CLI executable
-- Publishing CLI to npm
+- [ ] Handling File System with `fs`
+- [ ] File Upload with Multer
+- [ ] Cloud Uploads (AWS S3, Cloudinary)
 
-### 15. Advanced Node Internals
+### 13. Error Handling & Debugging
 
-- Child process (exec, spawn, fork)
-- Worker threads
-- Cluster vs Worker comparison
-- Event loop internals deep dive
-- Libuv deep dive
-- Native addons overview (C++)
-- Node-API introduction
-- Stream internals
-- ESM loader hooks
+- [ ] Error-first callback pattern
+- [ ] Creating custom error classes
+- [ ] Centralized error handling
+- [ ] try/catch best practices
+- [ ] Logging strategies
+- [ ] Unhandled rejections
+- [ ] Stack trace analysis
+- [ ] Debug flag & Node Inspector
+- [ ] `debug` module
 
+---
+
+### 📦 Checkpoint Project 2
+
+> Build a REST API (Express + MongoDB or PostgreSQL) with JWT-based auth, file upload (Multer → Cloudinary/S3), a server-rendered admin view using a template engine, and centralized error-handling middleware. This is the point where the roadmap turns into a real backend service.
+
+---
+
+## 🔴 Phase 3 — Scaling & Real-Time
+
+### 14. WebSockets & Real-Time
+
+- [ ] WebSocket Basics
+- [ ] Socket.io
+- [ ] Real-Time Chat App Example
+
+### 15. API Design
+
+- [ ] RESTful API Principles
+- [ ] API Versioning
+- [ ] GraphQL with Apollo/Express
+- [ ] Rate Limiting & Pagination
+- [ ] API Documentation (Swagger / OpenAPI)
+
+### 16. Testing & Quality Assurance
+
+- [ ] Debugging with Node Inspector
+- [ ] Unit testing basics (Mocha/Chai, or Node's built-in `node:test`)
+- [ ] Jest for Testing APIs
+- [ ] Supertest for Integration Testing
+- [ ] Testing async code & mocking
+- [ ] Test coverage
+- [ ] TDD basics
+
+### 17. Performance & Optimization
+
+- [ ] Performance hooks & profiling
+- [ ] Memory usage monitoring & detecting leaks
+- [ ] Garbage collection basics
+- [ ] Cluster module
+- [ ] Worker Threads (offloading CPU-heavy tasks)
+- [ ] Horizontal scaling & load balancing
+- [ ] Caching strategy (Redis overview)
+- [ ] Gzip compression
+- [ ] HTTP keep-alive
+
+### 18. Deployment & Production
+
+- [ ] Production environment setup & dotenv usage
+- [ ] PM2 & Process Management
+- [ ] Dockerizing Node.js Apps
+- [ ] Nginx Reverse Proxy
+- [ ] CI/CD (GitHub Actions, GitLab CI, Jenkins)
+- [ ] Cloud Deployment (AWS, Heroku, Vercel, Render)
+- [ ] Logging in production & monitoring tools
+- [ ] Health checks
+- [ ] Graceful shutdown & handling `SIGINT`/`SIGTERM`
+- [ ] Zero downtime deployment
+
+---
+
+### 📦 Checkpoint Project 3
+
+> Add a Socket.io real-time feature to the API from Checkpoint 2 (e.g. live notifications or chat), add rate limiting + pagination to the endpoints, write Jest + Supertest integration tests for the critical paths, then containerize it with Docker and run it behind PM2 + Nginx with a health-check endpoint.
+
+---
+
+## ⚫ Phase 4 — Expert & Specialization
+
+### 19. Advanced Concepts
+
+- [ ] Microservices Architecture
+- [ ] Message Queues (RabbitMQ, Kafka, BullMQ)
+- [ ] Serverless Functions (AWS Lambda, Vercel)
+
+> Worker Threads for CPU-bound work are covered in [Performance & Optimization](#17-performance--optimization) — this section is about splitting a system across services, not threads.
+
+### 20. CLI Tools Development
+
+- [ ] Creating a CLI tool
+- [ ] Parsing arguments
+- [ ] Commander usage
+- [ ] Yargs usage
+- [ ] Shebang (`#!/usr/bin/env node`)
+- [ ] Making CLI executable
+- [ ] Publishing CLI to npm
+
+### 21. Advanced Node Internals
+
+- [ ] Child process (`exec`, `spawn`, `fork`)
+- [ ] Worker threads deep dive
+- [ ] Cluster vs Worker Threads comparison
+- [ ] Event loop internals deep dive
+- [ ] libuv deep dive
+- [ ] Native addons overview (C++)
+- [ ] Node-API introduction
+- [ ] Stream internals
+- [ ] ESM loader hooks
+
+### 22. Best Practices
+
+- [ ] Clean Project Structure
+- [ ] Config Management (dotenv)
+- [ ] Logging (Winston, Morgan, Pino)
+- [ ] Error Handling Strategy
+- [ ] Secure & Scalable Architecture
+- [ ] Performance Optimization
+- [ ] TypeScript with Node.js (tsconfig, ts-node, build pipeline)
+- [ ] Dependency security (`npm audit`, Snyk)
+- [ ] npm workspaces / monorepos
+
+---
+
+### 🏆 Capstone Project
+
+> Take the real-time API from Checkpoint 3 and split one piece of it into a second service communicating over a message queue (BullMQ is the easiest to self-host), add an internal CLI tool for ops tasks (e.g. seeding data or running maintenance jobs), and convert the codebase to TypeScript with a proper build pipeline. This exercises every phase of the roadmap in one project.

@@ -11,7 +11,7 @@
 - [01. Node.js Fundamentals](#01-nodejs-fundamentals) ✅
 - [02. Node.js Architecture & Event Loop](#02-nodejs-architecture--event-loop) ✅
 - [03. Core Modules](#03-core-modules) ✅
-- [04. Modules & Package Management](#04-modules--package-management)
+- [04. Modules & Package Management](#04-modules--package-management) ✅
 - [05. Asynchronous Programming](#05-asynchronous-programming)
 - [📦 Checkpoint Project 1](#-checkpoint-project-1)
 
@@ -90,78 +90,15 @@
 
 ### 04. Modules & Package Management
 
-- [ ] CommonJS (`require`, `module.exports`)
-- [ ] ES Modules (`import`/`export`)
-- [ ] CJS vs ESM differences
-- [ ] Module resolution algorithm
-- [ ] `node_modules` structure
-- [ ] `package.json` deep dive (scripts, dependencies, versioning, main/type)
-- [ ] npm ecosystem (npx, semver, yarn/pnpm, publishing)
+- [x] CommonJS (`require`, `module.exports`)
+- [x] ES Modules (`import`/`export`)
+- [x] CJS vs ESM differences
+- [x] Module resolution algorithm
+- [x] `node_modules` structure
+- [x] `package.json` deep dive (scripts, dependencies, versioning, main/type)
+- [x] npm ecosystem (npx, semver, yarn/pnpm, publishing)
 
-<details>
-<summary><b>CommonJS (require, module.exports)</b></summary>
-
-CommonJS (CJS) is the module system built into Node.js — it lets you split code into separate files and share functionality between them.
-
-**CommonJS — Key Takeaways**
-
-1. **`module.exports`** — what your file shares with the world; nothing leaks out unless explicitly exported
-
-2. **`require()`** — fetches another file's exports and brings them into your current file
-
-3. **Each file is its own module** — variables stay private inside their file; no accidental global leaks
-
-4. **`require()` is cached** — the file runs only once on first load; repeated `require()` calls return the same cached result
-
-5. **Can export anything** — functions, objects, classes, arrays, strings, numbers — any valid JavaScript value
-
-6. **Use `module.exports = {}`** not `exports = {}` for objects — reassigning `exports` breaks the reference to `module.exports`
-
-7. **CommonJS is synchronous** — safe to use at startup/top of file, but never call `require()` inside async callbacks or request handlers mid-flight
-
-</details>
-
-<details>
-<summary><b>ES Modules (import/export)</b></summary>
-
-A module is just a file. Every `.js` file in ES Modules is its own isolated unit with its own scope, variables, and logic.
-
-**ES Modules — Key Takeaways**
-
-1. **`export`** — what your file shares with the world; nothing leaks out unless explicitly exported
-
-2. **`import`** — brings another file's exports into your current file, and must reference the full path including the extension (`./utils.js`, not `./utils`)
-
-3. **ESM is asynchronous** — modules are loaded and linked before execution, which is what enables top-level `await`
-
-4. **Static analysis friendly** — because imports/exports are declared at the top level (not conditionally), bundlers can tree-shake unused code
-
-5. **Enable it** via `"type": "module"` in `package.json`, or by using the `.mjs` file extension
-
-6. **No `__dirname`/`__filename`** — use `import.meta.url` with `fileURLToPath()` instead
-
-</details>
-
-- CJS vs ESM differences
-- Module resolution algorithm
-- `node_modules` structure
-
-#### package.json Deep Dive
-
-- scripts
-- dependencies vs devDependencies
-- versioning
-- main / type fields
-
-#### npm Ecosystem
-
-- npm install variations
-- npx usage
-- Global vs Local packages
-- Semantic Versioning (SemVer)
-- yarn / pnpm overview
-- Creating custom npm package
-- Publishing to npm
+📖 **[Deep dive -> 04. Modules & Package Management](./04-Modules%20%26%20Package%20Management/README.md)**
 
 ### 05. Asynchronous Programming
 
